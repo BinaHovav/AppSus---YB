@@ -1,6 +1,41 @@
+
+.keep-list ul {
+    display: grid;
+    column-count: 4;
+    column-width:12em;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 40px;
+    padding: 10px;
+}
+
+.keep-list ul li {
+    position: relative;
+    text-transform: capitalize;
+    padding: 10px;
+    opacity:0.9;
+    border-radius: 20px;
+    transition:0.3s ease;
+    max-height: 350px;
+}
+
+.keep-list ul li:hover {
+    scale:1.05;
+}
+
+/* .keep-list button{
+    position: absolute;
+    top:5px;
+    right:2px;
+    color: black
+} */
+
 .keep-list{
-   
     column-count: 4;
     column-width: 12em;
 
 }
+
+.remove-button{
+    position: absolute;
+    bottom: 30px;
+    right: 50px}
