@@ -1,17 +1,29 @@
+import { emailService } from '../services/email.service.js'
+
 export default {
-  name: 'emailPreview',
+  name: 'EmailPreview',
   props: ['email'],
   template: `
-            <article :class="{'email-preview': true, 'unread-email': !email.isRead}">
-              <h2>{{ email.subject }}</h2>
-              <h2>{{ email.body }}</h2>
-              <h3 class="date-preview">{{ email.sentAt }}</h3>
-              <div className="actions">
-                  <!-- <RouterLink :to="'/email/' + email.id">Details</RouterLink>  -->
-                  <!-- <RouterLink :to="'/email/edit/' + email.id">Edit</RouterLink> -->
-              </div>
-            </article>
-      `,
+             <RouterLink :to="'/mail/' + email.id">
+                <article :class="{'email-preview': true, 'unread-email': !email.isRead, 'read-email': email.isRead}">
+                    <h2 class="from-preview">{{ email.from }} </h2>
+                    <h2 class="content-preview"> 
+                       <span class="subject-preview">{{ email.subject }}</span>
+                       <span class="body-preview">{{ email.body }}</span>
+                    </h2>
+                     <h2 class="date-preview">{{ email.sentAt }}</h2>
+                    <div class="actions">
+                    <!-- <RouterLink :to="'/mail/edit/' + email.id">Edit</RouterLink> -->
+                    </div>
+                  </article>   
+              </RouterLink> 
+                   `,
 
-  computed: {},
+  data() {
+    return {
+      // emailToEdit: emailService.save(),
+    }
+  },
+
+  methods: {},
 }

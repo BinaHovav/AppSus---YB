@@ -30,7 +30,7 @@ export const emailService = {
   //   addReview,
   //   removeReview,
   // getEmptyEmail,
-  // getNextEmailId,
+  getNextEmailId,
   getFilterBy,
   setFilterBy,
   //   getBookCountByPriceMap,
@@ -66,14 +66,14 @@ function get(emailId) {
   return storageService.get(EMAIL_KEY, emailId).then((email) => _setNextPrevEmailId(email))
 }
 
-// function _setNextPrevEmailId(email) {
-//   return storageService.query(EMAIL_KEY).then((emails) => {
-//     const emailIdx = emails.findIndex((currEmail) => currEmail.id === email.id)
-//     email.nextMailId = emails[emailIdx + 1] ? emails[emailIdx + 1].id : emails[0].id
-//     email.prevMailId = emails[emailIdx - 1] ? emails[emailIdx - 1].id : emails[emails.length - 1].id
-//     return email
-//   })
-// }
+function _setNextPrevEmailId(email) {
+  return storageService.query(EMAIL_KEY).then((emails) => {
+    const emailIdx = emails.findIndex((currEmail) => currEmail.id === email.id)
+    email.nextMailId = emails[emailIdx + 1] ? emails[emailIdx + 1].id : emails[0].id
+    email.prevMailId = emails[emailIdx - 1] ? emails[emailIdx - 1].id : emails[emails.length - 1].id
+    return email
+  })
+}
 
 function remove(emailId) {
   return storageService.remove(EMAIL_KEY, emailId)
@@ -118,13 +118,13 @@ function setFilterBy(filterBy = {}) {
   return gFilterBy
 }
 
-// function getNextEmailId(emailId) {
-//   return storageService.query(MAIL).then((emails) => {
-//     var idx = emails.findIndex((mail) => email.id === emailId)
-//     if (idx === emails.length - 1) idx = -1
-//     return emails[idx + 1].id
-//   })
-// }
+function getNextEmailId(emailId) {
+  return storageService.query(MAIL).then((emails) => {
+    var idx = emails.findIndex((mail) => email.id === emailId)
+    if (idx === emails.length - 1) idx = -1
+    return emails[idx + 1].id
+  })
+}
 
 // function getBookCountByPriceMap() {
 //   return storageService.query(BOOK_KEY).then((books) => {
@@ -184,22 +184,22 @@ function _createEmails() {
   let emails = utilService.loadFromStorage(EMAIL_KEY)
   if (!emails || !emails.length) {
     const emails = []
-    emails.push(_createEmail('Sign up for our new "HOW TO LOVE CSS in 4 days" course', 'body body body body', true, '12:43 PM'))
-    emails.push(_createEmail('Your receipt from Dr. Cohen is ready', 'body body body body', true, '10:04 AM'))
-    emails.push(_createEmail('The HOW TO SLEEP WELL guide is waiting for you here', 'body body body body', true, '08:16 AM'))
-    emails.push(_createEmail('Your antivirus is about to expires!', 'body body body body', true, 'Jul 4'))
-    emails.push(_createEmail('Your electricity bill is ready', 'body body body body', true, 'Jul 4'))
-    emails.push(_createEmail('The summer is here', 'body body body body', false, 'Jul 4'))
-    emails.push(_createEmail('Your Delivery is on the Way!', 'body body body body', false, 'Jul 4'))
-    emails.push(_createEmail('Your next vacation is (not) around the corner', 'body body body body', false, 'Jul 4'))
-    emails.push(_createEmail('Buy 3 and get 10 for free', 'body body body body', false, 'Jul 3'))
-    emails.push(_createEmail('SAVE THE DATE', 'body body body body', false, 'Jul 3'))
-    emails.push(_createEmail('Your Account Update', 'body body body body', false, 'Jul 3'))
-    emails.push(_createEmail('Weekly Newsletter', 'body body body body', false, 'Jul 2'))
-    emails.push(_createEmail('Your pension plan', 'body body body body', false, 'Jul 2'))
-    emails.push(_createEmail('Important announcement', 'body body body body', false, 'Jul 2'))
-    emails.push(_createEmail('Great news from America', 'body body body body', false, 'Jul 1'))
-    emails.push(_createEmail('You have a new Facebook request', 'body body body body', false, 'Jun 30'))
+    emails.push(_createEmail('Sign up for our new "HOW TO LOVE CSS in 4 days" course', 'body body body body', false, '12:43'))
+    emails.push(_createEmail('Your receipt from Dr. Cohen is ready', 'body body body body', false, '10:04'))
+    emails.push(_createEmail('The HOW TO SLEEP WELL guide is waiting for you here', 'body body body body', false, '08:16'))
+    emails.push(_createEmail('Your antivirus is about to expires!', 'body body body body', false, 'Jul 4'))
+    emails.push(_createEmail('Your electricity bill is ready', 'body body body body', false, 'Jul 4'))
+    emails.push(_createEmail('The summer is here', 'body body body body', true, 'Jul 4'))
+    emails.push(_createEmail('Your Delivery is on the Way!', 'body body body body', true, 'Jul 4'))
+    emails.push(_createEmail('Your next vacation is (not) around the corner', 'body body body body', true, 'Jul 4'))
+    emails.push(_createEmail('Buy 3 and get 10 for free', 'body body body body', true, 'Jul 3'))
+    emails.push(_createEmail('SAVE THE DATE', 'body body body body', true, 'Jul 3'))
+    emails.push(_createEmail('Your Account Update', 'body body body body', true, 'Jul 3'))
+    emails.push(_createEmail('Weekly Newsletter', 'body body body body', true, 'Jul 2'))
+    emails.push(_createEmail('Your pension plan', 'body body body body', true, 'Jul 2'))
+    emails.push(_createEmail('Important announcement', 'body body body body', true, 'Jul 2'))
+    emails.push(_createEmail('Great news from America', 'body body body body', true, 'Jul 1'))
+    emails.push(_createEmail('You have a new Facebook request', 'body body body body', true, 'Jun 30'))
     utilService.saveToStorage(EMAIL_KEY, emails)
     console.log('emails', emails)
   }
