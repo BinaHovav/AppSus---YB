@@ -1,0 +1,14 @@
+.keep-preview{
+    position: relative;
+    background: #efc8c8;
+    padding: 1em;
+    border: 1px solid lightgray;
+    border-radius: 1em;
+    margin-block-end: 1em;
+
+    break-inside: avoid;
+}
+
+.keep-preview h1{
+    font-size: 16px;
+}

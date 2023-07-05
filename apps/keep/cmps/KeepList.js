@@ -5,7 +5,7 @@ export default {
     props: ['keeps'],
     template: `
         <section class="keep-list">
-            <ul>
+            <ul class="clean-list">
                 <li v-for="keep in keeps" :key="keep.id">
                     <KeepPreview :keep="keep"/>
         

@@ -1,6 +1,7 @@
 import { keepService } from '../services/keep.service.js'
 
 import keepList from '../cmps/KeepList.js'
+import keepEdit from '../cmps/KeepEdit.js'
 
 
 export default {
@@ -8,7 +9,8 @@ export default {
     name: 'keepIndex',
     template: `
         <section class="keep-index">
-            <h1>hellow from index</h1>
+            <!-- <h1>hellow from index</h1> -->
+            <keepEdit/>
             <keepList v-if="keeps"
             :keeps="keeps" /> 
             
@@ -27,5 +29,6 @@ export default {
     },
     components: {       
         keepList,
+        keepEdit
     }
 }

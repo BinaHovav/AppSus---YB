@@ -98,7 +98,7 @@ function getEmptyKeep(txt='Fullstack Me Baby!') {
     const date = new Date()
     return { id: 'n101',
             createdAt: date,
-            type: 'NoteTxt',
+            type: 'TextBox',
             isPinned: false,
             style: { backgroundColor: '#00d' },
             info: { txt: txt}        
