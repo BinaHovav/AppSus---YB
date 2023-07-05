@@ -4,7 +4,7 @@ export default {
   template: `
           <article class="email-preview">
               <h2>{{ email.subject }}</h2>
-  
+              <h3>{{ email.body }}</h3>
               <div className="actions">
                   <!-- <RouterLink :to="'/email/' + email.id">Details</RouterLink>  -->
                   <!-- <RouterLink :to="'/email/edit/' + email.id">Edit</RouterLink> -->
