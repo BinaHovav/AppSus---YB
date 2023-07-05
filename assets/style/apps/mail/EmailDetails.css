@@ -1,0 +1,11 @@
+.email-details {
+    margin:20px;
+    position: relative;
+    padding: 10px;
+    background-color: var(--turquise);
+}
+
+.email-details h2{
+   text-transform: capitalize;
+}
+

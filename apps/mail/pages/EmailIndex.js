@@ -1,11 +1,13 @@
 import { emailService } from '../services/email.service.js'
-// import { showSuccessMsg, showErrorMsg } from '/services/event-bus.service.js'
+import { showSuccessMsg, showErrorMsg } from '/services/event-bus.service.js'
 
 import EmailFilter from '../cmps/EmailFilter.js'
 import EmailList from '../cmps/EmailList.js'
 
 export default {
   name: 'emailIndex',
+  props: ['email'],
+
   template: `
         <section class="email-index">
             <!-- <RouterLink to="/email/edit" class="add-email">Add Email</RouterLink>  -->
@@ -13,7 +15,8 @@ export default {
             <EmailFilter @filter="setFilterBy"/>
             <EmailList 
                 v-if="emails"
-                :emails="filteredEmails"/>
+                :emails="filteredEmails"
+                @markAsRead="markAsRead"/>
                 <!-- @remove="removeEmail"  -->
                 
         </section>
@@ -28,12 +31,32 @@ export default {
   },
   created() {
     emailService.query().then((emails) => (this.emails = emails))
-    console.log('this.emails', this.emails)
+    // console.log('this.emails', this.emails)
   },
 
   methods: {
     setFilterBy(filterBy) {
       this.filterBy = filterBy
+    },
+
+    markAsRead(emailId) {
+      console.log('mark as read')
+      emailService
+        .get(emailId)
+        .then((email) => {
+          if (!email.isRead) {
+            email.isRead = true
+            return emailService.save(email)
+          }
+        })
+        .then((savedEmail) => {
+          console.log('savedEmail', savedEmail)
+          showSuccessMsg('Email marked as Read')
+          // this.$router.push('/mail')
+        })
+        .catch((err) => {
+          showErrorMsg('Cannot mark email as read')
+        })
     },
   },
 
@@ -46,6 +69,7 @@ export default {
       // if (this.filterBy.price) {
       //   filteredBooks = filteredBooks.filter((book) => book.listPrice.amount <= this.filterBy.price)
       // }
+      console.log('filteredEmails', filteredEmails)
       return filteredEmails
     },
   },
