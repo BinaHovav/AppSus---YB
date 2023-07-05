@@ -16,7 +16,7 @@
 }
 
 .email-list ul li:hover {
-    border-bottom: 1px solid gray;
+    box-shadow: inset 1px 0 0 #dadce0;
 }
 
 .email-list button{

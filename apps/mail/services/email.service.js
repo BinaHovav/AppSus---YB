@@ -184,39 +184,38 @@ function _createEmails() {
   let emails = utilService.loadFromStorage(EMAIL_KEY)
   if (!emails || !emails.length) {
     const emails = []
-    emails.push(_createEmail('Your receipt from Dr. Cohen is ready', 'body body body body', true))
-    emails.push(_createEmail('THE HOW TO SLEEP WELL guide is waiting for you here', 'body body body body', true))
-    emails.push(_createEmail('Your antivirus is about to expires!', 'body body body body', true))
-    emails.push(_createEmail('Your electricity bill is ready', 'body body body body', true))
-    emails.push(_createEmail('Sign up for our new "HOW TO LOVE CSS in 4 days" course', 'body body body body', false))
-    emails.push(_createEmail('The summer is here', 'body body body body', false))
-    emails.push(_createEmail('Your Delivery is on the Way!', 'body body body body', false))
-    emails.push(_createEmail('Your next vacation is (not) around the corner', 'body body body body', false))
-    emails.push(_createEmail('Buy 3 and get 10 for free', 'body body body body', false))
-    emails.push(_createEmail('SAVE THE DATE', 'body body body body', false))
-    emails.push(_createEmail('Your Account Update', 'body body body body', false))
-    emails.push(_createEmail('Weekly Newsletter', 'body body body body', false))
-    emails.push(_createEmail('Your pension plan', 'body body body body', false))
-    emails.push(_createEmail('Important announcement', 'body body body body', false))
-    emails.push(_createEmail('Great news from America', 'body body body body', false))
-    emails.push(_createEmail('You have a new Facebook request', 'body body body body', false))
+    emails.push(_createEmail('Sign up for our new "HOW TO LOVE CSS in 4 days" course', 'body body body body', true, '12:43 PM'))
+    emails.push(_createEmail('Your receipt from Dr. Cohen is ready', 'body body body body', true, '10:04 AM'))
+    emails.push(_createEmail('The HOW TO SLEEP WELL guide is waiting for you here', 'body body body body', true, '08:16 AM'))
+    emails.push(_createEmail('Your antivirus is about to expires!', 'body body body body', true, 'Jul 4'))
+    emails.push(_createEmail('Your electricity bill is ready', 'body body body body', true, 'Jul 4'))
+    emails.push(_createEmail('The summer is here', 'body body body body', false, 'Jul 4'))
+    emails.push(_createEmail('Your Delivery is on the Way!', 'body body body body', false, 'Jul 4'))
+    emails.push(_createEmail('Your next vacation is (not) around the corner', 'body body body body', false, 'Jul 4'))
+    emails.push(_createEmail('Buy 3 and get 10 for free', 'body body body body', false, 'Jul 3'))
+    emails.push(_createEmail('SAVE THE DATE', 'body body body body', false, 'Jul 3'))
+    emails.push(_createEmail('Your Account Update', 'body body body body', false, 'Jul 3'))
+    emails.push(_createEmail('Weekly Newsletter', 'body body body body', false, 'Jul 2'))
+    emails.push(_createEmail('Your pension plan', 'body body body body', false, 'Jul 2'))
+    emails.push(_createEmail('Important announcement', 'body body body body', false, 'Jul 2'))
+    emails.push(_createEmail('Great news from America', 'body body body body', false, 'Jul 1'))
+    emails.push(_createEmail('You have a new Facebook request', 'body body body body', false, 'Jun 30'))
     utilService.saveToStorage(EMAIL_KEY, emails)
     console.log('emails', emails)
   }
 }
 
-function _createEmail(subject, body, isRead) {
+function _createEmail(subject, body, isRead, sentAt) {
   const email = {
     id: utilService.makeId(),
     subject,
     body,
     isRead,
-    sentAt: 1551133930594,
+    sentAt,
     removedAt: null,
     from: 'momo@momo.com',
     to: 'user@appsus.com',
   }
-  //   email.id = utilService.makeId()
   return email
 }
 

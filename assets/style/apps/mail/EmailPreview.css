@@ -1,51 +1,43 @@
-.email-preview{
-    /* position: relative; */
+.email-preview {
     display: flex;
-    /* flex-direction: column; */
-    align-items: center;
+    align-items: flex-start; 
     cursor: pointer;
+    position: relative;
+    border-bottom: 1px solid lightgray;
 }
-.email-preview h2{
-    /* position: absolute; */
-    top:10px;
+
+.email-preview h2 {
+    flex-grow: 1;
+    width: 0;
     line-height: 1.4;
-    font-size:1.2em;
+    font-size: 1.2em;
     text-align: left;
-    color: var(--beighe)
-}
-.email-preview h3{
-  padding-left:5px;
-    font-size: .8em;
+    color: var(--beighe);
+  }
+  
+  .email-preview h3 {
+    padding-left: 5px;
+    font-size: 0.8em;
     line-height: 0;
-}
-
-.email-preview a{
-    font-size: 1em;
-}
-.email-preview img{
-    height: 200px;
-    width: 150px;
-}
-
-.red{
-    color:red
-}
-
-.green{
-    color:green
-}
-
-.on-sale-tag{
-position: absolute;
-background-color: var(--red);
-border:1px solid black;
-padding:3px;
-left:0;
-top:30px;
-transform: rotate(-20deg);
-}
-
-.actions{
-    display: flex;
-    gap:50px;
-}
+    margin-left: 10px; 
+  }
+  
+  .email-preview:hover {
+    box-shadow: inset 2px 0 0 #dadce0, 
+    inset -2px 0 0 #dadce0, 
+    0 1px 2px 0 rgba(60, 64, 67, 0.3),
+     0 1px 3px 1px rgba(60, 64, 67, 0.15);
+  }
+  
+  .date-preview {
+    position: absolute;
+    right: 20px;
+    bottom: 0;
+    font-size: 0.8em;
+    color: #888;
+  }
+  
+  .unread-email {
+    background-color: var(--clr2);
+  }
+  
