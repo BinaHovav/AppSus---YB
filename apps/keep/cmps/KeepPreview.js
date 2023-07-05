@@ -5,13 +5,11 @@ export default {
     props: ['keep'],
     template: `
         <article class="keep-preview">
-           <pre>{{keep}}</pre>
-           
+           <!-- <pre>{{keep}}</pre> -->         
            <Component 
-                        :is="keep.type"  
-                        :info="keep.info" 
-                         @set-val="setAns($event, idx)" /> 
-
+                :is="keep.type"  
+                :info="keep.info" 
+                    @set-val="setAns($event, idx)" /> 
         </article>
     `,
         data() {

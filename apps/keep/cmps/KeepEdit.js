@@ -2,15 +2,16 @@ import { keepService } from "../services/keep.service.js"
 /* import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js' */
 
 export default {
+    name: 'KeepEdit',
+    props: ['keep'],
     template: `
-        <!-- <form @submit.prevent="save" class="keep-edit"> -->
-            <h2>{{(keepToEdit.id)? 'Edit' : 'Add'}} a keep</h2>
-            <input v-model="keepToEdit.info.txt" type="text" placeholder="Enter new keep">
-           
-            <!-- <RouterLink to="/keep">Cancel</RouterLink>  -->
-            <!-- <button :disabled="!isValid" :click="save()">save</button> -->
-            <button :click="save()">save</button>
-        <!-- </form> -->
+            <form @submit.prevent="save" class="keep-edit">
+                <h2>Add a keep</h2>
+                <input v-model="keepToEdit.info.txt" type="text" placeholder="Enter new keep">
+
+                <button :disabled="!isValid">save</button>
+             </form>
+       
     `,
     data() {
         return {
@@ -23,31 +24,39 @@ export default {
         }
     },
     created() {
-        const { keepId } = this.$route.params
-        if (!keepId) return
-        keepService.get(keepId)
-            .then(keep => {
-                this.keepToEdit = keep
-            })
-            .catch(err => {
-                console.log('Cannot load keep for edit')
-                // showErrorMsg('Cannot load keep for edit')
-                // this.$router.push('/keep')
-            })
+        // const { keepId } = this.$route.params
+        // if (!keepId) return
+        // keepService.get(keepId)
+        //     .then(keep => {
+        //         this.keepToEdit = keep
+        //     })
+        //     .catch(err => {
+        //         console.log('Cannot load keep for edit')
+        //         // showErrorMsg('Cannot load keep for edit')
+        //         // this.$router.push('/keep')
+        //     })
+
+        this.keepToEdit= keepService.getEmptyKeep()     
     },
 
     methods: {
+        resetKeep(){
+            this.keepToEdit= keepService.getEmptyKeep()
+        },
         save() {
-            keepService.save(this.keepToEdit)
-                .then(() => {
-                    console.log('keep saved')
-                    // showSuccessMsg('Keep saved')
-                    // this.$router.push('/keep')
-                })
-                .catch(err => {
-                    console.log('cant save Keep', savedKeep)
-                    /* showErrorMsg('Cannot save keep') */
-                })
+            // console.log('keepToEdit', this.keepToEdit)
+            // keepService.save(this.keepToEdit)
+            //     .then(() => {
+            //         console.log('keep saved')
+            //         // showSuccessMsg('Keep saved')
+            //         // this.$router.push('/keep')
+            //     })
+            //     .catch(err => {
+            //         console.log('cant save Keep', savedKeep)
+            //         /* showErrorMsg('Cannot save keep') */
+            //     })
+            console.log('example',this.keepToEdit)
+            this.$emit('save', this.keepToEdit)
         }
     }
 }

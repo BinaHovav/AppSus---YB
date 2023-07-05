@@ -8,13 +8,21 @@ export default {
             <ul class="clean-list">
                 <li v-for="keep in keeps" :key="keep.id">
                     <KeepPreview :keep="keep"/>
-        
+                    <!-- <section class="actions"> -->
+                        <button @click="onRemoveKeep(keep.id)">x</button>
+                        <!-- <button @click="onEditKeep(keep.id)">edit</button> -->
+                    <!-- </section> -->
                 </li>
             </ul>
         </section>
     `,
     methods: {
-     
+        onRemoveKeep(keepId) {
+            this.$emit('remove', keepId)
+        },
+        onEditKeep(keepId){
+
+        }
     },
     components: {       
         KeepPreview,

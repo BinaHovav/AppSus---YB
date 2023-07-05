@@ -3,7 +3,7 @@ import { storageService } from '../../../services/async-storage.service.js'
 
 
 const PAGE_SIZE = 5
-const KEEP_KEY = 'kee[DB'
+const KEEP_KEY = 'keepDB'
 
 var gFilterBy = { }
 var gSortBy = { }
@@ -94,9 +94,9 @@ function setFilterBy(filterBy = {}) {
 
 
 
-function getEmptyKeep(txt='Fullstack Me Baby!') {
+function getEmptyKeep(txt) {
     const date = new Date()
-    return { id: 'n101',
+    return { id: '',
             createdAt: date,
             type: 'TextBox',
             isPinned: false,
@@ -120,6 +120,7 @@ function _createKeeps() {
 
 function _createKeep(txt) {
     const keep = getEmptyKeep(txt)
-    keep.id = utilService.makeId()
+    // keep.id = utilService.makeId()
+    console.log('keep from _createKeep',keep)
     return keep
 }
