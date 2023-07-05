@@ -1,7 +1,7 @@
 export default {
 	template: `
         <section >
-            <h1>Keep</h1>
+            <h1>Mail</h1>
         </section>
     `
 }
