@@ -1,7 +1,7 @@
 import HomePage from './views/HomePage.js'
 import AboutUs from './views/AboutUs.js'
 import bMail from './apps/mail/pages/EmailIndex.js'
-import yKeep from './apps/keep/pages/NoteIndex.js'
+import yKeep from './apps/keep/pages/KeepIndex.js'
 
 const { createRouter, createWebHashHistory } = VueRouter
 
