@@ -1,4 +1,4 @@
-import { emailService } from '/services/email.service.js'
+import { emailService } from '../services/email.service.js'
 // import { showSuccessMsg, showErrorMsg } from '/services/event-bus.service.js'
 
 import EmailFilter from '/apps/mail/cmps/EmailFilter.js'
