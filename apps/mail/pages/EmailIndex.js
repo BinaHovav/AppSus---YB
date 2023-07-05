@@ -3,6 +3,7 @@ import { showSuccessMsg, showErrorMsg } from '../../../services/event-bus.servic
 
 import EmailFilter from '../cmps/EmailFilter.js'
 import EmailList from '../cmps/EmailList.js'
+import EmailNavbar from '../cmps/EmailNavbar.js'
 
 export default {
   name: 'emailIndex',
@@ -10,9 +11,11 @@ export default {
 
   template: `
         <section class="email-index">
+          <button @click="onComposeEmail">Compose</button>
             <!-- <RouterLink to="/email/edit" class="add-email">Add Email</RouterLink>  -->
                             
             <EmailFilter @filter="setFilterBy"/>
+            <EmailNavbar></EmailNavbar>
             <EmailList 
                 v-if="emails"
                 :emails="filteredEmails"
@@ -37,6 +40,11 @@ export default {
   methods: {
     setFilterBy(filterBy) {
       this.filterBy = filterBy
+    },
+
+    onComposeEmail() {
+      this.$emit('compose')
+      console.log('compose')
     },
 
     markAsRead(emailId) {
@@ -69,12 +77,12 @@ export default {
       // if (this.filterBy.price) {
       //   filteredBooks = filteredBooks.filter((book) => book.listPrice.amount <= this.filterBy.price)
       // }
-      console.log('filteredEmails', filteredEmails)
       return filteredEmails
     },
   },
   components: {
     EmailFilter,
     EmailList,
+    EmailNavbar,
   },
 }

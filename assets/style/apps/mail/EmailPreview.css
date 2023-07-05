@@ -1,12 +1,16 @@
 .email-preview {
     display: flex;
-    gap: 80px;
+    flex-direction: row;
+    gap: 50px;
     align-items: center;
     position: relative;
     border-bottom: 1px solid lightgray;
     cursor: pointer;
   }
   
+  .email-checkbox {
+    margin-right: 10px;
+  }
   .email-preview h2 {
     font-family: Roboto, sans-serif;
     /* line-height: 1; */
@@ -19,7 +23,12 @@
     align-items: center;
   }
   
+  h2.from-preview{
+    width:20%
+  }
+  
   h2.content-preview {
+    width:50%;
     white-space: nowrap;
     overflow-x: hidden;
     text-overflow: ellipsis;
@@ -42,6 +51,7 @@
   
   .date-preview {
     position: absolute;
+    width:20%;
     white-space: nowrap;
     right: 40px;
     bottom: 0;

@@ -5,7 +5,9 @@ export default {
   props: ['email'],
   template: `
              <RouterLink :to="'/mail/' + email.id">
-                <article :class="{'email-preview': true, 'unread-email': !email.isRead, 'read-email': email.isRead}">
+                <article :class="{'email-preview': true,
+                                 'unread-email': !email.isRead,
+                                 'read-email': email.isRead}">
                     <h2 class="from-preview">{{ email.from }} </h2>
                     <h2 class="content-preview"> 
                        <span class="subject-preview">{{ email.subject }}</span>
