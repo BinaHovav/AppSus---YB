@@ -7,9 +7,9 @@ export default {
             <ul>
                 <li v-for="email in emails" :key="email.id">
                     <EmailPreview :email="email"/>
-                    <section class="actions">
+                    <!-- <section class="actions">
                         <button @click="onRemoveEmail(email.id)">x</button>
-                    </section>
+                    </section> -->
                 </li>
             </ul>
         </section>
