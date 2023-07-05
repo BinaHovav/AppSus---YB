@@ -1,0 +1,30 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Lato:wght@400;700&family=Merriweather:wght@900&family=Noto+Sans+Hebrew:wght@800;900&family=Poppins:wght@400;500&display=swap'); */
+
+.email-list ul {
+    padding: 10px;
+    background-color: var(--lightTurquise);
+    /* font-family: 'Merriweather', serif; */
+}
+.email-list ul li {
+    position: relative;
+    /* font-family: 'Merriweather', serif; */
+    list-style: none;
+    text-transform: capitalize;
+    padding: 20px;
+    background-color: var(--blue);
+    opacity:0.9;
+    transition:0.3s ease;
+    max-height: 350px;
+
+}
+
+.email-list ul li:hover {
+    border-bottom: 1px solid gray;
+}
+
+.email-list button{
+    position: absolute;
+    top:5px;
+    right:2px;
+    color: black
+}
