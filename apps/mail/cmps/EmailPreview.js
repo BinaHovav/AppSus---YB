@@ -18,7 +18,7 @@ export default {
                        <span class="material-icons-outlined" @click.stop.prevent="onRemoveEmail(email)">delete</span>
                        <span class="material-icons-outlined" @click.stop.prevent="onToggleIsRead(email)">{{ email.isRead ? 'mail' : 'drafts' }}</span>
                     </div>
-                       <h2 class="date-preview">{{ formatDate(email.receivedAt) }}</h2>
+                       <h2 class="date-preview">{{ formatDate(email.sentAt) }}</h2>
                   </article>   
               </RouterLink> 
                    `,

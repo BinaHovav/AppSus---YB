@@ -15,7 +15,8 @@ export default {
         <section class="email-index">
           <!-- this is the compose box -->
              <div class="compose-container" v-if="isComposeOpen"> 
-              <EmailCompose @closeCompose="closeCompose" />
+              <EmailCompose @closeCompose="closeCompose"
+                            @sendEmail="sendEmail($event)" />
             </div>
 
            <!-- this is the compose button -->
@@ -47,6 +48,7 @@ export default {
       filterBy: {},
       folder: 'inbox',
       isComposeOpen: false,
+      currentTime: null,
     }
   },
   created() {
@@ -67,11 +69,10 @@ export default {
     setFolder(folder) {
       this.folder = folder
     },
-    onComposeEmail() {
-      this.$emit('compose')
-      console.log('compose')
+    sendEmail(time) {
+      this.currentTime = time
+      console.log('sendIndex', this.currentTime)
     },
-
     updateEmail(email) {
       emailService.save(email).then((updatedEmail) => {
         const emailIdx = this.emails.findIndex((email) => email.id === updatedEmail.id)

@@ -1,5 +1,6 @@
 export default {
   name: 'EmailCompose',
+  props: ['emails'],
 
   template: `
     <section >
@@ -17,16 +18,29 @@ export default {
         <label for="body">Body:</label>
         <textarea id="body" rows="5" v-model="body" ></textarea>
       </div>
-      <div class="send-compose" class="form-actions">
-        <button type="submit">Send</button>
+      <div class="send-compose form-actions">
+        <button @click="onSendEmail()" type="submit">Send</button>
       </div>
     </form>
   </section>
   `,
 
+  data() {
+    return {
+      to: '',
+      subject: '',
+      body: '',
+      time: Date.now(),
+    }
+  },
+
   methods: {
     onCloseCompose() {
       console.log('close')
+    },
+    onSendEmail() {
+      console.log('sendCompose')
+      this.$emit('sendEmail', this.time)
     },
   },
 }

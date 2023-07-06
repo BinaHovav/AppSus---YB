@@ -194,7 +194,6 @@ function _createEmails() {
         body: 'body body body body',
         isRead: false,
         isStar: false,
-        receivedAt: Date.now(),
         sentAt: '12:43',
         removedAt: null,
         from: 'momo@momo.com',
@@ -204,13 +203,10 @@ function _createEmails() {
       {
         id: utilService.makeId(),
         folder: 'inbox',
-
         subject: 'Your receipt from Dr. Cohen is ready',
         body: 'body body body body',
         isRead: false,
         isStar: false,
-
-        receivedAt: '',
         sentAt: '10:04',
         removedAt: null,
         from: 'momo@momo.com',
@@ -227,7 +223,6 @@ function _createEmails() {
         isStar: false,
 
         sentAt: '08:16',
-        receivedAt: '',
         removedAt: null,
         from: 'momo@momo.com',
         to: 'user@appsus.com',
@@ -241,8 +236,6 @@ function _createEmails() {
         body: 'body body body body',
         isRead: false,
         sentAt: 'Jul 4',
-        receivedAt: '',
-
         removedAt: null,
         from: 'momo@momo.com',
         to: 'user@appsus.com',
@@ -258,8 +251,6 @@ function _createEmails() {
         isStar: false,
 
         sentAt: 'Jul 4',
-        receivedAt: '',
-
         removedAt: null,
         from: 'momo@momo.com',
         to: 'user@appsus.com',
@@ -273,9 +264,7 @@ function _createEmails() {
         body: 'body body body body',
         isRead: true,
         isStar: false,
-
         sentAt: 'Jul 4',
-        receivedAt: '',
 
         removedAt: null,
         from: 'momo@momo.com',
@@ -292,8 +281,6 @@ function _createEmails() {
         isStar: false,
 
         sentAt: 'Jul 4',
-        receivedAt: '',
-
         removedAt: null,
         from: 'momo@momo.com',
         to: 'user@appsus.com',
@@ -309,8 +296,6 @@ function _createEmails() {
         isStar: false,
 
         sentAt: 'Jul 4',
-        receivedAt: '',
-
         removedAt: null,
         from: 'momo@momo.com',
         to: 'user@appsus.com',
@@ -325,8 +310,6 @@ function _createEmails() {
         body: 'body body body body',
         isRead: true,
         sentAt: 'Jul 3',
-        receivedAt: '',
-
         removedAt: null,
         from: 'momo@momo.com',
         to: 'user@appsus.com',
@@ -341,8 +324,6 @@ function _createEmails() {
         body: 'body body body body',
         isRead: true,
         sentAt: 'Jul 3',
-        receivedAt: '',
-
         removedAt: null,
         from: 'momo@momo.com',
         to: 'user@appsus.com',
@@ -358,8 +339,6 @@ function _createEmails() {
         isStar: false,
 
         sentAt: 'Jul 3',
-        receivedAt: '',
-
         removedAt: null,
         from: 'momo@momo.com',
         to: 'user@appsus.com',
@@ -375,7 +354,6 @@ function _createEmails() {
         isStar: true,
 
         sentAt: 'Jul 2',
-        receivedAt: '',
 
         removedAt: null,
         from: 'momo@momo.com',
@@ -390,7 +368,6 @@ function _createEmails() {
         body: 'body body body body',
         isRead: true,
         sentAt: 'Jul 2',
-        receivedAt: '',
         isStar: false,
 
         removedAt: null,
@@ -408,8 +385,6 @@ function _createEmails() {
         isStar: false,
 
         sentAt: 'Jul 2',
-        receivedAt: '',
-
         removedAt: null,
         from: 'momo@momo.com',
         to: 'user@appsus.com',
@@ -425,8 +400,6 @@ function _createEmails() {
         isStar: false,
 
         sentAt: 'Jul 1',
-        receivedAt: '',
-
         removedAt: null,
         from: 'momo@momo.com',
         to: 'user@appsus.com',
@@ -442,8 +415,6 @@ function _createEmails() {
         isStar: false,
 
         sentAt: 'Jun 30',
-        receivedAt: '',
-
         removedAt: null,
         to: 'momo@momo.com',
         from: 'user@appsus.com',
@@ -457,9 +428,7 @@ function _createEmails() {
         body: 'body body body body',
         isRead: true,
         sentAt: 'Jun 30',
-        receivedAt: '',
         isStar: false,
-
         removedAt: null,
         from: 'user@appsus.com',
         to: 'momo@momo.com',
@@ -473,8 +442,6 @@ function _createEmails() {
         body: 'body body body body',
         isRead: true,
         sentAt: 'Jun 30',
-        receivedAt: '',
-
         removedAt: null,
         isStar: false,
 
@@ -487,7 +454,7 @@ function _createEmails() {
 
     emails.forEach((email, index) => {
       const timestamp = Date.now() - index * (hoursOffset * 60 * 60 * 1000)
-      email.receivedAt = timestamp
+      email.sentAt = timestamp
     })
 
     utilService.saveToStorage(EMAIL_KEY, emails)
