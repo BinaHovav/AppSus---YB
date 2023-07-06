@@ -2,7 +2,7 @@ import { keepService } from '../services/keep.service.js'
 
 import keepList from '../cmps/KeepList.js'
 
-import keepEdit from '../cmps/KeepEdit.js'
+// import keepEdit from '../cmps/KeepAdd.js'
 import keepAdd from '../cmps/KeepAdd.js'
 import keepNavbar from '../cmps/KeepNavbar.js'
 export default {
@@ -13,8 +13,8 @@ export default {
             <!-- <h1>hellow from keep index</h1> -->
             <keepNavbar/>
             <!-- <keepEdit  @save="saveKeep"/> -->
-            <keepEdit v-if="route==='edit'" @save="saveKeep"/>
-            <keepAdd v-if="route==='view'"/>
+            <keepAdd  @save="saveKeep" @update="updateKeep"/>
+            <!-- <keepAdd v-if="route==='view'" @chg-route="chgRoute"/> -->
             <keepList v-if="keeps"
             :keeps="keeps" 
             @remove="removeKeep"/> 
@@ -25,7 +25,7 @@ export default {
         return {
             keeps: null,
             filterBy: {},
-            route:'edit'
+            // route:'view'
             
         }
     },
@@ -34,6 +34,16 @@ export default {
             .then(keeps => this.keeps = keeps)
     },
     methods: {
+        loadKeeps(){
+            keepService.query()
+            .then(keeps => {
+                // let tempKeeps = keeps
+                // let pinKeeps = keeps.filter(keep => keep.isPinned)
+                // let nonPinKeeps = keeps.filter(keep => !keep.isPinned)
+                this.keeps = keeps
+            })
+
+        },
         removeKeep(keepId) {
             console.log('remove keepId',keepId)
             keepService.remove(keepId)    
@@ -48,6 +58,13 @@ export default {
                     console.log('Cannot remove keep')
                 })
         },
+        updateKeep(keepToEdit) {
+            emailService.save(keepToEdit).then((updatedKeep) => {
+              const keepIdx = this.keeps.findIndex((keep) => keep.id === updatedKeep.id)
+              this.keeps.splice(keepIdx, 1, updatedKeep)
+            })
+          },
+
         saveKeep(keepToEdit) {
             console.log('keepToEdit', keepToEdit)
             keepService.save(keepToEdit)
@@ -62,12 +79,16 @@ export default {
                     console.log('cant save Keep', savedKeep)
                     /* showErrorMsg('Cannot save keep') */
                 })
-            }
+            },
+            chgRoute(state) {
+                this.route = state
+                console.log('change route to ', state)
+           
+                }
             
     },
     components: {       
         keepList,
-        keepEdit,
         keepAdd, 
         keepNavbar
     }

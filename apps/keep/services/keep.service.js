@@ -20,7 +20,7 @@ export const keepService = {
     getEmptyKeep,
     getFilterBy,
     setFilterBy,
-    
+    getEmptyImgKeep
   
 }
 window.keepService = keepService
@@ -105,8 +105,21 @@ function getEmptyKeep(title, txt) {
             }
 }
 
+
+function getEmptyImgKeep(title, img='imgs/2.jpg') {
+    const date = new Date()
+    return { id: '',
+            createdAt: date,
+            type: 'ImgBox',
+            isPinned: false,
+            style: { backgroundColor: '#00d' },
+            info: { title, img}        
+            }
+}
+
 function _createKeeps() {
     let keeps = utilService.loadFromStorage(KEEP_KEY)
+    
     if (!keeps || !keeps.length) {
         keeps = []    
         for (var i=0;i<10;i++)    

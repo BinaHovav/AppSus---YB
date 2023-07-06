@@ -1,4 +1,5 @@
-import TextBox from '../cmps/TextBox.js'
+import TextBox from './preview-cmp/TextNote.js'
+import ImgBox from '../cmps/ImgBox.js'
 
 export default {
     name: 'KeepPreview',
@@ -9,7 +10,7 @@ export default {
            <Component 
                 :is="keep.type"  
                 :info="keep.info" 
-                    @set-val="setAns($event, idx)" /> 
+                @set-val="setAns($event, idx)" /> 
         </article>
     `,
         data() {
@@ -32,6 +33,7 @@ export default {
     components: {
      
         TextBox,
+        ImgBox
      
     }
 }
