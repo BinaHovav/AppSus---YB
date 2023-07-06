@@ -1,9 +1,9 @@
 .email-preview {
+  
     display: flex;
-    flex-direction: row;
+    justify-content: space-between;
     gap: 80px;
     align-items: center;
-    position: relative;
     border-bottom: 1px solid lightgray;
     cursor: pointer;
   }
@@ -20,10 +20,13 @@
     align-items: center;
   }
 
-  h2.content-preview {
+  .content-preview {
+    font-family: Roboto, sans-serif;
+    font-size: .875rem;
     white-space: nowrap;
     overflow-x: hidden;
     text-overflow: ellipsis;
+    width: 40%;
   }
   
   .subject-preview {
@@ -42,25 +45,22 @@
   }
   
   .date-preview {
-    position: absolute;
+    padding-right: 8%;
     white-space: nowrap;
-    right: 12%;
-    bottom: 0;
     direction: rtl;
   }
   
   .email-preview:hover {
-    box-shadow: inset 2px 0 0 #dadce0, inset -2px 0 0 #dadce0, 0 1px 2px 0 rgba(60, 64, 67, 0.3),
+     box-shadow: inset 2px 0 0 #dadce0, inset -2px 0 0 #dadce0, 0 1px 2px 0 rgba(60, 64, 67, 0.3),
       0 1px 3px 1px rgba(60, 64, 67, 0.15);
   }
   
   .actions{
-    position: absolute;
     display: flex;  
     gap:15px;
-    right:22%;
     width:30px;
     opacity: 0;  
+    padding-left: 5%;
   }
   
   .email-preview:hover .actions {

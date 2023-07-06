@@ -12,30 +12,23 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 20px;
   }
-  
+/*   
   .compose-button-container{
-    display: flex;
-    justify-content: flex-start;
-    position: relative;
-    top: 85px;
-    /* margin-top: 20%; */
-  }
+  } */
 
-  .material-icons {
-    position: absolute;
-    top: 50%;
-    left: 10px;
-    transform: translateY(-50%);
-    margin-right: 5px;
-  }
+  /* .material-icons {
+
+  } */
 
 .compose-button {
-  position: relative;
+  display: flex;
+  align-items: center;
+  gap:5px;
+  padding: 16px;
   background-color: var(--white);
   color: var(--gray);
   border: none;
   border-radius: 15px;
-  padding: 10px 35px;
   font-size: 1em;
   cursor: pointer;
   border: 1px solid lightgray;
@@ -43,7 +36,7 @@
   }
   
 .compose-button:hover {
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
 
     /* background-color: var(--clr3); */
   }

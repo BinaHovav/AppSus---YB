@@ -9,10 +9,10 @@ export default {
                                  'unread-email': !email.isRead,
                                  'read-email': email.isRead}">
                     <h2 class="from-preview">{{ email.from }} </h2>
-                    <h2 class="content-preview"> 
+                    <div class="content-preview"> 
                        <span class="subject-preview">{{ email.subject }}</span>
                        <span class="body-preview">{{ email.body }}</span>
-                    </h2>
+                    </div>
                     <div class="actions">
                        <span class="material-icons-outlined" >archive</span>
                        <span class="material-icons-outlined" @click.stop.prevent="onRemoveEmail(email)">delete</span>

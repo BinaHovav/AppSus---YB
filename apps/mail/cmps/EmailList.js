@@ -7,13 +7,13 @@ export default {
                 <section class="email-list">
                    <ul>
                      <li v-for="email in emails" :key="email.id">
-                     <i class="material-icons star" :class="starClass(email)" @click.stop.prevent="onStarEmail(email)">
-                          star_rate
-                      </i>   
-                     <EmailPreview :email="email" 
-                      @click="onMarkAsRead(email)" 
-                      @updateEmail="removeEmail"
-                                         />
+                        <i class="material-icons star" :class="starClass(email)" @click.stop.prevent="onStarEmail(email)">
+                              star_rate
+                          </i>   
+                        <EmailPreview :email="email" 
+                          @click="onMarkAsRead(email)" 
+                          @updateEmail="removeEmail"
+                                            />
                      </li>
                    </ul>
                  </section>

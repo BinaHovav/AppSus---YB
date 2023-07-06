@@ -4,13 +4,15 @@
     width:100vw
 }
 .email-list ul {
-    position: relative;
     display: flex;
     flex-direction: column;
-    /* width:90vw; */
-    margin:0 auto;
-    left:100px;
     background-color: var(--lightTurquise);
+    padding:0
+}
+
+.email-list a{
+    display: block;
+    width: 87%;
 }
 
 .email-list input{
@@ -19,15 +21,13 @@
     left:-65px;
     top:7px;
     width:90px
-   
 }
 
 .email-list ul li {
-    position: relative;
+    display: flex;
+    /* justify-content: space-around; */
+    align-items: center;
     list-style: none;
-    opacity:0.9;
-    transition:0.3s ease;
-    max-height: 350px;
 }
 
 .email-list ul li:hover {
@@ -48,10 +48,9 @@ margin-bottom:2%
 }
 
 .star {
-    position: absolute;
-    left:-25px;
     color: lightgray;
     cursor: pointer;
+    margin-right: 10px;
   }
 
 .star:hover {

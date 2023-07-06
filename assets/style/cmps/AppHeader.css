@@ -4,6 +4,7 @@
   background-color: var(--clr5);
   color: var(--secondary-clr1);
   padding: 1em;
+  margin-bottom: 30px;
 }
 
 .app-header a{

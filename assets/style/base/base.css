@@ -9,6 +9,8 @@ html {
 body {
   margin: 0;
   color: var(--clr4);
+  overflow-x: hidden;
+
 }
 
 /* h1,

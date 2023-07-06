@@ -29,7 +29,7 @@ export const emailService = {
   save,
   //   addReview,
   //   removeReview,
-  // getEmptyEmail,
+  getEmptyEmail,
   getNextEmailId,
   getFilterBy,
   setFilterBy,
@@ -106,9 +106,9 @@ function save(email) {
 //   })
 // }
 
-// function getEmptyMail(title = '', minPrice = 0) {
-//   return { id: '', title, minPrice }
-// }
+function getEmptyEmail(to = '', from = 'user@appsus.com', subject = '', body = '', sentAt = Date.now()) {
+  return { id: '', to, from, subject, body, sentAt }
+}
 
 function getFilterBy() {
   return { ...gFilterBy }
@@ -194,7 +194,7 @@ function _createEmails() {
         body: 'body body body body',
         isRead: false,
         isStar: false,
-        sentAt: '12:43',
+        sentAt: '',
         removedAt: null,
         from: 'momo@momo.com',
         to: 'user@appsus.com',
@@ -207,7 +207,7 @@ function _createEmails() {
         body: 'body body body body',
         isRead: false,
         isStar: false,
-        sentAt: '10:04',
+        sentAt: '',
         removedAt: null,
         from: 'momo@momo.com',
         to: 'user@appsus.com',
@@ -222,7 +222,7 @@ function _createEmails() {
         isRead: false,
         isStar: false,
 
-        sentAt: '08:16',
+        sentAt: '',
         removedAt: null,
         from: 'momo@momo.com',
         to: 'user@appsus.com',
@@ -235,7 +235,7 @@ function _createEmails() {
         subject: 'Your antivirus is about to expire!',
         body: 'body body body body',
         isRead: false,
-        sentAt: 'Jul 4',
+        sentAt: '',
         removedAt: null,
         from: 'momo@momo.com',
         to: 'user@appsus.com',
@@ -250,7 +250,7 @@ function _createEmails() {
         isRead: false,
         isStar: false,
 
-        sentAt: 'Jul 4',
+        sentAt: '',
         removedAt: null,
         from: 'momo@momo.com',
         to: 'user@appsus.com',
@@ -264,7 +264,7 @@ function _createEmails() {
         body: 'body body body body',
         isRead: true,
         isStar: false,
-        sentAt: 'Jul 4',
+        sentAt: '',
 
         removedAt: null,
         from: 'momo@momo.com',
@@ -280,7 +280,7 @@ function _createEmails() {
         isRead: true,
         isStar: false,
 
-        sentAt: 'Jul 4',
+        sentAt: '',
         removedAt: null,
         from: 'momo@momo.com',
         to: 'user@appsus.com',
@@ -295,7 +295,7 @@ function _createEmails() {
         isRead: true,
         isStar: false,
 
-        sentAt: 'Jul 4',
+        sentAt: '',
         removedAt: null,
         from: 'momo@momo.com',
         to: 'user@appsus.com',
@@ -309,7 +309,7 @@ function _createEmails() {
         subject: 'Buy 3 and get 10 for free',
         body: 'body body body body',
         isRead: true,
-        sentAt: 'Jul 3',
+        sentAt: '',
         removedAt: null,
         from: 'momo@momo.com',
         to: 'user@appsus.com',
@@ -323,7 +323,7 @@ function _createEmails() {
         subject: 'SAVE THE DATE',
         body: 'body body body body',
         isRead: true,
-        sentAt: 'Jul 3',
+        sentAt: '',
         removedAt: null,
         from: 'momo@momo.com',
         to: 'user@appsus.com',
@@ -338,7 +338,7 @@ function _createEmails() {
         isRead: true,
         isStar: false,
 
-        sentAt: 'Jul 3',
+        sentAt: '',
         removedAt: null,
         from: 'momo@momo.com',
         to: 'user@appsus.com',
@@ -353,7 +353,7 @@ function _createEmails() {
         isRead: true,
         isStar: true,
 
-        sentAt: 'Jul 2',
+        sentAt: '',
 
         removedAt: null,
         from: 'momo@momo.com',
@@ -367,7 +367,7 @@ function _createEmails() {
         subject: 'Your pension plan',
         body: 'body body body body',
         isRead: true,
-        sentAt: 'Jul 2',
+        sentAt: '',
         isStar: false,
 
         removedAt: null,
@@ -384,7 +384,7 @@ function _createEmails() {
         isRead: true,
         isStar: false,
 
-        sentAt: 'Jul 2',
+        sentAt: '',
         removedAt: null,
         from: 'momo@momo.com',
         to: 'user@appsus.com',
@@ -399,7 +399,7 @@ function _createEmails() {
         isRead: true,
         isStar: false,
 
-        sentAt: 'Jul 1',
+        sentAt: '',
         removedAt: null,
         from: 'momo@momo.com',
         to: 'user@appsus.com',
@@ -414,7 +414,7 @@ function _createEmails() {
         isRead: true,
         isStar: false,
 
-        sentAt: 'Jun 30',
+        sentAt: '',
         removedAt: null,
         to: 'momo@momo.com',
         from: 'user@appsus.com',
@@ -427,7 +427,7 @@ function _createEmails() {
         subject: 'You have a new Facebook request',
         body: 'body body body body',
         isRead: true,
-        sentAt: 'Jun 30',
+        sentAt: '',
         isStar: false,
         removedAt: null,
         from: 'user@appsus.com',
@@ -441,7 +441,7 @@ function _createEmails() {
         subject: 'You have a new Facebook request',
         body: 'body body body body',
         isRead: true,
-        sentAt: 'Jun 30',
+        sentAt: '',
         removedAt: null,
         isStar: false,
 

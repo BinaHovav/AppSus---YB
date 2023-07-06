@@ -15,29 +15,30 @@ export default {
         <section class="email-index">
           <!-- this is the compose box -->
              <div class="compose-container" v-if="isComposeOpen"> 
-              <EmailCompose @closeCompose="closeCompose"
+              <EmailCompose @closeForm="closeForm"
                             @sendEmail="sendEmail($event)" />
             </div>
 
            <!-- this is the compose button -->
-           <div class="compose-button-container">
-                <button @click="openCompose" class="compose-button">
+           
+           <div style="display: flex;">
+             <div style="display: flex; flex-direction: column; padding-left:30px; ">
+               <div class="compose-button-container">
+                 <button @click="openCompose" class="compose-button">
                    <span class="material-icons">mode_edit</span>
-                     Compose
-                </button>
-          </div>
-
-
-            <EmailFilter @filter="setFilterBy"/>
-            <EmailNavbar @selectFolder="setFolder" :unreadMailsCount="unreadMailsCount" />
-            <!-- <EmailList 
-                v-if="emails"
-                :emails="filteredEmails"
-                @markAsRead="markAsRead"/> -->
-                <!-- @remove="removeEmail"  -->
-            <RouterView :emails="filteredEmails"
-                        @updateEmail="updateEmail"
-             />
+                   Compose
+                  </button>
+                </div>
+                <EmailNavbar @selectFolder="setFolder" :unreadMailsCount="unreadMailsCount" />
+              </div>  
+              
+              <div style="display: flex; flex-direction: column; padding-left:10px">
+                   <EmailFilter @filter="setFilterBy"/>
+                   <RouterView :emails="filteredEmails"
+                                @updateEmail="updateEmail"/>
+              </div>
+            </div>
+             
         </section>
     `,
 
@@ -49,18 +50,19 @@ export default {
       folder: 'inbox',
       isComposeOpen: false,
       currentTime: null,
+      newEmail: emailService.getEmptyEmail(),
     }
   },
   created() {
     emailService.query().then((emails) => (this.emails = emails))
-    // console.log('this.emails', this.emails)
+    console.log('this.newEmail', this.newEmail)
   },
 
   methods: {
     openCompose() {
       this.isComposeOpen = true
     },
-    closeCompose() {
+    closeForm() {
       this.isComposeOpen = false
     },
     setFilterBy(filterBy) {
@@ -69,9 +71,16 @@ export default {
     setFolder(folder) {
       this.folder = folder
     },
-    sendEmail(time) {
-      this.currentTime = time
-      console.log('sendIndex', this.currentTime)
+    sendEmail(email) {
+      this.newEmail = email
+      console.log('email received in the index:', this.newEmail)
+
+      emailService.save(this.newEmail).then((savedEmail) => {
+        console.log('Saved Email', savedEmail)
+
+        this.updateEmail(email)
+        this.closeForm()
+      })
     },
     updateEmail(email) {
       emailService.save(email).then((updatedEmail) => {
@@ -104,9 +113,6 @@ export default {
           filteredEmails = filteredEmails.filter((email) => email.from === emailService.loggedinUser.email && !email.sentAt)
           break
       }
-      // if (this.filterBy.price) {
-      //   filteredBooks = filteredBooks.filter((book) => book.listPrice.amount <= this.filterBy.price)
-      // }
       return filteredEmails
     },
     unreadMailsCount() {
