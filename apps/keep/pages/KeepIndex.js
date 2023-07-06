@@ -4,17 +4,17 @@ import keepList from '../cmps/KeepList.js'
 
 import keepEdit from '../cmps/KeepEdit.js'
 import keepAdd from '../cmps/KeepAdd.js'
-
+import keepNavbar from '../cmps/KeepNavbar.js'
 export default {
 
     name: 'keepIndex',
     template: `
         <section class="keep-index">
             <!-- <h1>hellow from keep index</h1> -->
-            
-            <keepEdit  @save="saveKeep"/>
-            <!-- <keepEdit v-if="route===edit" @save="saveKeep"/> -->
-            <!-- <keepAdd v-if="route===view"/> -->
+            <keepNavbar/>
+            <!-- <keepEdit  @save="saveKeep"/> -->
+            <keepEdit v-if="route==='edit'" @save="saveKeep"/>
+            <keepAdd v-if="route==='view'"/>
             <keepList v-if="keeps"
             :keeps="keeps" 
             @remove="removeKeep"/> 
@@ -25,7 +25,7 @@ export default {
         return {
             keeps: null,
             filterBy: {},
-            route:'view'
+            route:'edit'
             
         }
     },
@@ -68,6 +68,7 @@ export default {
     components: {       
         keepList,
         keepEdit,
-        keepAdd
+        keepAdd, 
+        keepNavbar
     }
 }

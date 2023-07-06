@@ -1,5 +1,7 @@
 import { keepService } from "../services/keep.service.js"
 /* import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js' */
+import EditBtn from './EditBtn.js'
+
 
 export default {
     name: 'KeepEdit',
@@ -10,12 +12,8 @@ export default {
                 <input v-model="keepToEdit.info.title" type="text" placeholder="Title">
                 <input v-model="keepToEdit.info.txt" type="text" placeholder="Take a note...">
                 <h4>{{formateDate}}</h4>
-                <!-- <button :disabled="!isValid">save</button> -->
-                <!-- <input id="color" type="color" <img  src="../../assets/icons/palette.svg"/> -->
-                <!-- <input id="color"<img  src="../../assets/icons/palette.svg"></button> -->
-                <!-- <button class="icon-btn" data-title="remove line" onclick="onDeleteLine(event)"><img class="icon-img" src="icons/delete.png"></button> -->
-  
-                <button>save</button>
+                <EditBtn/>
+                <!-- <button>save</button> -->
              </form>
        
     `,
@@ -70,5 +68,8 @@ export default {
             return this.keepToEdit.info.createdAt
         }
 
-    }
+    },
+    components: {
+        EditBtn,
+      },
 }

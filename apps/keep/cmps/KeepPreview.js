@@ -4,7 +4,7 @@ export default {
     name: 'KeepPreview',
     props: ['keep'],
     template: `
-        <article class="keep-preview">
+        <article class="keep-preview" :style="keep.style">
            <!-- <pre>{{keep}}</pre> -->        
            <Component 
                 :is="keep.type"  

@@ -11,7 +11,7 @@ export default {
                         <!-- <button class="btn-remove" @click="onRemoveKeep(keep.id)">x</button> -->
                        <button class="btn-remove"  @click="onRemoveKeep(keep.id)"><img  src="../../assets/icons/delete.svg"></button>
                     <section class="actions">
-                        <button class="remove-button" @click="onRemoveKeep(keep.id)">x</button>
+                        <!-- <button class="remove-button" @click="onRemoveKeep(keep.id)">x</button> -->
                         <!-- <button @click="onEditKeep(keep.id)">edit</button> -->
                     </section>
                 </li>
