@@ -128,7 +128,6 @@ function getNextEmailId(emailId) {
   })
 }
 
-getEmailCountByFolderMap()
 function getEmailCountByFolderMap() {
   return storageService.query(EMAIL_KEY).then((emails) => {
     const emailCountByFolderMap = emails.reduce(
@@ -194,7 +193,7 @@ function _createEmails() {
         subject: 'Sign up for our new "HOW TO LOVE CSS in 4 days" course',
         body: 'body body body body',
         isRead: false,
-        receivedAt: Date.now(),
+        isStar: false,
         sentAt: '12:43',
         removedAt: null,
         from: 'momo@momo.com',
@@ -204,11 +203,10 @@ function _createEmails() {
       {
         id: utilService.makeId(),
         folder: 'inbox',
-
         subject: 'Your receipt from Dr. Cohen is ready',
         body: 'body body body body',
         isRead: false,
-        receivedAt: '',
+        isStar: false,
         sentAt: '10:04',
         removedAt: null,
         from: 'momo@momo.com',
@@ -222,8 +220,9 @@ function _createEmails() {
         subject: 'The HOW TO SLEEP WELL guide is waiting for you here',
         body: 'body body body body',
         isRead: false,
+        isStar: false,
+
         sentAt: '08:16',
-        receivedAt: '',
         removedAt: null,
         from: 'momo@momo.com',
         to: 'user@appsus.com',
@@ -237,8 +236,6 @@ function _createEmails() {
         body: 'body body body body',
         isRead: false,
         sentAt: 'Jul 4',
-        receivedAt: '',
-
         removedAt: null,
         from: 'momo@momo.com',
         to: 'user@appsus.com',
@@ -251,9 +248,9 @@ function _createEmails() {
         subject: 'Your electricity bill is ready',
         body: 'body body body body',
         isRead: false,
-        sentAt: 'Jul 4',
-        receivedAt: '',
+        isStar: false,
 
+        sentAt: 'Jul 4',
         removedAt: null,
         from: 'momo@momo.com',
         to: 'user@appsus.com',
@@ -266,8 +263,8 @@ function _createEmails() {
         subject: 'The summer is here',
         body: 'body body body body',
         isRead: true,
+        isStar: false,
         sentAt: 'Jul 4',
-        receivedAt: '',
 
         removedAt: null,
         from: 'momo@momo.com',
@@ -281,9 +278,9 @@ function _createEmails() {
         subject: 'Your Delivery is on the Way!',
         body: 'body body body body',
         isRead: true,
-        sentAt: 'Jul 4',
-        receivedAt: '',
+        isStar: false,
 
+        sentAt: 'Jul 4',
         removedAt: null,
         from: 'momo@momo.com',
         to: 'user@appsus.com',
@@ -296,9 +293,9 @@ function _createEmails() {
         subject: 'Your next vacation is (not) around the corner',
         body: 'body body body body',
         isRead: true,
-        sentAt: 'Jul 4',
-        receivedAt: '',
+        isStar: false,
 
+        sentAt: 'Jul 4',
         removedAt: null,
         from: 'momo@momo.com',
         to: 'user@appsus.com',
@@ -307,13 +304,12 @@ function _createEmails() {
       {
         id: utilService.makeId(),
         folder: 'inbox',
+        isStar: true,
 
         subject: 'Buy 3 and get 10 for free',
         body: 'body body body body',
         isRead: true,
         sentAt: 'Jul 3',
-        receivedAt: '',
-
         removedAt: null,
         from: 'momo@momo.com',
         to: 'user@appsus.com',
@@ -322,13 +318,12 @@ function _createEmails() {
       {
         id: utilService.makeId(),
         folder: 'inbox',
+        isStar: false,
 
         subject: 'SAVE THE DATE',
         body: 'body body body body',
         isRead: true,
         sentAt: 'Jul 3',
-        receivedAt: '',
-
         removedAt: null,
         from: 'momo@momo.com',
         to: 'user@appsus.com',
@@ -341,9 +336,9 @@ function _createEmails() {
         subject: 'Your Account Update',
         body: 'body body body body',
         isRead: true,
-        sentAt: 'Jul 3',
-        receivedAt: '',
+        isStar: false,
 
+        sentAt: 'Jul 3',
         removedAt: null,
         from: 'momo@momo.com',
         to: 'user@appsus.com',
@@ -353,11 +348,12 @@ function _createEmails() {
         id: utilService.makeId(),
         folder: 'inbox',
 
-        subject: 'Weekly Newsletter',
+        subject: 'Your Bank Password',
         body: 'body body body body',
         isRead: true,
+        isStar: true,
+
         sentAt: 'Jul 2',
-        receivedAt: '',
 
         removedAt: null,
         from: 'momo@momo.com',
@@ -372,7 +368,7 @@ function _createEmails() {
         body: 'body body body body',
         isRead: true,
         sentAt: 'Jul 2',
-        receivedAt: '',
+        isStar: false,
 
         removedAt: null,
         from: 'momo@momo.com',
@@ -386,9 +382,9 @@ function _createEmails() {
         subject: 'Important announcement',
         body: 'body body body body',
         isRead: true,
-        sentAt: 'Jul 2',
-        receivedAt: '',
+        isStar: false,
 
+        sentAt: 'Jul 2',
         removedAt: null,
         from: 'momo@momo.com',
         to: 'user@appsus.com',
@@ -401,9 +397,9 @@ function _createEmails() {
         subject: 'Great news from America',
         body: 'body body body body',
         isRead: true,
-        sentAt: 'Jul 1',
-        receivedAt: '',
+        isStar: false,
 
+        sentAt: 'Jul 1',
         removedAt: null,
         from: 'momo@momo.com',
         to: 'user@appsus.com',
@@ -416,9 +412,9 @@ function _createEmails() {
         subject: 'You have a new Facebook request',
         body: 'body body body body',
         isRead: true,
-        sentAt: 'Jun 30',
-        receivedAt: '',
+        isStar: false,
 
+        sentAt: 'Jun 30',
         removedAt: null,
         to: 'momo@momo.com',
         from: 'user@appsus.com',
@@ -432,8 +428,7 @@ function _createEmails() {
         body: 'body body body body',
         isRead: true,
         sentAt: 'Jun 30',
-        receivedAt: '',
-
+        isStar: false,
         removedAt: null,
         from: 'user@appsus.com',
         to: 'momo@momo.com',
@@ -447,9 +442,9 @@ function _createEmails() {
         body: 'body body body body',
         isRead: true,
         sentAt: 'Jun 30',
-        receivedAt: '',
-
         removedAt: null,
+        isStar: false,
+
         from: 'momo@momo.com',
         to: 'user@appsus.com',
         isSelected: false,
@@ -459,7 +454,7 @@ function _createEmails() {
 
     emails.forEach((email, index) => {
       const timestamp = Date.now() - index * (hoursOffset * 60 * 60 * 1000)
-      email.receivedAt = timestamp
+      email.sentAt = timestamp
     })
 
     utilService.saveToStorage(EMAIL_KEY, emails)

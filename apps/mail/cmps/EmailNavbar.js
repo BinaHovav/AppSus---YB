@@ -1,7 +1,7 @@
 import { emailService } from '../services/email.service.js'
 
 export default {
-  props: ['emails'],
+  props: ['unreadMailsCount'],
   name: 'Email Navbar',
   emits: ['selectFolder'],
   template: `
@@ -18,7 +18,7 @@ export default {
                      <span class="folder-name">{{ folder.name }}</span>
                      <span v-if="folder.name === 'inbox'" 
                            class="email-in-folder-count">
-                           {{ unreadEmailCount }}</span>
+                           {{ unreadMailsCount }}</span>
                    </div>
                  </li>
                </ul>
@@ -50,12 +50,7 @@ export default {
     },
   },
 
-  computed: {
-    unreadEmailCount() {
-      return 5
-      // return this.emails.filter((email) => email.folder === 'inbox' && !email.isRead).length
-    },
-  },
+  computed: {},
   components: {
     emailService,
   },

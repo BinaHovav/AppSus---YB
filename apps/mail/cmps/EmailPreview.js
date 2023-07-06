@@ -18,7 +18,7 @@ export default {
                        <span class="material-icons-outlined" @click.stop.prevent="onRemoveEmail(email)">delete</span>
                        <span class="material-icons-outlined" @click.stop.prevent="onToggleIsRead(email)">{{ email.isRead ? 'mail' : 'drafts' }}</span>
                     </div>
-                       <h2 class="date-preview">{{ formatDate(email.receivedAt) }}</h2>
+                       <h2 class="date-preview">{{ formatDate(email.sentAt) }}</h2>
                   </article>   
               </RouterLink> 
                    `,
@@ -33,17 +33,9 @@ export default {
 
   methods: {
     onToggleIsRead(email) {
-      // const emailToChange = JSON.parse(JSON.stringify(email))
-      // console.log('emailToChange', emailToChange)
       email.isRead = !email.isRead
-      // this.$emit('updateEmail', emailToChange)
     },
 
-    // onRemoveEmail(emailId) {
-    //   console.log('remove')
-    //   console.log('emailId', emailId)
-    //   this.$emit('remove', emailId)
-    // },
     onRemoveEmail(email) {
       console.log('remove')
       console.log('email', email)
