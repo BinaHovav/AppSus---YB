@@ -28,14 +28,14 @@ export default {
 
 
             <EmailFilter @filter="setFilterBy"/>
-            <EmailNavbar @selectFolder="setFolder" />
+            <EmailNavbar @selectFolder="setFolder" :unreadMailsCount="unreadMailsCount" />
             <!-- <EmailList 
                 v-if="emails"
                 :emails="filteredEmails"
                 @markAsRead="markAsRead"/> -->
                 <!-- @remove="removeEmail"  -->
             <RouterView :emails="filteredEmails"
-             @updateEmail="updateEmail"
+                        @updateEmail="updateEmail"
              />
         </section>
     `,
@@ -107,6 +107,9 @@ export default {
       //   filteredBooks = filteredBooks.filter((book) => book.listPrice.amount <= this.filterBy.price)
       // }
       return filteredEmails
+    },
+    unreadMailsCount() {
+      return this.emails.filter((email) => email.to === emailService.loggedinUser.email && !email.removedAt && !email.isRead).length
     },
   },
   components: {

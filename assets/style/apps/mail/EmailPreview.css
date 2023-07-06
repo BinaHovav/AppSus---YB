@@ -58,8 +58,13 @@
     position: absolute;
     display: flex;  
     gap:15px;
-    right:30%;
-    width:30px    
+    right:22%;
+    width:30px;
+    opacity: 0;  
+  }
+  
+  .email-preview:hover .actions {
+    opacity: 1;
   }
 
   .actions span:hover{

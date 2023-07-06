@@ -33,17 +33,9 @@ export default {
 
   methods: {
     onToggleIsRead(email) {
-      // const emailToChange = JSON.parse(JSON.stringify(email))
-      // console.log('emailToChange', emailToChange)
       email.isRead = !email.isRead
-      // this.$emit('updateEmail', emailToChange)
     },
 
-    // onRemoveEmail(emailId) {
-    //   console.log('remove')
-    //   console.log('emailId', emailId)
-    //   this.$emit('remove', emailId)
-    // },
     onRemoveEmail(email) {
       console.log('remove')
       console.log('email', email)
