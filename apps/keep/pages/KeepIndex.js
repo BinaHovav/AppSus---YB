@@ -13,8 +13,8 @@ export default {
             <!-- <h1>hellow from keep index</h1> -->
             
             <keepEdit  @save="saveKeep"/>
-            <!-- <keepEdit v-if="edit" @save="saveKeep"/> -->
-            <!-- <keepAdd v-if="view"/> -->
+            <!-- <keepEdit v-if="route===edit" @save="saveKeep"/> -->
+            <!-- <keepAdd v-if="route===view"/> -->
             <keepList v-if="keeps"
             :keeps="keeps" 
             @remove="removeKeep"/> 
