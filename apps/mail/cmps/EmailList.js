@@ -12,8 +12,9 @@ export default {
                                   v-model="email.isSelected" 
                                   @change="onCheckboxChange(email)" />
                          <EmailPreview :email="email" 
-                                        @click="onMarkAsRead(email.id)" 
+                                        @click="onMarkAsRead(email)" 
                                         @checkbox-change="onCheckboxChange(email)"
+                                        @remove="$emit('remove', email.id)"
                                          />
                      </li>
                    </ul>
@@ -30,15 +31,14 @@ export default {
   created() {},
 
   methods: {
-    onMarkAsRead(emailId) {
-      this.$emit('markAsRead', emailId)
+    onMarkAsRead(email) {
+      const emailToSave = JSON.parse(JSON.stringify(email))
+      emailToSave.isRead = true
+      this.$emit('updateEmail', emailToSave)
     },
     onCheckboxChange(emailId) {
       console.log(emailId)
       this.$emit('checkbox-change', emailId)
-    },
-    onRemoveEmail(emailId) {
-      this.$emit('remove', emailId)
     },
   },
 

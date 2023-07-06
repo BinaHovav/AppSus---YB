@@ -44,7 +44,7 @@
   .date-preview {
     position: absolute;
     white-space: nowrap;
-    right: 90px;
+    right: 12%;
     bottom: 0;
     direction: rtl;
   }
@@ -54,6 +54,18 @@
       0 1px 3px 1px rgba(60, 64, 67, 0.15);
   }
   
+  .actions{
+    position: absolute;
+    display: flex;  
+    gap:15px;
+    right:30%;
+    width:30px    
+  }
+
+  .actions span:hover{
+    background-color: lightgray;
+    border-radius: 100%;
+  }
   .unread-email {
     color: var(--clr5);
   }
