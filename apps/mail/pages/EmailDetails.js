@@ -18,7 +18,7 @@ export default {
         <h3>{{ email.body }}</h3>
         <!-- <LongTxt :txt="txt"> -->
 
-        <RouterLink to="/mail">Back to Inbox</RouterLink>
+        <RouterLink to="/mail/inbox">Back to Inbox</RouterLink>
 
     </section>
     `,
