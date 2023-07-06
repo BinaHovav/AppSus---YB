@@ -1,15 +1,30 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Lato:wght@400;700&family=Merriweather:wght@900&family=Noto+Sans+Hebrew:wght@800;900&family=Poppins:wght@400;500&display=swap'); */
 
-.email-list ul {
-    /* padding: 10px; */
-    background-color: var(--lightTurquise);
-    /* font-family: 'Merriweather', serif; */
+.email-list{
+    width:100vw
 }
+.email-list ul {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    /* width:90vw; */
+    margin:0 auto;
+    left:100px;
+    background-color: var(--lightTurquise);
+}
+
+.email-list input{
+    position: absolute;
+    height:20px;
+    left:-65px;
+    top:7px;
+    width:90px
+   
+}
+
 .email-list ul li {
     position: relative;
-    /* font-family: 'Merriweather', serif; */
     list-style: none;
-    background-color: var(--blue);
     opacity:0.9;
     transition:0.3s ease;
     max-height: 350px;
@@ -24,4 +39,10 @@
     top:5px;
     right:2px;
     color: black
+}
+
+.email-count{
+font-weight: bold;
+margin-left:25%;
+margin-bottom:2%
 }

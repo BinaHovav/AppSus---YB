@@ -1,5 +1,6 @@
 .email-preview {
     display: flex;
+    flex-direction: row;
     gap: 80px;
     align-items: center;
     position: relative;
@@ -18,7 +19,7 @@
     display: flex;
     align-items: center;
   }
-  
+
   h2.content-preview {
     white-space: nowrap;
     overflow-x: hidden;
@@ -43,7 +44,7 @@
   .date-preview {
     position: absolute;
     white-space: nowrap;
-    right: 40px;
+    right: 90px;
     bottom: 0;
     direction: rtl;
   }

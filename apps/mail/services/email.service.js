@@ -215,6 +215,7 @@ function _createEmail(subject, body, isRead, sentAt) {
     removedAt: null,
     from: 'momo@momo.com',
     to: 'user@appsus.com',
+    isSelected: false,
   }
   return email
 }

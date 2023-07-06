@@ -1,0 +1,44 @@
+.navbar {
+    position: absolute;
+    left: -15px;
+    top: 40%;
+    transform: translateY(-50%);
+    font-family: Roboto, sans-serif;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .folder-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+  }
+  
+  .folder-item {
+    cursor: pointer;
+  }
+  
+  .folder-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 5px;
+    width: 100%;
+  }
+  
+  .folder-item:hover .folder-container {
+    background-color: #e3e3e3;
+  }
+  
+  .material-icons-outlined {
+    margin-right: 5px;
+  }
+  
+  .folder-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
