@@ -4,25 +4,37 @@ import { showSuccessMsg, showErrorMsg } from '../../../services/event-bus.servic
 import EmailFilter from '../cmps/EmailFilter.js'
 import EmailList from '../cmps/EmailList.js'
 import EmailNavbar from '../cmps/EmailNavbar.js'
+import EmailCompose from '../cmps/EmailCompose.js'
 
 export default {
   name: 'emailIndex',
   props: ['email'],
+  emits: ['selectFolder', 'updateEmail'],
 
   template: `
         <section class="email-index">
-          <button @click="onComposeEmail">Compose</button>
-            <!-- <RouterLink to="/email/edit" class="add-email">Add Email</RouterLink>  -->
-                            
+          <!-- this is the compose box -->
+             <div class="compose-container" v-if="isComposeOpen"> 
+              <EmailCompose @closeCompose="closeCompose" />
+            </div>
+
+           <!-- this is the compose button -->
+           <div class="compose-button-container">
+                <button @click="openCompose" class="compose-button">
+                   <span class="material-icons">mode_edit</span>
+                     Compose
+                </button>
+          </div>
+
+
             <EmailFilter @filter="setFilterBy"/>
-            <EmailNavbar></EmailNavbar>
+            <EmailNavbar @selectFolder="setFolder" />
             <!-- <EmailList 
                 v-if="emails"
                 :emails="filteredEmails"
                 @markAsRead="markAsRead"/> -->
                 <!-- @remove="removeEmail"  -->
             <RouterView :emails="filteredEmails"
-             @remove="removeEmail"
              @updateEmail="updateEmail"
              />
         </section>
@@ -33,6 +45,8 @@ export default {
       emails: [],
       selectedEmail: null,
       filterBy: {},
+      folder: 'inbox',
+      isComposeOpen: false,
     }
   },
   created() {
@@ -41,10 +55,18 @@ export default {
   },
 
   methods: {
+    openCompose() {
+      this.isComposeOpen = true
+    },
+    closeCompose() {
+      this.isComposeOpen = false
+    },
     setFilterBy(filterBy) {
       this.filterBy = filterBy
     },
-
+    setFolder(folder) {
+      this.folder = folder
+    },
     onComposeEmail() {
       this.$emit('compose')
       console.log('compose')
@@ -56,21 +78,6 @@ export default {
         this.emails.splice(emailIdx, 1, updatedEmail)
       })
     },
-
-    removeEmail(emailId) {
-      console.log('removing')
-      console.log('emailId', emailId)
-      emailService
-        .remove(emailId)
-        .then(() => {
-          const idx = this.emails.findIndex((email) => email.id === emailId)
-          this.emails.splice(idx, 1)
-          showSuccessMsg('Email removed to Trash')
-        })
-        .catch((err) => {
-          showErrorMsg('Cannot remove email')
-        })
-    },
   },
 
   computed: {
@@ -79,6 +86,23 @@ export default {
       const regex = new RegExp(this.filterBy.txt, 'i')
       filteredEmails = filteredEmails.filter((email) => regex.test(email.subject))
 
+      switch (this.folder) {
+        case 'inbox':
+          filteredEmails = filteredEmails.filter((email) => email.to === emailService.loggedinUser.email && !email.removedAt)
+          break
+        case 'sent':
+          filteredEmails = filteredEmails.filter((email) => email.from === emailService.loggedinUser.email && !email.removedAt && email.sentAt)
+          break
+        case 'starred':
+          filteredEmails = filteredEmails.filter((email) => email.isStarred)
+          break
+        case 'trash':
+          filteredEmails = filteredEmails.filter((email) => email.removedAt)
+          break
+        case 'draft':
+          filteredEmails = filteredEmails.filter((email) => email.from === emailService.loggedinUser.email && !email.sentAt)
+          break
+      }
       // if (this.filterBy.price) {
       //   filteredBooks = filteredBooks.filter((book) => book.listPrice.amount <= this.filterBy.price)
       // }
@@ -89,5 +113,6 @@ export default {
     EmailFilter,
     EmailList,
     EmailNavbar,
+    EmailCompose,
   },
 }

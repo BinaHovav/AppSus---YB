@@ -12,6 +12,7 @@ export default {
     return {
       filterBy: {
         txt: '',
+        // folder: 'inbox',
       },
     }
   },

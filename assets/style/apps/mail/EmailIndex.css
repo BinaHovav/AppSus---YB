@@ -1,0 +1,56 @@
+.email-index {
+    position: relative;
+  }
+  
+.compose-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  
+  .compose-button-container{
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+    top: 85px;
+    /* margin-top: 20%; */
+  }
+
+  .material-icons {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    margin-right: 5px;
+  }
+
+.compose-button {
+  position: relative;
+  background-color: var(--white);
+  color: var(--gray);
+  border: none;
+  border-radius: 15px;
+  padding: 10px 35px;
+  font-size: 1em;
+  cursor: pointer;
+  border: 1px solid lightgray;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+  }
+  
+.compose-button:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+
+    /* background-color: var(--clr3); */
+  }
+
+  
+  
+  
+  
+  
+  

@@ -3,7 +3,10 @@ import AboutUs from './views/AboutUs.js'
 
 import bMail from './apps/mail/pages/EmailIndex.js'
 import EmailDetails from './apps/mail/pages/EmailDetails.js'
+import EmailCompose from './apps/mail/cmps/EmailCompose.js'
+
 import EmailList from './apps/mail/cmps/EmailList.js'
+
 import yKeep from './apps/keep/pages/KeepIndex.js'
 
 const { createRouter, createWebHashHistory } = VueRouter
@@ -30,6 +33,12 @@ const routerOptions = {
         {
           path: 'inbox',
           component: EmailList,
+          children: [
+            {
+              path: '/compose',
+              component: EmailCompose,
+            },
+          ],
         },
       ],
     },
