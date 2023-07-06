@@ -3,15 +3,18 @@ import { keepService } from '../services/keep.service.js'
 import keepList from '../cmps/KeepList.js'
 
 import keepEdit from '../cmps/KeepEdit.js'
-
+import keepAdd from '../cmps/KeepAdd.js'
 
 export default {
 
     name: 'keepIndex',
     template: `
         <section class="keep-index">
-            <!-- <h1>hellow from index</h1> -->
+            <!-- <h1>hellow from keep index</h1> -->
+            
             <keepEdit  @save="saveKeep"/>
+            <!-- <keepEdit v-if="edit" @save="saveKeep"/> -->
+            <!-- <keepAdd v-if="view"/> -->
             <keepList v-if="keeps"
             :keeps="keeps" 
             @remove="removeKeep"/> 
@@ -22,6 +25,7 @@ export default {
         return {
             keeps: null,
             filterBy: {},
+            route:'view'
             
         }
     },
@@ -63,6 +67,7 @@ export default {
     },
     components: {       
         keepList,
-        keepEdit
+        keepEdit,
+        keepAdd
     }
 }

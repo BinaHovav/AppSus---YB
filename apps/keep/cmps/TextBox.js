@@ -6,7 +6,8 @@ export default {
                 <option v-for="opt in info.opts" :value="opt" :key="opt" />
             </datalist> -->
             <label>
-                <h1>{{info.txt}}</h1>
+                <h1>{{info.title}}</h1>
+                <h2>{{info.txt}}</h2>
             </label>  
         </section>
     `,

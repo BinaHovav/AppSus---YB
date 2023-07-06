@@ -9,7 +9,9 @@ export default {
                 <li v-for="keep in keeps" :key="keep.id">
                     <KeepPreview :keep="keep"/>
                     <!-- <section class="actions"> -->
-                        <button @click="onRemoveKeep(keep.id)">x</button>
+                        <!-- <button class="btn-remove" @click="onRemoveKeep(keep.id)">x</button> -->
+                        <button class="btn-remove"  @click="onRemoveKeep(keep.id)"><img  src="../../assets/icons/delete.svg"></button>
+                 
                         <!-- <button @click="onEditKeep(keep.id)">edit</button> -->
                     <!-- </section> -->
                 </li>

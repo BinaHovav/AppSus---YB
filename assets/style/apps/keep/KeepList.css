@@ -2,5 +2,36 @@
    
     column-count: 4;
     column-width: 12em;
+    gap: 10px;
+    padding: 10px;
+    background-color: var(--clr12);
+}
 
+.keep-list ul {
+
+    gap: 40px;
+    padding: 10px;
+}
+
+
+.keep-list ul li {
+    position: relative;
+    text-transform: capitalize;
+    padding: 10px;
+    opacity:0.9;
+    border-radius: 20px;
+    transition:0.3s ease;
+    max-height: 350px;
+}
+
+.keep-list ul li:hover {
+    scale:1.05;
+}
+
+
+.btn-remove{
+    position: absolute;
+    bottom: 2em;
+    right: 2em;
+    border-radius: 10px;    
 }

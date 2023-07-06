@@ -94,33 +94,34 @@ function setFilterBy(filterBy = {}) {
 
 
 
-function getEmptyKeep(txt) {
+function getEmptyKeep(title, txt) {
     const date = new Date()
     return { id: '',
             createdAt: date,
             type: 'TextBox',
             isPinned: false,
             style: { backgroundColor: '#00d' },
-            info: { txt: txt}        
+            info: { title, txt}        
             }
 }
 
 function _createKeeps() {
     let keeps = utilService.loadFromStorage(KEEP_KEY)
     if (!keeps || !keeps.length) {
-        keeps = []        
-        keeps.push(_createKeep('keep1'))
-        keeps.push(_createKeep('keep2'))
-        keeps.push(_createKeep('keep3'))
-        keeps.push(_createKeep('keep4'))
+        keeps = []    
+        for (var i=0;i<10;i++)    
+            keeps.push(_createKeep('Title'+i, 'keep00'+i))
+        // keeps.push(_createKeep('keep2'))
+        // keeps.push(_createKeep('keep3'))
+        // keeps.push(_createKeep('keep4'))
         utilService.saveToStorage(KEEP_KEY, keeps)
     }
     console.log('keeps',keeps)
 }
 
-function _createKeep(txt) {
-    const keep = getEmptyKeep(txt)
-    // keep.id = utilService.makeId()
+function _createKeep(title, txt) {
+    const keep = getEmptyKeep(title, txt)
+    keep.id = utilService.makeId()
     console.log('keep from _createKeep',keep)
     return keep
 }
