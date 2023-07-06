@@ -4,17 +4,29 @@ import { showSuccessMsg, showErrorMsg } from '../../../services/event-bus.servic
 import EmailFilter from '../cmps/EmailFilter.js'
 import EmailList from '../cmps/EmailList.js'
 import EmailNavbar from '../cmps/EmailNavbar.js'
+import EmailCompose from '../cmps/EmailCompose.js'
 
 export default {
   name: 'emailIndex',
   props: ['email'],
-  emits: ['updateEmail'],
+  emits: ['selectFolder', 'updateEmail'],
 
   template: `
         <section class="email-index">
-          <button @click="onComposeEmail">Compose</button>
-            <!-- <RouterLink to="/email/edit" class="add-email">Add Email</RouterLink>  -->
-                            
+          <!-- this is the compose box -->
+             <div class="compose-container" v-if="isComposeOpen"> 
+              <EmailCompose @closeCompose="closeCompose" />
+            </div>
+
+           <!-- this is the compose button -->
+           <div class="compose-button-container">
+                <button @click="openCompose" class="compose-button">
+                   <span class="material-icons">mode_edit</span>
+                     Compose
+                </button>
+          </div>
+
+
             <EmailFilter @filter="setFilterBy"/>
             <EmailNavbar @selectFolder="setFolder" />
             <!-- <EmailList 
@@ -33,7 +45,8 @@ export default {
       emails: [],
       selectedEmail: null,
       filterBy: {},
-      folder: 'Inbox',
+      folder: 'inbox',
+      isComposeOpen: false,
     }
   },
   created() {
@@ -42,6 +55,12 @@ export default {
   },
 
   methods: {
+    openCompose() {
+      this.isComposeOpen = true
+    },
+    closeCompose() {
+      this.isComposeOpen = false
+    },
     setFilterBy(filterBy) {
       this.filterBy = filterBy
     },
@@ -68,19 +87,19 @@ export default {
       filteredEmails = filteredEmails.filter((email) => regex.test(email.subject))
 
       switch (this.folder) {
-        case 'Inbox':
+        case 'inbox':
           filteredEmails = filteredEmails.filter((email) => email.to === emailService.loggedinUser.email && !email.removedAt)
           break
-        case 'Sent':
+        case 'sent':
           filteredEmails = filteredEmails.filter((email) => email.from === emailService.loggedinUser.email && !email.removedAt && email.sentAt)
           break
-        case 'Starred':
+        case 'starred':
           filteredEmails = filteredEmails.filter((email) => email.isStarred)
           break
-        case 'Trash':
+        case 'trash':
           filteredEmails = filteredEmails.filter((email) => email.removedAt)
           break
-        case 'Draft':
+        case 'draft':
           filteredEmails = filteredEmails.filter((email) => email.from === emailService.loggedinUser.email && !email.sentAt)
           break
       }
@@ -94,5 +113,6 @@ export default {
     EmailFilter,
     EmailList,
     EmailNavbar,
+    EmailCompose,
   },
 }

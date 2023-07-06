@@ -25,6 +25,7 @@
 @import './apps/mail/EmailFilter.css';
 @import './apps/mail/EmailEdit.css'; 
 @import './apps/mail/EmailNavbar.css'; 
+@import './apps/mail/EmailCompose.css'; 
 
 /* Keep */
 

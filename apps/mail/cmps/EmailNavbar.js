@@ -1,7 +1,9 @@
 import { emailService } from '../services/email.service.js'
 
 export default {
+  props: ['emails'],
   name: 'Email Navbar',
+  emits: ['selectFolder'],
   template: `
              <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
              <div class="navbar">
@@ -14,7 +16,9 @@ export default {
                    <div class="folder-container">
                      <span class="material-icons-outlined">{{ folder.icon }}</span>
                      <span class="folder-name">{{ folder.name }}</span>
-                     <span class="email-in-folder-count">{{ folder.emailCount }}</span>
+                     <span v-if="folder.name === 'inbox'" 
+                           class="email-in-folder-count">
+                           {{ unreadEmailCount }}</span>
                    </div>
                  </li>
                </ul>
@@ -23,46 +27,35 @@ export default {
   data() {
     return {
       folders: [
-        { id: 1, name: 'Inbox', icon: 'mail', route: '/inbox', emailCount: 0 },
-        { id: 2, name: 'Sent', icon: 'send', route: '/sent', emailCount: 0 },
-        { id: 3, name: 'Starred', icon: 'star', emailCount: 0 },
-        { id: 4, name: 'Trash', icon: 'delete', route: '/trash', emailCount: 0 },
-        { id: 5, name: 'Draft', icon: 'drafts', emailCount: 0 },
+        { id: 1, name: 'inbox', icon: 'mail', route: '/inbox' },
+        { id: 2, name: 'sent', icon: 'send', route: '/sent' },
+        { id: 3, name: 'starred', icon: 'star' },
+        { id: 4, name: 'trash', icon: 'delete', route: '/trash' },
+        { id: 5, name: 'draft', icon: 'drafts' },
       ],
+      // unreadEmailCount: 9,
+      // emails: [],
     }
   },
 
   created() {
-    this.folders
-    // console.log('this.folders', this.folders)
-    this.filterEmails()
+    // console.log('emails22', this.emails)
   },
+
   methods: {
     selectFolder(folder) {
-      // Handle folder selection logic
-      console.log('Selected folder:', folder.name)
+      console.log('folder.name', folder.name)
       this.$emit('selectFolder', folder.name)
       // this.$router.push(`${folder.route}`)
     },
-    filterEmails() {
-      console.log('hee')
-      emailService.query().then((emails) => {
-        console.log('emails', emails)
+  },
 
-        // Assign email count based on filtered unread emails
-        this.folders.forEach((folder) => {
-          if (folder.name.toLowerCase() === 'inbox') {
-            const unreadEmails = emails.filter((email) => email.folder === 'inbox' && !email.isRead)
-            folder.emailCount = unreadEmails.length
-          } else {
-            folder.emailCount = emails.filter((email) => email.folder === folder.name.toLowerCase()).length
-          }
-        })
-      })
+  computed: {
+    unreadEmailCount() {
+      return 5
+      // return this.emails.filter((email) => email.folder === 'inbox' && !email.isRead).length
     },
   },
-  computed: {},
-
   components: {
     emailService,
   },
