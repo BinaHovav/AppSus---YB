@@ -1,3 +1,4 @@
+import { keepService } from '../services/keep.service.js'
 import KeepPreview from './KeepPreview.js'
 
 export default {
@@ -10,7 +11,8 @@ export default {
                     <KeepPreview :keep="keep"/>  <!-- <section class="actions"> -->
                         <!-- <button class="btn-remove" @click="onRemoveKeep(keep.id)">x</button> -->
                        <button class="btn-remove"  @click="onRemoveKeep(keep.id)"><img  src="../../assets/icons/delete.svg"></button>
-                    <section class="actions">
+                       <button class="btn-edit"  @click="onEditKeep(keep.id)"><img  src="../../assets/icons/edit.svg"></button>
+                       <section class="actions">
                         <!-- <button class="remove-button" @click="onRemoveKeep(keep.id)">x</button> -->
                         <!-- <button @click="onEditKeep(keep.id)">edit</button> -->
                     </section>
@@ -22,9 +24,12 @@ export default {
     onRemoveKeep(keepId) {
       this.$emit('remove', keepId)
     },
-    onEditKeep(keepId) {},
+    onEditKeep(keepId) {
+      keepService.openModal(keepId)
+    },
   },
   components: {
     KeepPreview,
+    keepService
   },
 }

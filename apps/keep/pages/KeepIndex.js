@@ -5,11 +5,14 @@ import keepList from '../cmps/KeepList.js'
 // import keepEdit from '../cmps/KeepAdd.js'
 import keepAdd from '../cmps/KeepAdd.js'
 import keepNavbar from '../cmps/KeepNavbar.js'
+// import TextNote from './preview-cmp/TextNote.js'
+// import ImgNote from './preview-cmp/ImgNote.js'
+// import ListNote from './preview-cmp/ListNote.js'
 export default {
 
     name: 'keepIndex',
     template: `
-        <section class="keep-index">
+        <section class="keep-index" class="main-screen">
             <!-- <h1>hellow from keep index</h1> -->
             <keepNavbar/>
             <!-- <keepEdit  @save="saveKeep"/> -->
@@ -20,6 +23,18 @@ export default {
             @remove="removeKeep"/> 
             
         </section>
+        <div class="modal">
+            <div class="modal-content">
+                <h2 class="modal-title">
+                <!-- Edit Note:
+                </h2>
+                <p>
+                    modal details
+                </p> -->
+                <!-- <Component :is="type" @addNote="save"/> -->
+                <button class="modal-btn" @click="closeModal">Close</button>
+            </div>
+        </div>
     `,
     data() {
         return {
@@ -84,12 +99,18 @@ export default {
                 this.route = state
                 console.log('change route to ', state)
            
-                }
+            },
+            onToggelModal()  {
+                keepService.toggleModal()
+            }  
             
     },
     components: {       
         keepList,
         keepAdd, 
-        keepNavbar
+        keepNavbar,
+        // TextNote,
+        // ImgNote,
+        // ListNote
     }
 }

@@ -1,5 +1,6 @@
-import TextBox from './preview-cmp/TextNote.js'
-import ImgBox from '../cmps/ImgBox.js'
+import TextNote from './preview-cmp/TextNote.js'
+import ImgNote from './preview-cmp/ImgNote.js'
+import ListNote from './preview-cmp/ListNote.js'
 
 export default {
     name: 'KeepPreview',
@@ -32,8 +33,9 @@ export default {
     },
     components: {
      
-        TextBox,
-        ImgBox
+        TextNote,
+        ImgNote,
+        ListNote
      
     }
 }

@@ -12,14 +12,15 @@ export default {
             
             <section  class="keep-edit">
                 
-                <Component :is="type" @addNote="save" />
+                <Component :is="type" @addNote="save"/>
                 <!-- <h4>{{formateDate}}</h4> -->
                 
-                <!-- <button @click="save" class="act_btn">Add</button> -->
-                <button @click="chgType('AddTextNote')" class="act_btn"><img src="../../assets/icons/text.svg"></button>            
-                <button @click="chgType('AddListNote')" class="act_btn"><img src="../../assets/icons/check_box.svg"></button>
-                <button @click="chgType('AddImgNote')"class="act_btn"><img src="../../assets/icons/image.svg"></button>
-                <!-- <button @click="chgType('canvas')"class="act_btn"><img  src="../../assets/icons/edit.svg"></button> -->
+                <!-- <button @click="save" class="act_btn">Add</button> --> 
+                
+                <button @click="chgType('AddTextNote')" class="act_btn"><img src="../../assets/icons/text.svg" /></button>            
+                <button @click="chgType('AddListNote')" class="act_btn"><img src="../../assets/icons/check_box.svg" /></button>
+                <button @click="chgType('AddImgNote')"class="act_btn"><img src="../../assets/icons/image.svg" /></button>
+                <!-- <button @click="chgType('canvas')"class="act_btn"><img  src="../../assets/icons/edit.svg"/></button>
              <section/>
              
        

@@ -20,7 +20,8 @@ export const keepService = {
     getEmptyKeep,
     getFilterBy,
     setFilterBy,
-    getEmptyImgKeep
+    getEmptyImgKeep,
+    toggleModal
   
 }
 window.keepService = keepService
@@ -98,7 +99,7 @@ function getEmptyKeep(title, txt) {
     const date = new Date()
     return { id: '',
             createdAt: date,
-            type: 'TextBox',
+            type: 'TextNote',
             isPinned: false,
             style: { backgroundColor: '#00d' },
             info: { title, txt}        
@@ -110,7 +111,7 @@ function getEmptyImgKeep(title, img='imgs/2.jpg') {
     const date = new Date()
     return { id: '',
             createdAt: date,
-            type: 'ImgBox',
+            type: 'ImgNote',
             isPinned: false,
             style: { backgroundColor: '#00d' },
             info: { title, img}        
@@ -138,3 +139,15 @@ function _createKeep(title, txt) {
     console.log('keep from _createKeep',keep)
     return keep
 }
+
+
+function toggleModal() {
+    console.log('toggleModal')
+    document.body.classList.toggle('modal-open')
+  
+    // document
+    //   .querySelector('.main-screen')
+    //   .removeEventListener('click', toggleMenu)
+  
+    // document.querySelector('.main-screen').addEventListener('click', toggleModal)
+  }

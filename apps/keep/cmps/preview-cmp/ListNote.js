@@ -4,8 +4,8 @@ export default {
         <section>
             <label>
                 <h1>{{info.title}}</h1>
-                <li v-for="todo in note.info.todos" :key="todo.id">
-                    <input v-model="note.info.todos.txt" type="text" placeholder="Enter todo"/> 
+                <li v-for="todo in info.todos" :key="todo.id">
+                    <h4> {{todo.txt}}</h4> 
                 </li> 
             </label>  
         </section>
@@ -15,7 +15,9 @@ export default {
             
         }
     },
-
+    created(){
+        
+    },
     methods: {
         // reportVal() {
         //     this.$emit('set-val', this.val)

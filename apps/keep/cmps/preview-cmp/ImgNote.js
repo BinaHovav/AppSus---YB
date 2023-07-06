@@ -1,9 +1,9 @@
 export default {
     props: ['info'],
     template: `
-        <section>
+        <section class="note-add-img">
             <h1>{{info.title}}</h1>
-            <img :src="note.info.url" >
+            <img :src="info.url" />
         </section>
     `,
     data() {
@@ -11,7 +11,9 @@ export default {
             
         }
     },
-
+    created(){
+        console.log();
+    },
     methods: {
         // reportVal() {
         //     this.$emit('set-val', this.val)

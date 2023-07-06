@@ -13,6 +13,7 @@
 @import 'cmps/HomePage.css';
 @import 'cmps/AppHeader.css';
 @import 'cmps/AppFooter.css';
+@import 'cmps/modal.css';
 
 /* Apps */
 
@@ -35,6 +36,6 @@
 @import './apps/keep/KeepDetails.css';
 @import './apps/keep/KeepEdit.css';
 @import './apps/keep/KeepFilter.css'; 
-@import './apps/keep/EditBtn.css'; 
+ 
 
 
