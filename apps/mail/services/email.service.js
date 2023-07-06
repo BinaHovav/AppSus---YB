@@ -33,7 +33,8 @@ export const emailService = {
   getNextEmailId,
   getFilterBy,
   setFilterBy,
-  //   getBookCountByPriceMap,
+  getEmailCountByFolderMap,
+  loggedinUser,
   //   getBooks,
   //   addGoogleBook,
 }
@@ -41,13 +42,14 @@ window.emailService = emailService
 
 function query() {
   return storageService.query(EMAIL_KEY).then((emails) => {
+    emails = emails.filter((email) => email.folder === 'inbox')
+
     if (gFilterBy.txt) {
       const regex = new RegExp(gFilterBy.txt, 'i')
       emails = emails.filter((email) => regex.test(email.title))
     }
-    if (gFilterBy.minPrice) {
-      emails = emails.filter((email) => email.listPrice >= gFilterBy.minPrice)
-    }
+    // if (gFilterBy.minPrice) {
+    // }
     if (gPageIdx !== undefined) {
       const startIdx = gPageIdx * PAGE_SIZE
       emails = emails.slice(startIdx, startIdx + PAGE_SIZE)
@@ -126,20 +128,22 @@ function getNextEmailId(emailId) {
   })
 }
 
-// function getBookCountByPriceMap() {
-//   return storageService.query(BOOK_KEY).then((books) => {
-//     const bookCountByPriceMap = books.reduce(
-//       (map, book) => {
-//         if (book.minPrice < 120) map.slow++
-//         else if (book.minPrice < 200) map.normal++
-//         else map.fast++
-//         return map
-//       },
-//       { slow: 0, normal: 0, fast: 0 }
-//     )
-//     return bookCountByPriceMap
-//   })
-// }
+getEmailCountByFolderMap()
+function getEmailCountByFolderMap() {
+  return storageService.query(EMAIL_KEY).then((emails) => {
+    const emailCountByFolderMap = emails.reduce(
+      (map, email) => {
+        if (email.folder === 'inbox') map.inbox++
+        else if (email.folder === 'trash') map.trash++
+        // else map.fast++
+        return map
+      },
+      { inbox: 0, trash: 0 }
+    )
+    console.log('emailCountByFolderMap', emailCountByFolderMap)
+    return emailCountByFolderMap
+  })
+}
 
 // function getBooks(keyword) {
 //   if (gBooksCache[keyword]) {
@@ -183,23 +187,281 @@ function getNextEmailId(emailId) {
 function _createEmails() {
   let emails = utilService.loadFromStorage(EMAIL_KEY)
   if (!emails || !emails.length) {
-    const emails = []
-    emails.push(_createEmail('Sign up for our new "HOW TO LOVE CSS in 4 days" course', 'body body body body', false, '12:43'))
-    emails.push(_createEmail('Your receipt from Dr. Cohen is ready', 'body body body body', false, '10:04'))
-    emails.push(_createEmail('The HOW TO SLEEP WELL guide is waiting for you here', 'body body body body', false, '08:16'))
-    emails.push(_createEmail('Your antivirus is about to expires!', 'body body body body', false, 'Jul 4'))
-    emails.push(_createEmail('Your electricity bill is ready', 'body body body body', false, 'Jul 4'))
-    emails.push(_createEmail('The summer is here', 'body body body body', true, 'Jul 4'))
-    emails.push(_createEmail('Your Delivery is on the Way!', 'body body body body', true, 'Jul 4'))
-    emails.push(_createEmail('Your next vacation is (not) around the corner', 'body body body body', true, 'Jul 4'))
-    emails.push(_createEmail('Buy 3 and get 10 for free', 'body body body body', true, 'Jul 3'))
-    emails.push(_createEmail('SAVE THE DATE', 'body body body body', true, 'Jul 3'))
-    emails.push(_createEmail('Your Account Update', 'body body body body', true, 'Jul 3'))
-    emails.push(_createEmail('Weekly Newsletter', 'body body body body', true, 'Jul 2'))
-    emails.push(_createEmail('Your pension plan', 'body body body body', true, 'Jul 2'))
-    emails.push(_createEmail('Important announcement', 'body body body body', true, 'Jul 2'))
-    emails.push(_createEmail('Great news from America', 'body body body body', true, 'Jul 1'))
-    emails.push(_createEmail('You have a new Facebook request', 'body body body body', true, 'Jun 30'))
+    const emails = [
+      {
+        id: utilService.makeId(),
+        folder: 'inbox',
+        subject: 'Sign up for our new "HOW TO LOVE CSS in 4 days" course',
+        body: 'body body body body',
+        isRead: false,
+        receivedAt: Date.now(),
+        sentAt: '12:43',
+        removedAt: null,
+        from: 'momo@momo.com',
+        to: 'user@appsus.com',
+        isSelected: false,
+      },
+      {
+        id: utilService.makeId(),
+        folder: 'inbox',
+
+        subject: 'Your receipt from Dr. Cohen is ready',
+        body: 'body body body body',
+        isRead: false,
+        receivedAt: '',
+        sentAt: '10:04',
+        removedAt: null,
+        from: 'momo@momo.com',
+        to: 'user@appsus.com',
+        isSelected: false,
+      },
+      {
+        id: utilService.makeId(),
+        folder: 'inbox',
+
+        subject: 'The HOW TO SLEEP WELL guide is waiting for you here',
+        body: 'body body body body',
+        isRead: false,
+        sentAt: '08:16',
+        receivedAt: '',
+        removedAt: null,
+        from: 'momo@momo.com',
+        to: 'user@appsus.com',
+        isSelected: false,
+      },
+      {
+        id: utilService.makeId(),
+        folder: 'inbox',
+
+        subject: 'Your antivirus is about to expire!',
+        body: 'body body body body',
+        isRead: false,
+        sentAt: 'Jul 4',
+        receivedAt: '',
+
+        removedAt: null,
+        from: 'momo@momo.com',
+        to: 'user@appsus.com',
+        isSelected: false,
+      },
+      {
+        id: utilService.makeId(),
+        folder: 'inbox',
+
+        subject: 'Your electricity bill is ready',
+        body: 'body body body body',
+        isRead: false,
+        sentAt: 'Jul 4',
+        receivedAt: '',
+
+        removedAt: null,
+        from: 'momo@momo.com',
+        to: 'user@appsus.com',
+        isSelected: false,
+      },
+      {
+        id: utilService.makeId(),
+        folder: 'trash',
+
+        subject: 'The summer is here',
+        body: 'body body body body',
+        isRead: true,
+        sentAt: 'Jul 4',
+        receivedAt: '',
+
+        removedAt: null,
+        from: 'momo@momo.com',
+        to: 'user@appsus.com',
+        isSelected: false,
+      },
+      {
+        id: utilService.makeId(),
+        folder: 'trash',
+
+        subject: 'Your Delivery is on the Way!',
+        body: 'body body body body',
+        isRead: true,
+        sentAt: 'Jul 4',
+        receivedAt: '',
+
+        removedAt: null,
+        from: 'momo@momo.com',
+        to: 'user@appsus.com',
+        isSelected: false,
+      },
+      {
+        id: utilService.makeId(),
+        folder: 'inbox',
+
+        subject: 'Your next vacation is (not) around the corner',
+        body: 'body body body body',
+        isRead: true,
+        sentAt: 'Jul 4',
+        receivedAt: '',
+
+        removedAt: null,
+        from: 'momo@momo.com',
+        to: 'user@appsus.com',
+        isSelected: false,
+      },
+      {
+        id: utilService.makeId(),
+        folder: 'inbox',
+
+        subject: 'Buy 3 and get 10 for free',
+        body: 'body body body body',
+        isRead: true,
+        sentAt: 'Jul 3',
+        receivedAt: '',
+
+        removedAt: null,
+        from: 'momo@momo.com',
+        to: 'user@appsus.com',
+        isSelected: false,
+      },
+      {
+        id: utilService.makeId(),
+        folder: 'inbox',
+
+        subject: 'SAVE THE DATE',
+        body: 'body body body body',
+        isRead: true,
+        sentAt: 'Jul 3',
+        receivedAt: '',
+
+        removedAt: null,
+        from: 'momo@momo.com',
+        to: 'user@appsus.com',
+        isSelected: false,
+      },
+      {
+        id: utilService.makeId(),
+        folder: 'inbox',
+
+        subject: 'Your Account Update',
+        body: 'body body body body',
+        isRead: true,
+        sentAt: 'Jul 3',
+        receivedAt: '',
+
+        removedAt: null,
+        from: 'momo@momo.com',
+        to: 'user@appsus.com',
+        isSelected: false,
+      },
+      {
+        id: utilService.makeId(),
+        folder: 'inbox',
+
+        subject: 'Weekly Newsletter',
+        body: 'body body body body',
+        isRead: true,
+        sentAt: 'Jul 2',
+        receivedAt: '',
+
+        removedAt: null,
+        from: 'momo@momo.com',
+        to: 'user@appsus.com',
+        isSelected: false,
+      },
+      {
+        id: utilService.makeId(),
+        folder: 'inbox',
+
+        subject: 'Your pension plan',
+        body: 'body body body body',
+        isRead: true,
+        sentAt: 'Jul 2',
+        receivedAt: '',
+
+        removedAt: null,
+        from: 'momo@momo.com',
+        to: 'user@appsus.com',
+        isSelected: false,
+      },
+      {
+        id: utilService.makeId(),
+        folder: 'inbox',
+
+        subject: 'Important announcement',
+        body: 'body body body body',
+        isRead: true,
+        sentAt: 'Jul 2',
+        receivedAt: '',
+
+        removedAt: null,
+        from: 'momo@momo.com',
+        to: 'user@appsus.com',
+        isSelected: false,
+      },
+      {
+        id: utilService.makeId(),
+        folder: 'inbox',
+
+        subject: 'Great news from America',
+        body: 'body body body body',
+        isRead: true,
+        sentAt: 'Jul 1',
+        receivedAt: '',
+
+        removedAt: null,
+        from: 'momo@momo.com',
+        to: 'user@appsus.com',
+        isSelected: false,
+      },
+      {
+        id: utilService.makeId(),
+        folder: 'inbox',
+
+        subject: 'You have a new Facebook request',
+        body: 'body body body body',
+        isRead: true,
+        sentAt: 'Jun 30',
+        receivedAt: '',
+
+        removedAt: null,
+        to: 'momo@momo.com',
+        from: 'user@appsus.com',
+        isSelected: false,
+      },
+      {
+        id: utilService.makeId(),
+        folder: 'inbox',
+
+        subject: 'You have a new Facebook request',
+        body: 'body body body body',
+        isRead: true,
+        sentAt: 'Jun 30',
+        receivedAt: '',
+
+        removedAt: null,
+        from: 'user@appsus.com',
+        to: 'momo@momo.com',
+        isSelected: false,
+      },
+      {
+        id: utilService.makeId(),
+        folder: 'inbox',
+
+        subject: 'You have a new Facebook request',
+        body: 'body body body body',
+        isRead: true,
+        sentAt: 'Jun 30',
+        receivedAt: '',
+
+        removedAt: null,
+        from: 'momo@momo.com',
+        to: 'user@appsus.com',
+        isSelected: false,
+      },
+    ]
+    const hoursOffset = 6
+
+    emails.forEach((email, index) => {
+      const timestamp = Date.now() - index * (hoursOffset * 60 * 60 * 1000)
+      email.receivedAt = timestamp
+    })
+
     utilService.saveToStorage(EMAIL_KEY, emails)
     console.log('emails', emails)
   }

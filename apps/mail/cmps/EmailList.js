@@ -5,7 +5,6 @@ export default {
   props: ['emails'],
   template: `
                 <section class="email-list">
-                   <div class="email-count">Unread Emails: {{ unreadEmailCount }}</div>
                    <ul>
                      <li v-for="email in emails" :key="email.id">
                            <input type="checkbox"
@@ -14,7 +13,7 @@ export default {
                          <EmailPreview :email="email" 
                                         @click="onMarkAsRead(email)" 
                                         @checkbox-change="onCheckboxChange(email)"
-                                        @remove="$emit('remove', email.id)"
+                                        @updateEmail="removeEmail"
                                          />
                      </li>
                    </ul>
@@ -36,17 +35,22 @@ export default {
       emailToSave.isRead = true
       this.$emit('updateEmail', emailToSave)
     },
+
     onCheckboxChange(emailId) {
       console.log(emailId)
       this.$emit('checkbox-change', emailId)
     },
-  },
 
-  computed: {
-    unreadEmailCount() {
-      return this.emails.filter((email) => !email.isRead).length
+    removeEmail(email) {
+      console.log('email', email)
+      // const emailToRemove = JSON.parse(JSON.stringify(email))
+      // emailToRemove.folder = 'trash'
+
+      this.$emit('updateEmail', email)
     },
   },
+
+  computed: {},
 
   components: {
     EmailPreview,

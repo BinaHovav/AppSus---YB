@@ -30,6 +30,7 @@
   }
   
   .folder-item:hover .folder-container {
+    /* border-radius: 20%; */
     background-color: #e3e3e3;
   }
   
@@ -37,8 +38,11 @@
     margin-right: 5px;
   }
   
-  .folder-name {
+  .email-in-folder-count{
+    position: absolute;
+    right:-4px
+  }
+  /* .folder-name {
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;
-  }
+  } */
