@@ -9,11 +9,10 @@ export default {
                      <li v-for="email in emails" :key="email.id">
                         <i class="material-icons star" :class="starClass(email)" @click.stop.prevent="onStarEmail(email)">
                               star_rate
-                          </i>   
+                        </i>   
                         <EmailPreview :email="email" 
                           @click="onMarkAsRead(email)" 
-                          @updateEmail="removeEmail"
-                                            />
+                          @updateEmail="removeEmail"/>
                      </li>
                    </ul>
                  </section>
