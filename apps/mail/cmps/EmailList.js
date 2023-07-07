@@ -7,16 +7,24 @@ export default {
                 <section class="email-list">
                    <ul>
                      <li v-for="email in emails" :key="email.id">
-                        <i class="material-icons star" :class="starClass(email)" @click.stop.prevent="onStarEmail(email)">
-                              star_rate
-                        </i>   
+                       <i class="material-icons star" 
+                          :class="['star', colorStar(email)]"
+                          @click.stop.prevent="onStarEmail(email)">
+                          star_rate
+                      </i>
                         <EmailPreview :email="email" 
                           @click="onMarkAsRead(email)" 
-                          @updateEmail="removeEmail"/>
+                          @updateEmail="onRemoveEmail"/>
                      </li>
                    </ul>
                  </section>
     `,
+
+  data() {
+    return {
+      starredEmails: [],
+    }
+  },
 
   watch: {
     emails: {
@@ -34,29 +42,34 @@ export default {
       this.$emit('updateEmail', emailToSave)
     },
 
-    removeEmail(email) {
+    onRemoveEmail(email) {
       this.$emit('updateEmail', email)
     },
 
     onStarEmail(email) {
-      console.log('star')
-
       const emailToStar = JSON.parse(JSON.stringify(email))
-      emailToStar.isStar = true
-      console.log('emailToStar', emailToStar)
-      setTimeout(() => {
-        console.log('this.emails', this.emails)
-      }, 2000)
+      emailToStar.isStar = !emailToStar.isStar
 
-      this.$emit('updateEmail', email)
+      if (emailToStar.isStar) {
+        this.starredEmails.push(emailToStar.id)
+      } else {
+        const idx = this.starredEmails.indexOf(emailToStar.id)
+        if (idx !== -1) {
+          this.starredEmails.splice(idx, 1)
+        }
+      }
+      this.$emit('updateEmail', emailToStar)
     },
   },
 
   computed: {
-    starClass() {
-      return (email) => ({
-        star: email.isStarred,
-      })
+    colorStar() {
+      return (email) => {
+        if (email.isStar) {
+          return 'gold'
+        }
+        return ''
+      }
     },
   },
 

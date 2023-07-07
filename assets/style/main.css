@@ -19,23 +19,23 @@
 
 /* Email */
 
-@import './apps/mail/EmailIndex.css'; 
-@import './apps/mail/EmailList.css';
-@import './apps/mail/EmailPreview.css';
-@import './apps/mail/EmailDetails.css';
-@import './apps/mail/EmailFilter.css';
-@import './apps/mail/EmailEdit.css'; 
-@import './apps/mail/EmailNavbar.css'; 
-@import './apps/mail/EmailCompose.css'; 
+@import 'apps/mail/EmailIndex.css'; 
+@import 'apps/mail/EmailList.css';
+@import 'apps/mail/EmailPreview.css';
+@import 'apps/mail/EmailDetails.css';
+@import 'apps/mail/EmailFilter.css';
+@import 'apps/mail/EmailEdit.css'; 
+@import 'apps/mail/EmailNavbar.css'; 
+@import 'apps/mail/EmailCompose.css'; 
 
 /* Keep */
 
-@import './apps/keep/KeepIndex.css';
-@import './apps/keep/KeepList.css';
-@import './apps/keep/KeepPreview.css';
-@import './apps/keep/KeepDetails.css';
-@import './apps/keep/KeepEdit.css';
-@import './apps/keep/KeepFilter.css'; 
+@import 'apps/keep/KeepIndex.css';
+@import 'apps/keep/KeepList.css';
+@import 'apps/keep/KeepPreview.css';
+@import 'apps/keep/KeepDetails.css';
+@import 'apps/keep/KeepEdit.css';
+@import 'apps/keep/KeepFilter.css'; 
  
 
 

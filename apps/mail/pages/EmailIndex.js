@@ -104,7 +104,7 @@ export default {
           filteredEmails = filteredEmails.filter((email) => email.from === emailService.loggedinUser.email && !email.removedAt && email.sentAt)
           break
         case 'starred':
-          filteredEmails = filteredEmails.filter((email) => email.isStarred)
+          filteredEmails = filteredEmails.filter((email) => email.isStar)
           break
         case 'trash':
           filteredEmails = filteredEmails.filter((email) => email.removedAt)

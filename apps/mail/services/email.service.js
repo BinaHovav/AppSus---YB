@@ -304,11 +304,11 @@ function _createEmails() {
       {
         id: utilService.makeId(),
         folder: 'inbox',
-        isStar: true,
+        isStar: false,
 
         subject: 'Buy 3 and get 10 for free',
         body: 'body body body body',
-        isRead: true,
+        isRead: false,
         sentAt: '',
         removedAt: null,
         from: 'momo@momo.com',
