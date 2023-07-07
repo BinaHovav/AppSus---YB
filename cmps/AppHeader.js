@@ -2,7 +2,7 @@ export default {
   template: `
         <header class="app-header">
             <a>
-                <img src="./assets/img/logo.jpg" />
+                <img src="./assets/img/logo.png" />
             </a>
             <h1></h1>
 
