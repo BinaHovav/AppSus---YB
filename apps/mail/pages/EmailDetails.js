@@ -37,7 +37,7 @@ export default {
       })
       .catch((err) => {
         alert('Cannot load email')
-        this.$router.push('/mail')
+        // this.$router.push('/mail')
       })
   },
   methods: {

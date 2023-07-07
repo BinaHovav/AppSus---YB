@@ -25,7 +25,7 @@ export default {
              <div style="display: flex; flex-direction: column; padding-left:30px; ">
                <div class="compose-button-container">
                  <button @click="openCompose" class="compose-button">
-                   <span class="material-icons">mode_edit</span>
+                   <span class="material-icons">mode_edit_outline</span>
                    Compose
                   </button>
                 </div>

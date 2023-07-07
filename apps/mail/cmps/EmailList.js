@@ -11,7 +11,7 @@ export default {
                        <i class="material-icons star" 
                           :class="['star', colorStar(email)]"
                           @click.stop.prevent="onStarEmail(email)">
-                          star_rate
+                          {{ email.isStar ? 'star' : 'star_outline' }}
                       </i>
                         <EmailPreview :email="email" 
                           @click="onMarkAsRead(email)" 

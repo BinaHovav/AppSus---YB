@@ -50,7 +50,8 @@ export default {
       this.selectedFolder = folder
       console.log('folder.name', folder.name)
       this.$emit('selectFolder', folder.name)
-      // this.$router.push(`${folder.route}`)
+      const router = '/mail/' + folder.name
+      this.$router.push(router)
     },
   },
 
