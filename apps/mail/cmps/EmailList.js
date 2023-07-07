@@ -1,4 +1,5 @@
 import EmailPreview from './EmailPreview.js'
+import { showSuccessMsg, showErrorMsg } from '../../../services/event-bus.service.js'
 
 export default {
   name: 'EmailList',
@@ -59,6 +60,7 @@ export default {
         }
       }
       this.$emit('updateEmail', emailToStar)
+      showSuccessMsg('Mail Starred Succefully!')
     },
   },
 

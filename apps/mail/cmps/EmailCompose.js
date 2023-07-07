@@ -42,7 +42,7 @@ export default {
       console.log('close')
       this.$emit('closeForm')
     },
-    onSendEmail(email) {
+    onSendEmail() {
       console.log('sendCompose')
       this.$emit('sendEmail', this.email)
     },

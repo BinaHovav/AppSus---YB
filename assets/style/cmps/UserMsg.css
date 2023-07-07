@@ -1,7 +1,9 @@
 .user-msg {
+    font-family: Roboto, sans-serif;
     position: fixed;
     top: 40px;
-    right: 20px;
+    left: 50%;
+    transform: translateX(-50%);
 
     width: 290px;
     background-color: rgb(208, 206, 139);
@@ -10,7 +12,7 @@
     /* transition: opacity 1s; */
 }
 .user-msg.success {
-    background-color: rgb(88, 130, 88);
+    background-color: rgb(153, 230, 255);
 }
 .user-msg.error {
     background-color: rgb(187, 104, 104);

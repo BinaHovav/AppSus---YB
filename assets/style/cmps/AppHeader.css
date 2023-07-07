@@ -1,26 +1,36 @@
 .app-header {
   position: relative;
-  font-family: roboto, Sans-serid;
-  background-color: var(--clr5);
-  color: var(--secondary-clr1);
-  padding: 1em;
-  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  font-family: roboto, Sans-serif;
+  background-color:rgb(249, 249, 240);
+  color: lightblue;
+  /* padding: 1em; */
+  margin-bottom: 20px;
+  /* border-bottom: 1px solid gray; */
+  justify-content: space-between;
+
 }
 
 .app-header a{
-  padding:20px;
+  padding:10px;
   font-size: 1.5em;
 }
 
 .app-header span{
-  position: absolute;
-  bottom:17px
-
+  font-size: 36px;
 }
 
+.app-header img{
+  height:70px;
+  width:70px;
+  justify-self: center;
+  cursor: pointer;
+}
+/* 
 @media(max-width: 720px) {
   .app-header {
     background-color: var(--clr3);
     color: var(--secondary-clr2);
   }
-}
+} */

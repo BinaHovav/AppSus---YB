@@ -73,14 +73,12 @@ export default {
     },
     sendEmail(email) {
       this.newEmail = email
-      console.log('email received in the index:', this.newEmail)
 
       emailService.save(this.newEmail).then((savedEmail) => {
-        console.log('Saved Email', savedEmail)
-
         this.updateEmail(email)
         this.closeForm()
       })
+      showSuccessMsg('Mail Sent Succefully!')
     },
     updateEmail(email) {
       emailService.save(email).then((updatedEmail) => {
