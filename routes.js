@@ -40,6 +40,10 @@ const routerOptions = {
             },
           ],
         },
+        { path: 'sent', component: EmailList },
+        { path: 'starred', component: EmailList },
+        { path: 'trash', component: EmailList },
+        { path: 'draft', component: EmailList },
       ],
     },
 

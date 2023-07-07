@@ -2,16 +2,7 @@
     position: relative;
   }
   
-.compose-container {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 999;
-    background-color: #fff;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-  }
+
 /*   
   .compose-button-container{
   } */
@@ -25,8 +16,8 @@
   align-items: center;
   gap:5px;
   padding: 16px;
-  background-color: var(--white);
-  color: var(--gray);
+  background-color: var(--blue4);
+  color: var(--clr4);
   border: none;
   border-radius: 15px;
   font-size: 1em;
