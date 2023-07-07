@@ -334,7 +334,7 @@ function _createEmails() {
       {
         id: utilService.makeId(),
         folder: 'inbox',
-        isStar: true,
+        isStar: false,
 
         subject: 'Buy 3 and get 10 for free',
         body: 'body body body body',
@@ -348,7 +348,7 @@ function _createEmails() {
       {
         id: utilService.makeId(),
         folder: 'inbox',
-        isStar: false,
+        isStar: true,
 
         subject: 'SAVE THE DATE',
         body: 'body body body body',
