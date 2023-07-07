@@ -6,12 +6,10 @@ import AddImgNote from "./add-cmps/AddImgNote.js"
 import AddListNote from "./add-cmps/AddListNote.js"
 
 export default {
-    name: 'KeepEdit',
+    name: 'KeepAdd',
     props: ['keep'],
     template: `
-            
-            <section  class="keep-edit">
-                
+            <section  class="keep-add">
                 <Component :is="type" @addNote="save"/>
                 <!-- <h4>{{formateDate}}</h4> -->
                 
@@ -19,9 +17,9 @@ export default {
                 
                 <button @click="chgType('AddTextNote')" class="act_btn"><img src="../../assets/icons/text.svg" /></button>            
                 <button @click="chgType('AddListNote')" class="act_btn"><img src="../../assets/icons/check_box.svg" /></button>
-                <button @click="chgType('AddImgNote')"class="act_btn"><img src="../../assets/icons/image.svg" /></button>
-                <!-- <button @click="chgType('canvas')"class="act_btn"><img  src="../../assets/icons/edit.svg"/></button>
-             <section/>
+                <button @click="chgType('AddImgNote')" class="act_btn"><img src="../../assets/icons/image.svg" /></button>
+                <!-- <button @click="chgType('canvas')"class="act_btn"><img  src="../../assets/icons/edit.svg"/></button> -->
+</section>
              
        
     `,

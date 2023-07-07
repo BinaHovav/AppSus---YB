@@ -8,7 +8,7 @@ export default {
         <section class="keep-list">
             <ul class="clean-list">
                 <li v-for="keep in keeps" :key="keep.id">
-                    <KeepPreview :keep="keep"/>  <!-- <section class="actions"> -->
+                    <KeepPreview :keep="keep" @editKeep="onEditKeep"/>  <!-- <section class="actions"> -->
                         <!-- <button class="btn-remove" @click="onRemoveKeep(keep.id)">x</button> -->
                        <button class="btn-remove"  @click="onRemoveKeep(keep.id)"><img  src="../../assets/icons/delete.svg"></button>
                        <button class="btn-edit"  @click="onEditKeep(keep.id)"><img  src="../../assets/icons/edit.svg"></button>
@@ -24,8 +24,9 @@ export default {
     onRemoveKeep(keepId) {
       this.$emit('remove', keepId)
     },
-    onEditKeep(keepId) {
-      keepService.openModal(keepId)
+    onEditKeep(keep) {
+
+      this.$emit('editKeep', keep)
     },
   },
   components: {

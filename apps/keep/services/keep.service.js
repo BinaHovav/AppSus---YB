@@ -101,7 +101,7 @@ function getEmptyKeep(title, txt) {
             createdAt: date,
             type: 'TextNote',
             isPinned: false,
-            style: { backgroundColor: '#00d' },
+            style: { backgroundColor: 'var(--clr2)' },
             info: { title, txt}        
             }
 }
@@ -113,7 +113,7 @@ function getEmptyImgKeep(title, img='imgs/2.jpg') {
             createdAt: date,
             type: 'ImgNote',
             isPinned: false,
-            style: { backgroundColor: '#00d' },
+            style: { backgroundColor: 'var(--clr2)' },
             info: { title, img}        
             }
 }

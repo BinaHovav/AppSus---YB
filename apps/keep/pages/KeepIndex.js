@@ -1,6 +1,7 @@
 import { keepService } from '../services/keep.service.js'
 
 import keepList from '../cmps/KeepList.js'
+import KeepEdit from '../cmps/KeepEdit.js'
 
 // import keepEdit from '../cmps/KeepAdd.js'
 import keepAdd from '../cmps/KeepAdd.js'
@@ -12,7 +13,7 @@ export default {
 
     name: 'keepIndex',
     template: `
-        <section class="keep-index" class="main-screen">
+        <section class="keep-index" >
             <!-- <h1>hellow from keep index</h1> -->
             <keepNavbar/>
             <!-- <keepEdit  @save="saveKeep"/> -->
@@ -20,26 +21,17 @@ export default {
             <!-- <keepAdd v-if="route==='view'" @chg-route="chgRoute"/> -->
             <keepList v-if="keeps"
             :keeps="keeps" 
-            @remove="removeKeep"/> 
+            @remove="removeKeep"
+            @editKeep="onEditKeep"/> 
             
+            <KeepEdit v-if="keepToEdit" :keep="keepToEdit" @KeepToSave="updateKeep"/>
         </section>
-        <div class="modal">
-            <div class="modal-content">
-                <h2 class="modal-title">
-                <!-- Edit Note:
-                </h2>
-                <p>
-                    modal details
-                </p> -->
-                <!-- <Component :is="type" @addNote="save"/> -->
-                <button class="modal-btn" @click="closeModal">Close</button>
-            </div>
-        </div>
     `,
     data() {
         return {
             keeps: null,
             filterBy: {},
+            keepToEdit: null
             // route:'view'
             
         }
@@ -58,6 +50,11 @@ export default {
                 this.keeps = keeps
             })
 
+        },
+        onEditKeep(keep){
+         console.log(keep);
+
+            this.keepToEdit = keep
         },
         removeKeep(keepId) {
             console.log('remove keepId',keepId)
@@ -109,6 +106,7 @@ export default {
         keepList,
         keepAdd, 
         keepNavbar,
+        KeepEdit
         // TextNote,
         // ImgNote,
         // ListNote

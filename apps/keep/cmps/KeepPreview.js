@@ -6,7 +6,7 @@ export default {
     name: 'KeepPreview',
     props: ['keep'],
     template: `
-        <article class="keep-preview" :style="keep.style">
+        <article class="keep-preview" :style="keep.style" @click="editKeep">
            <!-- <pre>{{keep}}</pre> -->        
            <Component 
                 :is="keep.type"  
@@ -27,6 +27,9 @@ export default {
             },
             save() {
                 console.log('Saving..');
+            },
+            editKeep(){
+                this.$emit('editKeep', this.keep)
             }
         },
     computed:{

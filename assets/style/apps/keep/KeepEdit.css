@@ -1,25 +1,10 @@
 .keep-edit{
-    /* display: grid; */
-    background: rgba(0,0,0,.2);
-    border-radius: 20px;
-    width: 60%;
-    margin: auto;
-    border: solid transparent;
-    border-width: 1px 1px 1px 6px;
-    /* min-height: 28px; */
-    padding: 10px;
-  
-}
+    position: fixed;
+    padding: 20px;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    z-index: 120;
+    /* background-color: aqua; */
 
-.act_btn {
-    width:20px
-    
-}
-.act_btn img{
-    width:15px
-    
-}
-
-.note-add-img img{
-    width:150px 
 }
