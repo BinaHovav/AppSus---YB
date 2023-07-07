@@ -1,23 +1,22 @@
 import { emailService } from '../services/email.service.js'
+import EmailList from '../cmps/EmailList.js'
 
 export default {
   name: 'EmailDetails',
   // props: ['email'],
   template: `
     <section v-if="email" class="email-details">
-        <!-- <img :src="imgSrc" alt=""> -->
-        <RouterLink :to="'/mail/' + email.nextEmailId">Next Email</RouterLink> |
-        <RouterLink :to="'/mail/' + email.prevEmailId">Prev Email</RouterLink> 
-
-        <h2>{{ email.subject }}</h2>
-        <!-- <img :src="book.thumbnail" > -->
-
-        <!-- <h3 style="color: darkRed; font-size:1.6em"> {{ displayIfVintage }} </h3>
-        <h3 style="color: darkRed; font-size:1.6em"> {{ displayReadingLevel }} </h3> -->
-
-        <h3>{{ email.body }}</h3>
-        <!-- <LongTxt :txt="txt"> -->
-
+        <p> From: {{email.from}}</p>
+        <p> To: Me</p>
+        <div class="email-body">
+           <h2>{{ email.subject }}</h2>
+           <p>{{ email.body }}</p>
+        </div>
+        
+        <div class="next-prev-buttons">
+          <RouterLink :to="'/mail/' + email.nextEmailId">Next Email</RouterLink> 
+          <RouterLink :to="'/mail/' + email.prevEmailId">Prev Email</RouterLink> 
+        </div>
         <RouterLink to="/mail/inbox">Back to Inbox</RouterLink>
 
     </section>
@@ -67,5 +66,7 @@ export default {
     //   return this.$route.params.emailId
     // },
   },
-  components: {},
+  components: {
+    EmailList,
+  },
 }

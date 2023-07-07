@@ -35,7 +35,8 @@ export default {
               <div style="display: flex; flex-direction: column; padding-left:10px">
                    <EmailFilter @filter="setFilterBy"/>
                    <RouterView :emails="filteredEmails"
-                                @updateEmail="updateEmail"/>
+                                @updateEmail="updateEmail"
+                                @removeEmail="removeEmail"/>
               </div>
             </div>
              
@@ -75,7 +76,8 @@ export default {
       this.newEmail = email
 
       emailService.save(this.newEmail).then((savedEmail) => {
-        this.updateEmail(email)
+        this.emails.push(savedEmail)
+        // this.updateEmail(email)
         this.closeForm()
       })
       showSuccessMsg('Mail Sent Succefully!')
@@ -86,8 +88,14 @@ export default {
         this.emails.splice(emailIdx, 1, updatedEmail)
       })
     },
+    removeEmail(emailId) {
+      emailService.remove(emailId).then(() => {
+        const emailIdx = this.emails.findIndex((email) => email.id === emailId)
+        this.emails.splice(emailIdx, 1)
+      })
+      showSuccessMsg('Mail Removed Forever')
+    },
   },
-
   computed: {
     filteredEmails() {
       let filteredEmails = this.emails

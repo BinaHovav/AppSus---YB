@@ -52,7 +52,7 @@
   
   .email-preview:hover {
      box-shadow: inset 2px 0 0 #dadce0, inset -2px 0 0 #dadce0, 0 1px 2px 0 rgba(60, 64, 67, 0.3),
-      0 1px 3px 1px rgba(60, 64, 67, 0.15);
+      20px 1px 20px 1px rgba(60, 64, 67, 0.15);
   }
   
   .actions{
@@ -71,7 +71,9 @@
     background-color: lightgray;
     border-radius: 100%;
   }
+
   .unread-email {
+    background-color: white;
     color: var(--clr5);
   }
   

@@ -15,7 +15,8 @@ export default {
                       </i>
                         <EmailPreview :email="email" 
                           @click="onMarkAsRead(email)" 
-                          @updateEmail="onRemoveEmail"/>
+                          @updateEmail="onUpdateEmail"
+                          @removeEmail="onRemoveEmail"/>
                      </li>
                    </ul>
                  </section>
@@ -43,10 +44,12 @@ export default {
       this.$emit('updateEmail', emailToSave)
     },
 
-    onRemoveEmail(email) {
+    onUpdateEmail(email) {
       this.$emit('updateEmail', email)
     },
-
+    onRemoveEmail(emailId) {
+      this.$emit('removeEmail', emailId)
+    },
     onStarEmail(email) {
       const emailToStar = JSON.parse(JSON.stringify(email))
       emailToStar.isStar = !emailToStar.isStar

@@ -37,12 +37,13 @@ export default {
     },
 
     onRemoveEmail(email) {
-      console.log('remove')
-      console.log('email', email)
-      const emailToRemove = JSON.parse(JSON.stringify(email))
-      emailToRemove.removedAt = Date.now()
-      console.log('emailToRemove', emailToRemove)
-      this.$emit('updateEmail', emailToRemove)
+      if (!email.removedAt) {
+        const emailToRemove = JSON.parse(JSON.stringify(email))
+        emailToRemove.removedAt = Date.now()
+        this.$emit('updateEmail', emailToRemove)
+      } else {
+        this.$emit('removeEmail', email.id)
+      }
     },
 
     formatDate(receivedAt) {

@@ -7,16 +7,16 @@ export default {
            <button class="close-compose" @click="onCloseCompose">X</button>
               <form class="email-compose">
                 <div class="form-group">
-                  <label for="to">To:</label>
-                  <input type="text" id="to" v-model="email.to" >
+                  <label for="to">To</label>
+                  <input style="color:black" type="text" id="to" v-model="email.to">
                 </div>
                 <div class="form-group">
-                  <label for="subject">Subject:</label>
-                  <input type="text" id="subject" v-model="email.subject" >
+                  <label for="subject">Subject</label>
+                  <input type="text" id="subject" v-model="email.subject">
                 </div>
                 <div class="form-group">
-                  <label for="body">Body:</label>
-                  <textarea id="body" rows="5" v-model="email.body" ></textarea>
+                  <label for="body">Body</label>
+                  <textarea id="body" rows="5" v-model="email.body"></textarea>
                 </div>
                 <div class="send-compose form-actions">
                   <button @click="onSendEmail(email)" type="submit">Send</button>
@@ -32,7 +32,7 @@ export default {
         from: 'user@appsus.com',
         subject: '',
         body: '',
-        sentAt: Date.now(),
+        sentAt: null,
       },
     }
   },
@@ -44,7 +44,10 @@ export default {
     },
     onSendEmail() {
       console.log('sendCompose')
-      this.$emit('sendEmail', this.email)
+      const sentEmail = JSON.parse(JSON.stringify(this.email))
+      sentEmail.sentAt = Date.now()
+      this.$emit('sendEmail', sentEmail)
     },
+    onSaveDraft() {},
   },
 }

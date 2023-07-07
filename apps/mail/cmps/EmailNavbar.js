@@ -12,7 +12,8 @@ export default {
                       v-for="folder in folders" 
                       :key="folder.id" 
                       @click="selectFolder(folder)"
-                      >
+                      :class="{ 'selected': folder === selectedFolder }"
+                  >
                    <div class="folder-container">
                      <span class="material-icons-outlined">{{ folder.icon }}</span>
                      <span class="folder-name">{{ folder.name }}</span>
@@ -26,6 +27,7 @@ export default {
              `,
   data() {
     return {
+      selectedFolder: null,
       folders: [
         { id: 1, name: 'inbox', icon: 'mail', route: '/inbox' },
         { id: 2, name: 'sent', icon: 'send', route: '/sent' },
@@ -33,6 +35,7 @@ export default {
         { id: 4, name: 'trash', icon: 'delete', route: '/trash' },
         { id: 5, name: 'draft', icon: 'drafts' },
       ],
+
       // unreadEmailCount: 9,
       // emails: [],
     }
@@ -44,6 +47,7 @@ export default {
 
   methods: {
     selectFolder(folder) {
+      this.selectedFolder = folder
       console.log('folder.name', folder.name)
       this.$emit('selectFolder', folder.name)
       // this.$router.push(`${folder.route}`)
