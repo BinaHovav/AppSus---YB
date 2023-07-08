@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Lato:wght@400;700&family=Merriweather:wght@900&family=Noto+Sans+Hebrew:wght@800;900&family=Poppins:wght@400;500&display=swap');
+
+.book-list ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 40px;
+    padding: 10px;
+    background-color: var(--lightTurquise);
+    font-family: 'Merriweather', serif;
+}
+.book-list ul li {
+    position: relative;
+    font-family: 'Merriweather', serif;
+    text-transform: capitalize;
+    padding: 10px;
+    background-color: var(--blue);
+    opacity:0.9;
+    border-radius: 20px;
+    transition:0.3s ease;
+    max-height: 350px;
+
+}
+
+.book-list ul li:hover {
+    scale:1.05;
+}
+
+.book-list button{
+    position: absolute;
+    top:5px;
+    right:2px;
+    color: black
+}

@@ -1,0 +1,26 @@
+
+.main-route {
+    min-height: calc(90vh - 20px);
+    background-color: #FFFAF4;
+}
+
+.home-page, .about-page{
+    min-height: calc(80vh - 20px);
+    background-image: url(./background.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover; 
+
+}
+
+.home-page p{
+    color: var(--beighe);
+    font-size:2em
+}
+
+.about-page p{
+    color: var(--beighe);
+    font-size:1em
+}
+

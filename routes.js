@@ -8,9 +8,9 @@ import EmailCompose from './apps/mail/cmps/EmailCompose.js'
 
 import yKeep from './apps/keep/pages/KeepIndex.js'
 
-import BookIndex from './apps/missbook/pages/BookIndex.js'
-import BookDetails from './apps/missbook/pages/BookDetails.js'
-import BookEdit from './apps/missbook/pages/BookEdit.js'
+import BookIndex from './apps/bybooks/pages/BookIndex.js'
+import BookDetails from './apps/bybooks/pages/BookDetails.js'
+import BookEdit from './apps/bybooks/pages/BookEdit.js'
 
 const { createRouter, createWebHashHistory } = VueRouter
 

@@ -1,0 +1,18 @@
+.book-details {
+    margin:20px;
+    position: relative;
+    padding: 10px;
+    background-color: var(--turquise);
+}
+
+.book-details h2{
+   text-transform: capitalize;
+}
+
+.book-details img {
+    top: 10px;
+    right: 10px;
+    width: 200px;
+    transition: 400ms;
+}
+

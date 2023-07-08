@@ -1,0 +1,51 @@
+.book-preview{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+.book-preview h2{
+    position: absolute;
+    top:10px;
+    line-height: 1.4;
+    font-size:1.2em;
+    text-align: center;
+    color: var(--beighe)
+}
+.book-preview h3{
+  
+    font-size: 1em;
+    line-height: 0;
+}
+
+.book-preview a{
+    font-size: 1em;
+}
+.book-preview img{
+    height: 200px;
+    width: 150px;
+}
+
+.red{
+    color:red
+}
+
+.green{
+    color:green
+}
+
+.on-sale-tag{
+position: absolute;
+background-color: var(--red);
+border:1px solid black;
+padding:3px;
+left:0;
+top:30px;
+transform: rotate(-20deg);
+}
+
+.actions{
+    display: flex;
+    gap:50px;
+}

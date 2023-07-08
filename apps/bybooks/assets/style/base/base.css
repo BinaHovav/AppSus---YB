@@ -1,0 +1,63 @@
+/* Box Sizing */
+  @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Lato:wght@400;700&family=Merriweather:wght@900&family=Noto+Sans+Hebrew:wght@800;900&family=Poppins:wght@400;500&display=swap');
+
+  html {
+    box-sizing: border-box;
+
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+    font-family: 'Merriweather', serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    /* font-family: Inter;
+    font-weight: 500; */
+    line-height: 1.8;
+    letter-spacing: 0.8;
+    font-family: 'Merriweather', serif;
+
+    color: var(--beighe);
+    font-weight: 400;
+}
+
+p {
+    margin-block: 0 1em;
+    margin: 30px;
+    padding-top: 100px;
+    line-height: 2.5;
+    font-size: 1.3em;
+    color: var(--blue);
+    
+}
+
+a {
+    text-decoration: none;
+    font-size: 1.2em;
+    color: inherit;
+    color: var(--beighe);
+
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Dont stretch my Media */
+img,
+embed,
+video,
+object {
+    max-width: 100%;
+}
+
+/* Simple and useful CSS Debugging Technique */
+.debug * {
+    outline: 1px solid gold;
+}
