@@ -14,7 +14,7 @@ export default {
               </head> -->
               <section class="book-index">
 
-          <h2 style= "color:red">
+          <h2 style= "color:red; margin-left:100px">
             This website is under construction.<br>
             Will be ready soon :)
           </h2>

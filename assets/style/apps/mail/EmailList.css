@@ -30,7 +30,8 @@ margin-bottom:2%
 .star {
     color: lightgray;
     cursor: pointer;
-    margin-right: 10px;
+    margin-right: -35px;
+    padding-left: 10px;
   }
 
 .star:hover {

@@ -1,11 +1,8 @@
 .app-footer {
+  font-family: roberto, sans-serif;
     position:relative;
     color: var(--clr4);
-    bottom: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    align-items: center;
+    text-align: center;
     height: 4vh;
     padding: 10px;
     background-color: var(--columbia-blue);
