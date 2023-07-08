@@ -34,7 +34,7 @@
   
   .subject-preview {
     white-space: nowrap;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
     text-overflow: ellipsis;
     font-weight: bold;
   }
@@ -63,17 +63,23 @@
   .actions{
     display: flex;  
     gap:15px;
-    width:30px;
+    width:50px;
     opacity: 0;  
-    padding-left: 5%;
+    padding-left: 3%;
+    z-index:100
   }
   
   .email-preview:hover .actions {
     opacity: 1;
   }
 
+  .email-preview:hover .date-preview {
+    opacity: 0;
+  }
+
   .actions span:hover{
     background-color: lightgray;
+    width:100px;
     border-radius: 100%;
   }
 

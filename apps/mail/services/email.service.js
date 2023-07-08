@@ -84,23 +84,6 @@ function save(email) {
   }
 }
 
-// function addReview(mailId, review) {
-//   return get(bookId).then((book) => {
-//     if (!book.reviews) book.reviews = []
-//     review.id = utilService.makeId()
-//     book.reviews.push(review)
-//     return save(book)
-//   })
-// }
-
-// function removeReview(bookId, reviewId) {
-//   return get(bookId).then((book) => {
-//     const idx = book.reviews.findIndex((review) => review.id === reviewId)
-//     book.reviews.splice(idx, 1)
-//     return save(book)
-//   })
-// }
-
 function getEmptyEmail(to = '', from = 'user@appsus.com', subject = '', body = '', sentAt = Date.now()) {
   return { id: '', to, from, subject, body, sentAt }
 }
@@ -111,7 +94,6 @@ function getFilterBy() {
 
 function setFilterBy(filterBy = {}) {
   if (filterBy.txt !== undefined) gFilterBy.txt = filterBy.txt
-  // if (filterBy.minPrice !== undefined) gFilterBy.minPrice = filterBy.minPrice
   return gFilterBy
 }
 
@@ -138,45 +120,6 @@ function getEmailCountByFolderMap() {
   })
 }
 
-// function getBooks(keyword) {
-//   if (gBooksCache[keyword]) {
-//     console.log('Getting from cache')
-//     return Promise.resolve(gBooksCache[keyword])
-//   }
-
-//   const url = `https://www.googleapis.com/books/v1/volumes?q=${keyword}`
-
-//   return fetch(url)
-//     .then((res) => res.json())
-//     .then((res) => {
-//       console.log('res', res)
-//       const results = res.items.map((item) => _prepareBookData(item, keyword))
-//       console.log('results', results)
-//       gBooksCache[keyword] = results
-
-//       utilService.saveToStorage(BOOK_KEY, gBooksCache)
-//       return results
-//     })
-// }
-
-// function _prepareBookData(item) {
-//   return {
-//     id: item.id,
-//     title: item.volumeInfo.title,
-//     authors: item.volumeInfo.authors,
-//     categories: item.volumeInfo.categories,
-//     description: item.volumeInfo.description,
-//     language: item.volumeInfo.language,
-//     pageCount: item.volumeInfo.pageCount,
-//     imgUrl: item.volumeInfo.imageLinks?.thumbnail,
-//   }
-// }
-
-// function addGoogleBook(book) {
-//   console.log('Added Google Book')
-//   return storageService.post(BOOK_KEY, book)
-// }
-
 function _createEmails() {
   let emails = utilService.loadFromStorage(EMAIL_KEY)
   if (!emails || !emails.length) {
@@ -184,21 +127,51 @@ function _createEmails() {
       {
         id: utilService.makeId(),
         folder: 'inbox',
-        subject: 'Sign up for our new "HOW TO LOVE CSS in 4 days" course',
-        body: 'body body body body',
+        subject: '"HOW TO LOVE CSS in 4 days" bootcamp',
+        body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quam viverra orci sagittis eu volutpat. Pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus. Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim. Neque sodales ut etiam sit amet nisl purus. Pretium lectus quam id leo in vitae turpis massa sed. Amet nisl purus in mollis nunc sed id semper risus. Quis commodo odio aenean sed adipiscing diam. Faucibus interdum posuere lorem ipsum dolor sit. Mauris nunc congue nisi vitae. Mauris in aliquam sem fringilla ut morbi tincidunt augue interdum. Massa sed elementum tempus egestas.',
         isRead: false,
         isStar: false,
         sentAt: '',
         removedAt: null,
-        from: 'css@love.it',
+        from: 'CSS@love.it',
         to: 'user@appsus.com',
         isSelected: false,
       },
       {
         id: utilService.makeId(),
         folder: 'inbox',
+
+        subject: 'Your delivery is on the way!',
+        body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quam viverra orci sagittis eu volutpat. Pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus. Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim. Neque sodales ut etiam sit amet nisl purus. Pretium lectus quam id leo in vitae turpis massa sed. Amet nisl purus in mollis nunc sed id semper risus. Quis commodo odio aenean sed adipiscing diam. Faucibus interdum posuere lorem ipsum dolor sit. Mauris nunc congue nisi vitae. Mauris in aliquam sem fringilla ut morbi tincidunt augue interdum. Massa sed elementum tempus egestas.',
+        isRead: false,
+        isStar: false,
+
+        sentAt: '',
+        removedAt: null,
+        from: 'AliExpress',
+        to: 'user@appsus.com',
+        isSelected: false,
+      },
+      {
+        id: utilService.makeId(),
+        folder: 'inbox',
+
+        subject: 'Your Delivery Was Sent!',
+        body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quam viverra orci sagittis eu volutpat. Pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus. Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim. Neque sodales ut etiam sit amet nisl purus. Pretium lectus quam id leo in vitae turpis massa sed. Amet nisl purus in mollis nunc sed id semper risus. Quis commodo odio aenean sed adipiscing diam. Faucibus interdum posuere lorem ipsum dolor sit. Mauris nunc congue nisi vitae. Mauris in aliquam sem fringilla ut morbi tincidunt augue interdum. Massa sed elementum tempus egestas.',
+        isRead: false,
+        isStar: false,
+
+        sentAt: '',
+        removedAt: null,
+        from: 'AliExpress',
+        to: 'user@appsus.com',
+        isSelected: false,
+      },
+      {
+        id: utilService.makeId(),
+        folder: 'trash',
         subject: 'Your receipt from Dr. Cohen is ready',
-        body: 'body body body body',
+        body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quam viverra orci sagittis eu volutpat. Pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus. Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim. Neque sodales ut etiam sit amet nisl purus. Pretium lectus quam id leo in vitae turpis massa sed. Amet nisl purus in mollis nunc sed id semper risus. Quis commodo odio aenean sed adipiscing diam. Faucibus interdum posuere lorem ipsum dolor sit. Mauris nunc congue nisi vitae. Mauris in aliquam sem fringilla ut morbi tincidunt augue interdum. Massa sed elementum tempus egestas.',
         isRead: false,
         isStar: false,
         sentAt: '',
@@ -207,31 +180,17 @@ function _createEmails() {
         to: 'user@appsus.com',
         isSelected: false,
       },
-      {
-        id: utilService.makeId(),
-        folder: 'inbox',
 
-        subject: 'The HOW TO SLEEP WELL guide is waiting for you here',
-        body: 'body body body body',
-        isRead: false,
-        isStar: false,
-
-        sentAt: '',
-        removedAt: null,
-        from: 'good@night.com',
-        to: 'user@appsus.com',
-        isSelected: false,
-      },
       {
         id: utilService.makeId(),
         folder: 'inbox',
 
         subject: 'Your antivirus is about to expire!',
-        body: 'body body body body',
+        body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quam viverra orci sagittis eu volutpat. Pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus. Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim. Neque sodales ut etiam sit amet nisl purus. Pretium lectus quam id leo in vitae turpis massa sed. Amet nisl purus in mollis nunc sed id semper risus. Quis commodo odio aenean sed adipiscing diam. Faucibus interdum posuere lorem ipsum dolor sit. Mauris nunc congue nisi vitae. Mauris in aliquam sem fringilla ut morbi tincidunt augue interdum. Massa sed elementum tempus egestas.',
         isRead: false,
         sentAt: '',
         removedAt: null,
-        from: 'anti@virus.com',
+        from: 'ESET',
         to: 'user@appsus.com',
         isSelected: false,
       },
@@ -239,14 +198,40 @@ function _createEmails() {
         id: utilService.makeId(),
         folder: 'inbox',
 
-        subject: 'Your electricity bill is ready',
-        body: 'body body body body',
+        subject: 'You have 3 new invitations',
+        body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quam viverra orci sagittis eu volutpat. Pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus. Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim. Neque sodales ut etiam sit amet nisl purus. Pretium lectus quam id leo in vitae turpis massa sed. Amet nisl purus in mollis nunc sed id semper risus. Quis commodo odio aenean sed adipiscing diam. Faucibus interdum posuere lorem ipsum dolor sit. Mauris nunc congue nisi vitae. Mauris in aliquam sem fringilla ut morbi tincidunt augue interdum. Massa sed elementum tempus egestas.',
+        isRead: false,
+        sentAt: '',
+        removedAt: null,
+        from: 'LinkedIn',
+        to: 'user@appsus.com',
+        isSelected: false,
+      },
+      {
+        id: utilService.makeId(),
+        folder: 'inbox',
+
+        subject: '12 people visited your profile',
+        body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quam viverra orci sagittis eu volutpat. Pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus. Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim. Neque sodales ut etiam sit amet nisl purus. Pretium lectus quam id leo in vitae turpis massa sed. Amet nisl purus in mollis nunc sed id semper risus. Quis commodo odio aenean sed adipiscing diam. Faucibus interdum posuere lorem ipsum dolor sit. Mauris nunc congue nisi vitae. Mauris in aliquam sem fringilla ut morbi tincidunt augue interdum. Massa sed elementum tempus egestas.',
+        isRead: false,
+        sentAt: '',
+        removedAt: null,
+        from: 'LinkedIn',
+        to: 'user@appsus.com',
+        isSelected: false,
+      },
+      {
+        id: utilService.makeId(),
+        folder: 'inbox',
+
+        subject: 'רוצה לקבל חשבון חשמל לדוא״ל?',
+        body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quam viverra orci sagittis eu volutpat. Pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus. Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim. Neque sodales ut etiam sit amet nisl purus. Pretium lectus quam id leo in vitae turpis massa sed. Amet nisl purus in mollis nunc sed id semper risus. Quis commodo odio aenean sed adipiscing diam. Faucibus interdum posuere lorem ipsum dolor sit. Mauris nunc congue nisi vitae. Mauris in aliquam sem fringilla ut morbi tincidunt augue interdum. Massa sed elementum tempus egestas.',
         isRead: false,
         isStar: false,
 
         sentAt: '',
         removedAt: null,
-        from: 'hevrat@hachashmal.com',
+        from: 'חברת החשמל',
         to: 'user@appsus.com',
         isSelected: false,
       },
@@ -255,7 +240,7 @@ function _createEmails() {
         folder: 'trash',
 
         subject: 'The summer is here',
-        body: 'body body body body',
+        body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quam viverra orci sagittis eu volutpat. Pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus. Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim. Neque sodales ut etiam sit amet nisl purus. Pretium lectus quam id leo in vitae turpis massa sed. Amet nisl purus in mollis nunc sed id semper risus. Quis commodo odio aenean sed adipiscing diam. Faucibus interdum posuere lorem ipsum dolor sit. Mauris nunc congue nisi vitae. Mauris in aliquam sem fringilla ut morbi tincidunt augue interdum. Massa sed elementum tempus egestas.',
         isRead: true,
         isStar: false,
         sentAt: '',
@@ -267,10 +252,10 @@ function _createEmails() {
       },
       {
         id: utilService.makeId(),
-        folder: 'trash',
+        folder: 'inbox',
 
         subject: 'Your Delivery is on the Way!',
-        body: 'body body body body',
+        body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quam viverra orci sagittis eu volutpat. Pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus. Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim. Neque sodales ut etiam sit amet nisl purus. Pretium lectus quam id leo in vitae turpis massa sed. Amet nisl purus in mollis nunc sed id semper risus. Quis commodo odio aenean sed adipiscing diam. Faucibus interdum posuere lorem ipsum dolor sit. Mauris nunc congue nisi vitae. Mauris in aliquam sem fringilla ut morbi tincidunt augue interdum. Massa sed elementum tempus egestas.',
         isRead: true,
         isStar: false,
 
@@ -285,7 +270,7 @@ function _createEmails() {
         folder: 'inbox',
 
         subject: 'Your next vacation is (not) around the corner',
-        body: 'body body body body',
+        body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quam viverra orci sagittis eu volutpat. Pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus. Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim. Neque sodales ut etiam sit amet nisl purus. Pretium lectus quam id leo in vitae turpis massa sed. Amet nisl purus in mollis nunc sed id semper risus. Quis commodo odio aenean sed adipiscing diam. Faucibus interdum posuere lorem ipsum dolor sit. Mauris nunc congue nisi vitae. Mauris in aliquam sem fringilla ut morbi tincidunt augue interdum. Massa sed elementum tempus egestas.',
         isRead: true,
         isStar: false,
 
@@ -299,8 +284,8 @@ function _createEmails() {
         id: utilService.makeId(),
         folder: 'inbox',
 
-        subject: 'Do not miss this opportunity',
-        body: 'body body body body',
+        subject: 'Recommended hotels for you',
+        body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quam viverra orci sagittis eu volutpat. Pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus. Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim. Neque sodales ut etiam sit amet nisl purus. Pretium lectus quam id leo in vitae turpis massa sed. Amet nisl purus in mollis nunc sed id semper risus. Quis commodo odio aenean sed adipiscing diam. Faucibus interdum posuere lorem ipsum dolor sit. Mauris nunc congue nisi vitae. Mauris in aliquam sem fringilla ut morbi tincidunt augue interdum. Massa sed elementum tempus egestas.',
         isRead: true,
         isStar: false,
 
@@ -314,8 +299,23 @@ function _createEmails() {
         id: utilService.makeId(),
         folder: 'inbox',
 
-        subject: '2 rooms left in Hilton',
-        body: 'body body body body',
+        subject: 'Please visit us again',
+        body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quam viverra orci sagittis eu volutpat. Pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus. Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim. Neque sodales ut etiam sit amet nisl purus. Pretium lectus quam id leo in vitae turpis massa sed. Amet nisl purus in mollis nunc sed id semper risus. Quis commodo odio aenean sed adipiscing diam. Faucibus interdum posuere lorem ipsum dolor sit. Mauris nunc congue nisi vitae. Mauris in aliquam sem fringilla ut morbi tincidunt augue interdum. Massa sed elementum tempus egestas.',
+        isRead: true,
+        isStar: false,
+
+        sentAt: '',
+        removedAt: null,
+        from: 'Booking.com',
+        to: 'user@appsus.com',
+        isSelected: false,
+      },
+      {
+        id: utilService.makeId(),
+        folder: 'inbox',
+
+        subject: '2 rooms left in Hilton Eilat',
+        body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quam viverra orci sagittis eu volutpat. Pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus. Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim. Neque sodales ut etiam sit amet nisl purus. Pretium lectus quam id leo in vitae turpis massa sed. Amet nisl purus in mollis nunc sed id semper risus. Quis commodo odio aenean sed adipiscing diam. Faucibus interdum posuere lorem ipsum dolor sit. Mauris nunc congue nisi vitae. Mauris in aliquam sem fringilla ut morbi tincidunt augue interdum. Massa sed elementum tempus egestas.',
         isRead: true,
         isStar: false,
 
@@ -331,7 +331,7 @@ function _createEmails() {
         isStar: false,
 
         subject: 'Buy 3 and get 10 for free',
-        body: 'body body body body',
+        body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quam viverra orci sagittis eu volutpat. Pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus. Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim. Neque sodales ut etiam sit amet nisl purus. Pretium lectus quam id leo in vitae turpis massa sed. Amet nisl purus in mollis nunc sed id semper risus. Quis commodo odio aenean sed adipiscing diam. Faucibus interdum posuere lorem ipsum dolor sit. Mauris nunc congue nisi vitae. Mauris in aliquam sem fringilla ut morbi tincidunt augue interdum. Massa sed elementum tempus egestas.',
         isRead: true,
         sentAt: '',
         removedAt: null,
@@ -345,7 +345,7 @@ function _createEmails() {
         isStar: true,
 
         subject: 'SAVE THE DATE',
-        body: 'body body body body',
+        body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quam viverra orci sagittis eu volutpat. Pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus. Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim. Neque sodales ut etiam sit amet nisl purus. Pretium lectus quam id leo in vitae turpis massa sed. Amet nisl purus in mollis nunc sed id semper risus. Quis commodo odio aenean sed adipiscing diam. Faucibus interdum posuere lorem ipsum dolor sit. Mauris nunc congue nisi vitae. Mauris in aliquam sem fringilla ut morbi tincidunt augue interdum. Massa sed elementum tempus egestas.',
         isRead: true,
         sentAt: '',
         removedAt: null,
@@ -358,7 +358,7 @@ function _createEmails() {
         folder: 'inbox',
 
         subject: 'Your Account Update',
-        body: 'body body body body',
+        body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quam viverra orci sagittis eu volutpat. Pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus. Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim. Neque sodales ut etiam sit amet nisl purus. Pretium lectus quam id leo in vitae turpis massa sed. Amet nisl purus in mollis nunc sed id semper risus. Quis commodo odio aenean sed adipiscing diam. Faucibus interdum posuere lorem ipsum dolor sit. Mauris nunc congue nisi vitae. Mauris in aliquam sem fringilla ut morbi tincidunt augue interdum. Massa sed elementum tempus egestas.',
         isRead: true,
         isStar: false,
 
@@ -372,8 +372,52 @@ function _createEmails() {
         id: utilService.makeId(),
         folder: 'inbox',
 
+        subject: 'You have a new Facebook request',
+        body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quam viverra orci sagittis eu volutpat. Pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus. Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim. Neque sodales ut etiam sit amet nisl purus. Pretium lectus quam id leo in vitae turpis massa sed. Amet nisl purus in mollis nunc sed id semper risus. Quis commodo odio aenean sed adipiscing diam. Faucibus interdum posuere lorem ipsum dolor sit. Mauris nunc congue nisi vitae. Mauris in aliquam sem fringilla ut morbi tincidunt augue interdum. Massa sed elementum tempus egestas.',
+        isRead: true,
+        isStar: false,
+
+        sentAt: '',
+        removedAt: null,
+        to: 'momo@momo.com',
+        from: 'Facebook',
+        isSelected: false,
+      },
+      {
+        id: utilService.makeId(),
+        folder: 'inbox',
+
+        subject: 'You have a new Facebook request',
+        body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quam viverra orci sagittis eu volutpat. Pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus. Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim. Neque sodales ut etiam sit amet nisl purus. Pretium lectus quam id leo in vitae turpis massa sed. Amet nisl purus in mollis nunc sed id semper risus. Quis commodo odio aenean sed adipiscing diam. Faucibus interdum posuere lorem ipsum dolor sit. Mauris nunc congue nisi vitae. Mauris in aliquam sem fringilla ut morbi tincidunt augue interdum. Massa sed elementum tempus egestas.',
+        isRead: true,
+        sentAt: '',
+        isStar: false,
+        removedAt: null,
+        from: 'FACEBOOK',
+        to: 'momo@momo.com',
+        isSelected: false,
+      },
+      {
+        id: utilService.makeId(),
+        folder: 'inbox',
+
+        subject: 'You have a new Facebook request',
+        body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quam viverra orci sagittis eu volutpat. Pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus. Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim. Neque sodales ut etiam sit amet nisl purus. Pretium lectus quam id leo in vitae turpis massa sed. Amet nisl purus in mollis nunc sed id semper risus. Quis commodo odio aenean sed adipiscing diam. Faucibus interdum posuere lorem ipsum dolor sit. Mauris nunc congue nisi vitae. Mauris in aliquam sem fringilla ut morbi tincidunt augue interdum. Massa sed elementum tempus egestas.',
+        isRead: true,
+        sentAt: '',
+        removedAt: null,
+        isStar: false,
+
+        from: 'FACEBOOK',
+        to: 'user@appsus.com',
+        isSelected: false,
+      },
+      {
+        id: utilService.makeId(),
+        folder: 'inbox',
+
         subject: 'Your Bank Password',
-        body: 'body body body body',
+        body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quam viverra orci sagittis eu volutpat. Pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus. Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim. Neque sodales ut etiam sit amet nisl purus. Pretium lectus quam id leo in vitae turpis massa sed. Amet nisl purus in mollis nunc sed id semper risus. Quis commodo odio aenean sed adipiscing diam. Faucibus interdum posuere lorem ipsum dolor sit. Mauris nunc congue nisi vitae. Mauris in aliquam sem fringilla ut morbi tincidunt augue interdum. Massa sed elementum tempus egestas.',
         isRead: true,
         isStar: true,
 
@@ -388,14 +432,14 @@ function _createEmails() {
         id: utilService.makeId(),
         folder: 'inbox',
 
-        subject: 'Your pension plan',
-        body: 'body body body body',
+        subject: 'הדו"ח השנתי של חסכון לכל ילד כבר כאן',
+        body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quam viverra orci sagittis eu volutpat. Pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus. Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim. Neque sodales ut etiam sit amet nisl purus. Pretium lectus quam id leo in vitae turpis massa sed. Amet nisl purus in mollis nunc sed id semper risus. Quis commodo odio aenean sed adipiscing diam. Faucibus interdum posuere lorem ipsum dolor sit. Mauris nunc congue nisi vitae. Mauris in aliquam sem fringilla ut morbi tincidunt augue interdum. Massa sed elementum tempus egestas.',
         isRead: true,
         sentAt: '',
         isStar: false,
 
         removedAt: null,
-        from: 'Menora',
+        from: 'מנורה מבטחים',
         to: 'user@appsus.com',
         isSelected: false,
       },
@@ -404,72 +448,13 @@ function _createEmails() {
         folder: 'inbox',
 
         subject: 'Important announcement',
-        body: 'body body body body',
+        body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quam viverra orci sagittis eu volutpat. Pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus. Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim. Neque sodales ut etiam sit amet nisl purus. Pretium lectus quam id leo in vitae turpis massa sed. Amet nisl purus in mollis nunc sed id semper risus. Quis commodo odio aenean sed adipiscing diam. Faucibus interdum posuere lorem ipsum dolor sit. Mauris nunc congue nisi vitae. Mauris in aliquam sem fringilla ut morbi tincidunt augue interdum. Massa sed elementum tempus egestas.',
         isRead: true,
         isStar: false,
 
         sentAt: '',
         removedAt: null,
         from: 'lo@relevanti.com',
-        to: 'user@appsus.com',
-        isSelected: false,
-      },
-      {
-        id: utilService.makeId(),
-        folder: 'inbox',
-
-        subject: 'Great news from America',
-        body: 'body body body body',
-        isRead: true,
-        isStar: false,
-
-        sentAt: '',
-        removedAt: null,
-        from: 'wehavemoney@gmail.com',
-        to: 'user@appsus.com',
-        isSelected: false,
-      },
-      {
-        id: utilService.makeId(),
-        folder: 'inbox',
-
-        subject: 'You have a new Facebook request',
-        body: 'body body body body',
-        isRead: true,
-        isStar: false,
-
-        sentAt: '',
-        removedAt: null,
-        to: 'momo@momo.com',
-        from: 'FACEBOOK',
-        isSelected: false,
-      },
-      {
-        id: utilService.makeId(),
-        folder: 'inbox',
-
-        subject: 'You have a new Facebook request',
-        body: 'body body body body',
-        isRead: true,
-        sentAt: '',
-        isStar: false,
-        removedAt: null,
-        from: 'FACEBOOK',
-        to: 'momo@momo.com',
-        isSelected: false,
-      },
-      {
-        id: utilService.makeId(),
-        folder: 'inbox',
-
-        subject: 'You have a new Facebook request',
-        body: 'body body body body',
-        isRead: true,
-        sentAt: '',
-        removedAt: null,
-        isStar: false,
-
-        from: 'FACEBOOK',
         to: 'user@appsus.com',
         isSelected: false,
       },
@@ -499,9 +484,3 @@ function _createEmail(subject, body, isRead, sentAt) {
   }
   return email
 }
-
-// function _createMail(title, minPrice = 200) {
-//   const mail = getEmptyMail(title, minPrice)
-//   mail.id = utilService.makeId()
-//   return mail
-// }
