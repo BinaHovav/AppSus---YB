@@ -12,11 +12,11 @@ export default {
            <h2>{{ email.subject }}</h2>
            <p>{{ email.body }}</p>
         </div>
-        
+<!--         
         <div class="next-prev-buttons">
           <RouterLink :to="'/mail/' + email.nextEmailId">Next Email</RouterLink> 
           <RouterLink :to="'/mail/' + email.prevEmailId">Prev Email</RouterLink> 
-        </div>
+        </div> -->
         <RouterLink to="/mail/inbox">Back to Inbox</RouterLink>
 
     </section>
@@ -28,42 +28,35 @@ export default {
     }
   },
   created() {
-    const { emailId } = this.$route.params
-    emailService
-      .get(emailId)
-      .then((email) => {
-        this.email = email
-      })
-      .catch((err) => {
-        alert('Cannot load email')
-        // this.$router.push('/mail')
-      })
+    this.loadEmail()
   },
   methods: {
-    // loadEmail() {
-    //   const { emailId } = this.$route.params
-    //   emailService
-    //     .get(emailId)
-    //     .then((email) => {
-    //       this.email = email
-    //     })
-    //     .catch((err) => {
-    //       alert('Cannot load email')
-    //       this.$router.push('/mail')
-    //     })
-    // },
+    loadEmail() {
+      const { emailId } = this.$route.params
+      console.log('emailId', emailId)
+      emailService
+        .get(emailId)
+        .then((email) => {
+          this.email = email
+          // this.$router.push('/mail/:emailId')
+        })
+        .catch((err) => {
+          // alert('Cannot load email methods')
+          // this.$router.push('/mail')
+        })
+    },
   },
 
   watch: {
-    // emailId() {
-    //   this.loadEmail()
-    // },
+    emailId() {
+      this.loadEmail()
+    },
   },
 
   computed: {
-    // emailId() {
-    //   return this.$route.params.emailId
-    // },
+    emailId() {
+      return this.$route.params.emailId
+    },
   },
   components: {
     EmailList,

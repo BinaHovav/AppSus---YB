@@ -16,7 +16,7 @@ export default {
                           {{ email.isStar ? 'star' : 'star_outline' }}
                           </i>
 
-                    <h2 class="from-preview">{{ email.from }} </h2>
+                    <h2 class="from-preview">{{ emailFrom }} </h2>
                     <div class="content-preview"> 
                        <span class="subject-preview">{{ email.subject }}</span>
                        <span class="body-preview">{{ email.body }}</span>
@@ -33,11 +33,14 @@ export default {
 
   data() {
     return {
+      folder: this.email.folder,
       starredEmails: [],
     }
   },
 
-  created() {},
+  created() {
+    console.log('this.folder', this.folder)
+  },
 
   methods: {
     onToggleIsRead(email) {
@@ -89,6 +92,14 @@ export default {
           return 'gold'
         }
         return ''
+      }
+    },
+    emailFrom() {
+      if (this.folder === 'sent' || this.folder === 'draft') {
+        return this.email.to
+      } else this.folder === 'inbox' || this.folder === 'trash'
+      {
+        return this.email.from
       }
     },
   },

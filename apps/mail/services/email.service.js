@@ -66,8 +66,8 @@ function get(emailId) {
 function _setNextPrevEmailId(email) {
   return storageService.query(EMAIL_KEY).then((emails) => {
     const emailIdx = emails.findIndex((currEmail) => currEmail.id === email.id)
-    email.nextMailId = emails[emailIdx + 1] ? emails[emailIdx + 1].id : emails[0].id
-    email.prevMailId = emails[emailIdx - 1] ? emails[emailIdx - 1].id : emails[emails.length - 1].id
+    email.nextEmailId = emails[emailIdx + 1] ? emails[emailIdx + 1].id : emails[0].id
+    email.prevEmailId = emails[emailIdx - 1] ? emails[emailIdx - 1].id : emails[emails.length - 1].id
     return email
   })
 }

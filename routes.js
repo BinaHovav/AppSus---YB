@@ -30,10 +30,6 @@ const routerOptions = {
       component: bMail,
       children: [
         {
-          path: ':emailId',
-          component: EmailDetails,
-        },
-        {
           path: 'inbox',
           component: EmailList,
           children: [
@@ -43,6 +39,11 @@ const routerOptions = {
             },
           ],
         },
+        {
+          path: '/mail/:emailId',
+          component: EmailDetails,
+        },
+
         { path: 'sent', component: EmailList },
         { path: 'starred', component: EmailList },
         { path: 'trash', component: EmailList },

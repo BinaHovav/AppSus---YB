@@ -30,7 +30,7 @@ export default {
                    Compose
                   </button>
                 </div>
-                <EmailNavbar @selectFolder="setFolder" :unreadMailsCount="unreadMailsCount" />
+                <EmailNavbar @selectFolder="setFolder"  :unreadMailsCount="unreadMailsCount" />
               </div>  
               
               <div style="display: flex; flex-direction: column; padding-left:10px">
