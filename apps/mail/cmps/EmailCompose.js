@@ -6,7 +6,7 @@ export default {
                 <section class="form-container">
                      <div class="form-header">
                       <p>New Message</p>
-                         <button class="close-compose" @click="onCloseCompose">X</button>
+                         <button class="close-compose" @click="onSaveDraft">X</button>
                      </div>
                   <form class="email-compose">
                      <div class="form-group">
@@ -43,18 +43,17 @@ export default {
   },
 
   methods: {
-    onCloseCompose() {
-      console.log('close')
-      this.$emit('closeForm')
-    },
     onSendEmail() {
-      console.log('sendCompose')
       const sentEmail = JSON.parse(JSON.stringify(this.email))
       sentEmail.sentAt = Date.now()
       this.$emit('sendEmail', sentEmail)
     },
-    onSaveDraft() {},
-
+    onSaveDraft() {
+      console.log('closed compose')
+      const drafEmail = JSON.parse(JSON.stringify(this.email))
+      drafEmail.sentAt = ''
+      this.$emit('saveDraft', drafEmail)
+    },
     clearHeaderLabel() {
       this.formHeaderText = ''
     },

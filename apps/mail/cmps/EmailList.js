@@ -8,7 +8,8 @@ export default {
                 <section class="email-list">
                    <ul>
                      <li v-for="email in emails" :key="email.id">
-                        <EmailPreview :email="email" 
+                        <EmailPreview 
+                          :email="email" 
                           @click="onMarkAsRead(email)" 
                           @updateEmail="onUpdateEmail"
                           @removeEmail="onRemoveEmail"/>

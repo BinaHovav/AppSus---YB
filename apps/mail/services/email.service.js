@@ -1,9 +1,6 @@
 import { utilService } from '../../../services/util.service.js'
 import { storageService } from '../../../services/async-storage.service.js'
 
-// import mailList from '../data/books.json' assert { type: 'json' }
-// console.log('bookList', bookList)
-
 const PAGE_SIZE = 5
 const EMAIL_KEY = 'emailDB'
 
@@ -12,8 +9,6 @@ var gSortBy = { title: 1 }
 var gPageIdx
 
 const SEARCH_KEY = 'searchDB'
-// let gBooksCache = utilService.loadFromStorage(BOOK_KEY) || {}
-// console.log('gBooksCache', gBooksCache)
 
 _createEmails()
 
@@ -71,8 +66,8 @@ function get(emailId) {
 function _setNextPrevEmailId(email) {
   return storageService.query(EMAIL_KEY).then((emails) => {
     const emailIdx = emails.findIndex((currEmail) => currEmail.id === email.id)
-    email.nextMailId = emails[emailIdx + 1] ? emails[emailIdx + 1].id : emails[0].id
-    email.prevMailId = emails[emailIdx - 1] ? emails[emailIdx - 1].id : emails[emails.length - 1].id
+    email.nextEmailId = emails[emailIdx + 1] ? emails[emailIdx + 1].id : emails[0].id
+    email.prevEmailId = emails[emailIdx - 1] ? emails[emailIdx - 1].id : emails[emails.length - 1].id
     return email
   })
 }
@@ -139,7 +134,6 @@ function getEmailCountByFolderMap() {
       },
       { inbox: 0, trash: 0 }
     )
-    console.log('emailCountByFolderMap', emailCountByFolderMap)
     return emailCountByFolderMap
   })
 }
@@ -488,7 +482,6 @@ function _createEmails() {
     })
 
     utilService.saveToStorage(EMAIL_KEY, emails)
-    console.log('emails', emails)
   }
 }
 

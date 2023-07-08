@@ -20,7 +20,6 @@ export default {
   methods: {
     onSetFilterBy() {
       this.$emit('filter', this.filterBy)
-      console.log('this.filterBy', this.filterBy)
     },
   },
 }
