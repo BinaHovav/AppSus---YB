@@ -1,11 +1,14 @@
 export default {
     name: 'AddImgNote',
     template: `
-        <section class="note-add-img" @keyup.enter="addNote">
-            <input v-model="note.info.title" type="text" placeholder="Title"/>
-            <input v-model="note.info.url" type="text" placeholder="Enter url of img."/> 
-            <img :src="note.info.url" >
-        </section>
+        <!-- <section class="note-add-txt"> -->
+            <img :src="note.info.url" class="note-img" >
+            <section class="input_sec">
+                <input v-model="note.info.title" type="text" placeholder="Title"/>
+                <input v-model="note.info.url" type="text" placeholder="Enter url of img."/> 
+            </section>
+        <!-- </section> -->
+        <span @click="addNote" class="btn-close">Close</span>
     `,
     data() {
         return {
@@ -13,7 +16,7 @@ export default {
                 type: 'ImgNote',
                 info: {
                     title: '',
-                    url: 'img/1.jpg',
+                    url: null,
                 }
             }
         }

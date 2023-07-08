@@ -10,12 +10,14 @@ export default {
                 <li v-for="keep in keeps" :key="keep.id">
                     <KeepPreview :keep="keep" @editKeep="onEditKeep"/>  <!-- <section class="actions"> -->
                         <!-- <button class="btn-remove" @click="onRemoveKeep(keep.id)">x</button> -->
-                       <button class="btn-remove"  @click="onRemoveKeep(keep.id)"><img  src="../../assets/icons/delete.svg"></button>
-                       <button class="btn-edit"  @click="onEditKeep(keep.id)"><img  src="../../assets/icons/edit.svg"></button>
-                       <section class="actions">
-                        <!-- <button class="remove-button" @click="onRemoveKeep(keep.id)">x</button> -->
-                        <!-- <button @click="onEditKeep(keep.id)">edit</button> -->
-                    </section>
+                       <!-- <button class="btn-remove"  @click="onRemoveKeep(keep.id)"><img  src="../../assets/icons/delete.svg"></button> -->
+                       <!-- <button @click="onRemoveKeep(keep.id)" class="btn-remove" >
+                         <span class="material-icons-outlined">delete</span>   
+                        </button> -->
+                        <!-- <button class="btn-edit"  @click="onEditKeep(keep.id)"><img  src="../../assets/icons/edit.svg"></button> -->
+                        <!-- <section class="actions">
+                          
+                    </section> -->
                 </li>
             </ul>
         </section>

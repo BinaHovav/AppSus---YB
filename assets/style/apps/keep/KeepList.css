@@ -1,14 +1,14 @@
 
-.keep-list ul {
+/* .keep-list ul {
     display: grid;
     column-count: 4;
     column-width:12em;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 40px;
     padding: 10px;
-}
+} */
 
-.keep-list ul li {
+/* .keep-list ul li {
     position: relative;
     text-transform: capitalize;
     padding: 10px;
@@ -16,11 +16,8 @@
     border-radius: 20px;
     transition:0.3s ease;
     max-height: 350px;
-}
+} */
 
-.keep-list ul li:hover {
-    scale:1.05;
-}
 
 /* .keep-list button{
     position: absolute;
@@ -30,38 +27,36 @@
 } */
 
 .keep-list{
+    
     column-count: 4;
     column-width: 12em;
-    gap: 10px;
-    padding: 10px;
+    gap: 5px;
+    padding: 5px;
     background-color: var(--clr12);
 }
 
-<<<<<<< HEAD
-
-=======
-/* <<<<<< HEAD */
->>>>>>> 7222a2bf21d750aad224942f31b35627a5b14c2a
-.keep-list ul {
-
+/* 
+ .keep-list ul {
+    
     gap: 40px;
     padding: 10px;
-}
+}  */
 
 
 .keep-list ul li {
     position: relative;
-    text-transform: capitalize;
+    /* text-transform: capitalize; */
     padding: 10px;
     opacity:0.9;
     border-radius: 20px;
     transition:0.3s ease;
-    max-height: 350px;
+    /* max-height: 350px; */
 }
 
 .keep-list ul li:hover {
     scale:1.05;
 }
+
 
 
 .btn-remove{

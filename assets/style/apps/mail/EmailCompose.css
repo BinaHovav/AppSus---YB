@@ -46,14 +46,14 @@ label {
   display: block;
 }
   
-input[type="text"],
+/* input[type="text"],
   textarea {
     min-width: 50vw;
     padding: 10px;
     border: none;
     border-bottom: 1px solid lightgray;
 
-}
+} */
 
 
 textarea{

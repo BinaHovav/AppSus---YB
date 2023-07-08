@@ -2,7 +2,7 @@ export default {
   props: ["info"],
   name: "EditTextNote",
   template: `
-        <section class="note-add-txt">
+        <section class="input_sec">
             <input v-model="infoToEdit.title" type="text" placeholder="Title" @input="updateInfo"/>
             <input v-model="infoToEdit.txt" type="text" placeholder="Take a note..." @input="updateInfo"/>  
                   
@@ -15,8 +15,9 @@ export default {
   },
   methods: {
     updateInfo() {
-      const info = JSON.parse(JSON.stringify(this.infoToEdit));
-      // console.log('this.infoToEdit',this.infoToEdit)
+      const info = JSON.parse(JSON.stringify (this.infoToEdit))
+      console.log('info',info)
+      
       this.$emit("updateNote", info);
     },
   },

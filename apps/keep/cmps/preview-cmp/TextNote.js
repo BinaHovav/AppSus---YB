@@ -1,9 +1,9 @@
 export default {
     props: ['info'],
     template: `
-        <section>
-            <h1>{{info.title}}</h1>
-            <h2>{{info.txt}}</h2> 
+        <section class="preview">
+            <h3>{{info.title}}</h3>
+            <h4>{{info.txt}}</h4> 
         </section>
     `,
     data() {

@@ -1,13 +1,13 @@
 export default {
     props: ['info'],
     template: `
-        <section>
-            <label>
-                <h1>{{info.title}}</h1>
+        <section class="note-add-list">
+            <h3>{{info.title}}</h3>
+            <ul class="clean-list">
                 <li v-for="todo in info.todos" :key="todo.id">
-                    <h4> {{todo.txt}}</h4> 
+                    <h4>+ {{todo.txt}}</h4> 
                 </li> 
-            </label>  
+            </ul>      
         </section>
     `,
     data() {

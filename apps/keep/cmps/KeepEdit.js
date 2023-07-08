@@ -1,20 +1,45 @@
 import { keepService } from "../services/keep.service.js";
 /* import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js' */
 
-import TextNote from "./preview-cmp/TextNote.js";
+// import TextNote from "./preview-cmp/TextNote.js";
 import EditTextNote from "./edit-cmps/EditTextNote.js";
+import EditListNote from "./edit-cmps/EditListNote.js";
+import EditImgNote from "./edit-cmps/EditImgNote.js";
 
 export default {
   name: "KeepEdit",
   props: ["keep"],
   template: `
             
-            <section  class="keep-edit" :style="keepToEdit.style">             
-                <!-- <Component :is="keep.type" /> -->
-                <h1>AAAAAAAAAAAAAAAAAAAAAAAA</h1>
-                <Component :is="'Edit' + keep.type" :info="keepToEdit.info" @updateNote="updateNote"/>
-                <button @click=save>Close</button>
-            </section>
+      <section  class="keep-edit" :style="keepToEdit.style">             
+
+          <Component :is="'Edit' + keep.type" :info="keepToEdit.info" @updateNote="updateNote"/>
+          
+          <span class="material-icons-outlined" class="edit-pin" @click="togglePin()">push_pin</span>   
+          <span @click=save class="btn-close">Close</span> 
+          
+          <section class="edit-actions">      
+                <label for="create-color">
+                    <i><span class="material-icons-outlined" class="edit-pallete">palette</span></i>
+                    <input type="color" v-model="keepToEdit.style.background" id="create-color" style="display: none">
+                </label>
+                <span class="material-icons-outlined" class="edit-remove" @click="onRemoveKeep(keep.id)">delete</span>   
+          </section>  
+                
+                <!-- <button @click="togglePin()"> -->
+                <!-- </button> -->
+                <!-- <button>
+                  <span class="material-icons-outlined">palette</span>   
+                </button> -->
+
+                <!-- <button @click="onRemoveKeep(keep.id)" class="btn-remove" > -->
+                <!-- </button> -->
+
+
+                <!-- <input type="color" v-model="keepToEdit.style.background"> -->
+                <!-- <button @click=save>Close</button> -->
+              
+              </section>
              
        
     `,
@@ -30,26 +55,38 @@ export default {
   },
   created() {
     console.log(this.keep, 'dadasasdasda');
-    this.keepToEdit = JSON.parse(JSON.stringify(this.keep));
-    console.log(this.keepToEdit.style);
+    // this.keepToEdit = JSON.parse(JSON.stringify(this.keep));
+    this.keepToEdit = this.keep
+    // console.log(this.keepToEdit.style);
   },
 
   methods: {
+    onRemoveKeep(keepId) {
+      this.$emit('remove', keepId)
+    },
     updateNote(info) {
-      console.log('info',info)
-      console.log('this.KeepToEdit',this.KeepToEdit)
-      this.KeepToEdit.info = info;
+      // console.log('info',info)
+      // console.log('this.keepToEdit',this.keepToEdit)
+      this.keepToEdit.info = info;
+      // console.log('this.keepToEdit',this.keepToEdit)
+    },
+    togglePin(){
+      console.log('keepToEdit.isPinned',this.keepToEdit.isPinned)
+      this.keepToEdit.isPinned = !this.keepToEdit.isPinned
+      // console.log('keepToEdit.isPinned',keepToEdit.isPinned)
     },
     save() {
-      
       // console.log('updateNote',note)
       const KeepToSave = JSON.parse(JSON.stringify(this.keepToEdit));
-      console.log('KeepToSave',KeepToSave)
+      // console.log('KeepToSave',KeepToSave)
       this.$emit("save", KeepToSave);
     },
   },
   computed: {},
   components: {
-    EditTextNote
+    EditTextNote,
+    EditListNote,
+    EditImgNote
+    
   },
 };

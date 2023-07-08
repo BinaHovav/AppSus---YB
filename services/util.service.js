@@ -2,6 +2,7 @@ export const utilService = {
   makeId,
   saveToStorage,
   loadFromStorage,
+  getRandomColor
 }
 
 function makeId(length = 5) {
@@ -20,4 +21,10 @@ function saveToStorage(key, value) {
 function loadFromStorage(key) {
   const data = localStorage.getItem(key)
   return data ? JSON.parse(data) : undefined
+}
+function getRandomColor()
+{
+  let color = Math.floor(Math.random()*16777215).toString(16)
+  console.log('color',color)
+  return "#"+color
 }

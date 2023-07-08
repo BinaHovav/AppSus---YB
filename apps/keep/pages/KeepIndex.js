@@ -13,23 +13,31 @@ export default {
 
     name: 'keepIndex',
     template: `
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
         <section class="keep-index" >
             <!-- <h1>hellow from keep index</h1> -->
-            <keepNavbar/>
-            <!-- <keepEdit  @save="saveKeep"/> -->
-            <keepAdd  @save="saveKeep" @update="updateKeep"/>
-            <!-- <keepAdd v-if="route==='view'" @chg-route="chgRoute"/> -->
-            <keepList v-if="keeps"
-            :keeps="keeps" 
-            @remove="removeKeep"
+            <!-- <keepNavbar/> -->
+            
+            <!-- <keepAdd  @save="saveKeep" @update="updateKeep"/> -->
+            <keepAdd  @save="saveKeep"/>
+            
+            <keepList v-if="pinKeeps"
+            :keeps="pinKeeps" 
+            @editKeep="onEditKeep"/> 
+
+            <keepList v-if="nonPinkeeps"
+            :keeps="nonPinkeeps" 
             @editKeep="onEditKeep"/> 
             
-            <KeepEdit v-if="keepToEdit" :keep="keepToEdit" @KeepToSave="updateKeep"/>
+            <KeepEdit v-if="keepToEdit" :keep="keepToEdit" @save="updateKeep" @remove="removeKeep"/>
         </section>
     `,
     data() {
         return {
-            keeps: null,
+            pinKeeps:null,
+            nonPinkeeps: null,
+            // keeps: null,
             filterBy: {},
             keepToEdit: null
             // route:'view'
@@ -37,17 +45,16 @@ export default {
         }
     },
     created(){
-        keepService.query()
-            .then(keeps => this.keeps = keeps)
+        this.loadKeeps()
     },
     methods: {
         loadKeeps(){
             keepService.query()
             .then(keeps => {
-                // let tempKeeps = keeps
-                // let pinKeeps = keeps.filter(keep => keep.isPinned)
-                // let nonPinKeeps = keeps.filter(keep => !keep.isPinned)
-                this.keeps = keeps
+                this.nonPinkeeps = keeps.filter(keep => !keep.isPinned)
+                this.pinKeeps = keeps.filter(keep => keep.isPinned)
+                // this.keeps = [...this.pinKeeps,... this.nonPinkeeps]
+                
             })
 
         },
@@ -60,8 +67,9 @@ export default {
             console.log('remove keepId',keepId)
             keepService.remove(keepId)    
                 .then(() => {
-                    const idx = this.keeps.findIndex(keep => keep.id === keepId)
-                    this.keeps.splice(idx, 1)
+                    // const idx = this.keeps.findIndex(keep => keep.id === keepId)
+                    // this.keeps.splice(idx, 1)
+                    loadKeeps()
                     // showSuccessMsg('Keep removed')
                     console.log('Keep removed')
                 })
@@ -71,19 +79,24 @@ export default {
                 })
         },
         updateKeep(keepToEdit) {
-            emailService.save(keepToEdit).then((updatedKeep) => {
-              const keepIdx = this.keeps.findIndex((keep) => keep.id === updatedKeep.id)
-              this.keeps.splice(keepIdx, 1, updatedKeep)
+            console.log('keepToEdit', keepToEdit)
+            
+            keepService.save(keepToEdit).then((updatedKeep) => {
+            //   const keepIdx = this.keeps.findIndex((keep) => keep.id === updatedKeep.id)
+            //   this.keeps.splice(keepIdx, 1, updatedKeep)
+            this.loadKeeps()
+              this.keepToEdit= null
             })
           },
 
-        saveKeep(keepToEdit) {
-            console.log('keepToEdit', keepToEdit)
-            keepService.save(keepToEdit)
+        saveKeep(keep) {
+            console.log('keep', keep)
+            keepService.save(keep)
                 .then((res) => {
-                    console.log('res',res)
-                    console.log('keep saved')
-                    this.keeps.push(keepToEdit)
+                    this.loadKeeps()
+                    // console.log('res',res)
+                    // console.log('keep saved')
+                    // this.keeps.push(keepToEdit)
                     // showSuccessMsg('Keep saved')
                     // this.$router.push('/keep')
                 })

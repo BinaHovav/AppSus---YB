@@ -10,14 +10,30 @@ export default {
     props: ['keep'],
     template: `
             <section  class="keep-add">
-                <Component :is="type" @addNote="save"/>
-                <!-- <h4>{{formateDate}}</h4> -->
-                
-                <!-- <button @click="save" class="act_btn">Add</button> --> 
-                
-                <button @click="chgType('AddTextNote')" class="act_btn"><img src="../../assets/icons/text.svg" /></button>            
+                <section v-if="type">
+                    <Component  :is="type" @addNote="save" />
+                   
+                </section>
+                <section v-if = "!type">
+                    <span  @click="chgType('AddTextNote')">Take a note</span> 
+                    <section class="add-actions" >
+                        <span  @click="chgType('AddListNote')" class="material-icons-outlined">check_box</span>   
+                        <span @click="chgType('AddImgNote')" class="material-icons-outlined">image</span>   
+                    </section>
+                </section> 
+                <!-- <span class="material-icons-outlined" @click="chgType('AddTextNote')">text_fields</span>    -->
+                <!-- <button @click="chgType('AddTextNote')" > -->
+                <!-- </button> -->
+
+                <!-- <button @click="chgType('AddListNote')" >
+                </button>
+
+                <button @click="chgType('AddImgNote')" >
+                </button> -->
+
+                <!-- <button @click="chgType('AddTextNote')" class="act_btn"><img src="../../assets/icons/text.svg" /></button>            
                 <button @click="chgType('AddListNote')" class="act_btn"><img src="../../assets/icons/check_box.svg" /></button>
-                <button @click="chgType('AddImgNote')" class="act_btn"><img src="../../assets/icons/image.svg" /></button>
+                <button @click="chgType('AddImgNote')" class="act_btn"><img src="../../assets/icons/image.svg" /></button> -->
                 <!-- <button @click="chgType('canvas')"class="act_btn"><img  src="../../assets/icons/edit.svg"/></button> -->
 </section>
              
@@ -25,8 +41,9 @@ export default {
     `,
     data() {
         return {
-            type: 'AddTextNote',
-            keepToEdit: keepService.getEmptyKeep(),
+            // type: 'AddTextNote',
+            type:'',
+            newKeep: keepService.getEmptyNewKeep() 
         }
     },
     computed: {
@@ -34,32 +51,32 @@ export default {
         //     return this.keepToEdit.info.txt > 0
         // }
     },
-    created() {
-    
-        this.keepToEdit= keepService.getEmptyKeep()     
+    created() { 
+        // this.newKeep= keepService.getEmptyNewKeep()     
     },
 
     methods: {
         resetKeep(){
-            this.keepToEdit= keepService.getEmptyKeep()
+            this.newKeep= keepService.getEmptyKeep()
         },
         save(note) {
-            console.log('keepToEdit',note)
-            this.$emit('save', note)
+            this.newKeep.info = note.info
+            this.newKeep.type = note.type
+            console.log('newKeep',this.newKeep)
+            this.$emit('save', this.newKeep)
+            this.type = ''
         },
-        update() {
-            console.log('keepToEdit',this.keepToEdit)
-            this.$emit('save', this.keepToEdit)
-        },
+
+        // update() {
+        //     console.log('newKeep',this.newKeep)
+        //     this.$emit('save', this.newKeep)
+        // },
         chgType(newType){
             console.log('newType',newType)
             this.type = newType
         }
     },
     computed:{
-        formateDate(){
-            return this.keepToEdit.info.createdAt
-        }
     },
     components: {
         

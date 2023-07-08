@@ -1,5 +1,5 @@
 export default {
-  name: 'Email Navbar',
+  name: 'Keep Navbar',
   template: `
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
 
