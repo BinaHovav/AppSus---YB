@@ -31,9 +31,7 @@ export default {
     },
     methods: {
        addNote(){
-            // console.log('note',this.note)
-            // const note = JSON.parse(JSON.stringify(this.note))
-            // console.log('note',note)
+           
             let len = this.todos.length
             if(this.todos[len-1].txt === '') this.todos.pop()
             this.$emit('addNote', this.note)

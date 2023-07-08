@@ -24,10 +24,12 @@ export default {
             
             <keepList v-if="pinKeeps"
             :keeps="pinKeeps" 
+            @remove="removeKeep"
             @editKeep="onEditKeep"/> 
 
             <keepList v-if="nonPinkeeps"
             :keeps="nonPinkeeps" 
+            @remove="removeKeep"
             @editKeep="onEditKeep"/> 
             
             <KeepEdit v-if="keepToEdit" :keep="keepToEdit" @save="updateKeep" @remove="removeKeep"/>
@@ -64,33 +66,34 @@ export default {
             this.keepToEdit = keep
         },
         removeKeep(keepId) {
-            console.log('remove keepId',keepId)
+            // console.log('remove keepId',keepId)
             keepService.remove(keepId)    
                 .then(() => {
                     // const idx = this.keeps.findIndex(keep => keep.id === keepId)
                     // this.keeps.splice(idx, 1)
-                    loadKeeps()
+                    this.loadKeeps()
                     // showSuccessMsg('Keep removed')
-                    console.log('Keep removed')
+                    // console.log('Keep removed')
+                    this.keepToEdit= null
                 })
-                .catch(err => {
-                    // showErrorMsg('Cannot remove keep')
-                    console.log('Cannot remove keep')
-                })
+                // .catch(err => {
+                //     // showErrorMsg('Cannot remove keep')
+                //     console.log('Cannot remove keep')
+                // })
         },
         updateKeep(keepToEdit) {
-            console.log('keepToEdit', keepToEdit)
+            // console.log('keepToEdit', keepToEdit)
             
             keepService.save(keepToEdit).then((updatedKeep) => {
             //   const keepIdx = this.keeps.findIndex((keep) => keep.id === updatedKeep.id)
             //   this.keeps.splice(keepIdx, 1, updatedKeep)
             this.loadKeeps()
-              this.keepToEdit= null
+            this.keepToEdit= null
             })
           },
 
         saveKeep(keep) {
-            console.log('keep', keep)
+            // console.log('keep', keep)
             keepService.save(keep)
                 .then((res) => {
                     this.loadKeeps()
@@ -101,13 +104,13 @@ export default {
                     // this.$router.push('/keep')
                 })
                 .catch(err => {
-                    console.log('cant save Keep', savedKeep)
+                    // console.log('cant save Keep', savedKeep)
                     /* showErrorMsg('Cannot save keep') */
                 })
             },
             chgRoute(state) {
                 this.route = state
-                console.log('change route to ', state)
+                // console.log('change route to ', state)
            
             },
             onToggelModal()  {

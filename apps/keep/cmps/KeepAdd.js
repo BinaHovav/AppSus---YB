@@ -62,7 +62,7 @@ export default {
         save(note) {
             this.newKeep.info = note.info
             this.newKeep.type = note.type
-            console.log('newKeep',this.newKeep)
+            // console.log('newKeep',this.newKeep)
             this.$emit('save', this.newKeep)
             this.type = ''
         },
@@ -72,7 +72,7 @@ export default {
         //     this.$emit('save', this.newKeep)
         // },
         chgType(newType){
-            console.log('newType',newType)
+            // console.log('newType',newType)
             this.type = newType
         }
     },

@@ -2,7 +2,8 @@ export default {
     props: ["info"],
     name: "EditImgNote",
     template: `
-        <section  @keyup.enter="addNote" >
+        <!-- <section  @keyup.enter="addNote" > -->
+        <section >
             <img :src="info.url" class="note-img">
             <section class="input_sec">
                 <input v-model="infoToEdit.title" type="text" placeholder="Title" @input="updateInfo"/>
@@ -18,7 +19,7 @@ export default {
     methods: {
         updateInfo() {
             const info = JSON.parse(JSON.stringify (this.infoToEdit))
-            console.log('info',info)
+            // console.log('info',info)
             
             this.$emit("updateNote", info);
           },

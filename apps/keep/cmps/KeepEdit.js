@@ -15,15 +15,23 @@ export default {
 
           <Component :is="'Edit' + keep.type" :info="keepToEdit.info" @updateNote="updateNote"/>
           
-          <span class="material-icons-outlined" class="edit-pin" @click="togglePin()">push_pin</span>   
+          <span v-if="keep.isPinned"  
+                class="material-icons pin" 
+                @click="togglePin()">push_pin</span> 
+
+          <span v-if="!keep.isPinned" 
+                class="material-icons-outlined pin" 
+                @click="togglePin()">push_pin</span>  
+
+          <!-- <span class="material-icons-outlined edit-pin" @click="togglePin()">push_pin</span>    -->
           <span @click=save class="btn-close">Close</span> 
           
           <section class="edit-actions">      
-                <label for="create-color">
-                    <i><span class="material-icons-outlined" class="edit-pallete">palette</span></i>
-                    <input type="color" v-model="keepToEdit.style.background" id="create-color" style="display: none">
-                </label>
-                <span class="material-icons-outlined" class="edit-remove" @click="onRemoveKeep(keep.id)">delete</span>   
+            <label for="create-color">
+              <i><span class="material-icons-outlined edit-pallete">palette</span></i>
+              <input type="color" v-model="keepToEdit.style.background" id="create-color" style="display: none">
+            </label>
+            <span class="material-icons-outlined edit-remove" @click="onRemoveKeep(keep.id)">delete</span>   
           </section>  
                 
                 <!-- <button @click="togglePin()"> -->
@@ -54,7 +62,7 @@ export default {
     // }
   },
   created() {
-    console.log(this.keep, 'dadasasdasda');
+    // console.log(this.keep, 'dadasasdasda');
     // this.keepToEdit = JSON.parse(JSON.stringify(this.keep));
     this.keepToEdit = this.keep
     // console.log(this.keepToEdit.style);
@@ -62,6 +70,7 @@ export default {
 
   methods: {
     onRemoveKeep(keepId) {
+      // console.log('onRemoveKeep')
       this.$emit('remove', keepId)
     },
     updateNote(info) {
@@ -71,7 +80,7 @@ export default {
       // console.log('this.keepToEdit',this.keepToEdit)
     },
     togglePin(){
-      console.log('keepToEdit.isPinned',this.keepToEdit.isPinned)
+      // console.log('keepToEdit.isPinned',this.keepToEdit.isPinned)
       this.keepToEdit.isPinned = !this.keepToEdit.isPinned
       // console.log('keepToEdit.isPinned',keepToEdit.isPinned)
     },

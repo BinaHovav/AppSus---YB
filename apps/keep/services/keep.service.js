@@ -27,11 +27,11 @@ window.keepService = keepService
 
 function query() {
     return storageService.query(KEEP_KEY)
-        .then(keeps => {
-            if (gFilterBy.txt) {
-                const regex = new RegExp(gFilterBy.txt, 'i')
-                keeps = keeps.filter(keep => regex.test(keep.title))
-            }
+        .then(keeps => {return keeps})
+    }
+            // if (gFilterBy.txt) {
+            //     const regex = new RegExp(gFilterBy.txt, 'i')
+            //     keeps = keeps.filter(keep => regex.test(keep.title))
             // if (gFilterBy.minSpeed) {
             //     keeps = keeps.filter(keep => keep.maxSpeed >= gFilterBy.minSpeed)
             // }
@@ -45,9 +45,9 @@ function query() {
             //     keeps.sort((c1, c2) => c1.vendor.localeCompare(c2.vendor) * gSortBy.vendor)
             // }
 
-            return keeps
-        })
-}
+            // return keeps
+        // })
+        // }
 
 function get(keepId) {
     return storageService.get(KEEP_KEY, keepId)
@@ -67,17 +67,17 @@ function save(keep) {
 }
 
 
-function _setNextPrevKeepId(keep) {
-    return storageService.query(KEEP_KEY)
-        .then(keeps => {
-            const keepIdx = keeps.findIndex(currkeep => currKeep.id === keep.id)
-            keep.nextKeepId = keeps[keepIdx + 1] ? keeps[keepIdx + 1].id : keeps[0].id
-            keep.prevKeepId = keeps[keepIdx - 1]
-                ? keeps[keepIdx - 1].id
-                : keeps[keeps.length - 1].id
-            return keep
-        })
-}
+// function _setNextPrevKeepId(keep) {
+//     return storageService.query(KEEP_KEY)
+//         .then(keeps => {
+//             const keepIdx = keeps.findIndex(currkeep => currKeep.id === keep.id)
+//             keep.nextKeepId = keeps[keepIdx + 1] ? keeps[keepIdx + 1].id : keeps[0].id
+//             keep.prevKeepId = keeps[keepIdx - 1]
+//                 ? keeps[keepIdx - 1].id
+//                 : keeps[keeps.length - 1].id
+//             return keep
+//         })
+// }
 
 
 
@@ -95,7 +95,7 @@ function setFilterBy(filterBy = {}) {
 
 
 function getEmptyKeep(title, txt, color, pin) {
-    console.log('getEmptyKeep')
+    // console.log('getEmptyKeep')
     const date = new Date()
     return { id: '',
             createdAt: date,
@@ -107,7 +107,7 @@ function getEmptyKeep(title, txt, color, pin) {
 }
 
 function getEmptyNewKeep() {
-    console.log('getEmptyNewKeep')
+    // console.log('getEmptyNewKeep')
     const date = new Date()
     return { id: '',
             createdAt: date,
@@ -158,7 +158,8 @@ function _createKeeps() {
             createdAt: date,
             type: 'ImgNote',
             isPinned: false,
-            style: { backgroundColor: utilService.getRandomColor() },
+            
+            style: { backgroundColor: '#46AEC3' },
             info: { title: 'Happy Birthday',
                     url:'https://plus.unsplash.com/premium_photo-1675881738008-c03b8380e5e2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8MzN8fGJpcnRoZGF5JTIwcGFydHl8ZW58MHx8fHwxNjg4ODM0NTAzfDE&ixlib=rb-4.0.3&q=80&w=1080'}
         },    
@@ -167,15 +168,15 @@ function _createKeeps() {
             createdAt: date,
             type: 'TextNote',
             isPinned: false,
-            style: { backgroundColor: utilService.getRandomColor() },
+            style: { backgroundColor: '#8CDF49' },
             info: { title: 'Libi birthdaty',
                     txt: 'call her to congratulate'  }        
         },
         {id: utilService.makeId(),
             createdAt: date,
             type: 'ImgNote',
-            isPinned: false,
-            style: { backgroundColor: utilService.getRandomColor() },
+            isPinned: true,
+            style: { backgroundColor: '#DFAF49' },
             info: { title: 'Adopt one',
                     url:'https://plus.unsplash.com/premium_photo-1666878155781-f86514e5808b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80'  }
         },
@@ -183,9 +184,9 @@ function _createKeeps() {
         {id: utilService.makeId(),
             createdAt: date,
             type: 'ListNote',
-            isPinned: false,
-            style: { backgroundColor: utilService.getRandomColor() },
-            info: { title: 'London is waiting for us',
+            isPinned: true,
+            style: { backgroundColor: '#46AEC3' },
+            info: { title: 'London - Here we come',
                     todos:[
                         {id:1, txt: 'buy insurence'} ,
                         {id:2, txt: 'packing....'} ,    
@@ -196,7 +197,7 @@ function _createKeeps() {
             createdAt: date,
             type: 'TextNote',
             isPinned: false,
-            style: { backgroundColor: utilService.getRandomColor() },
+            style: { backgroundColor: '#46AEC3' },
             info: { title: 'Bake a cake',
                     txt: 'buy eggs'  }        
         },
@@ -204,7 +205,7 @@ function _createKeeps() {
             createdAt: date,
             type: 'TextNote',
             isPinned: true,
-            style: { backgroundColor: utilService.getRandomColor() },
+            style: { backgroundColor: '#9449DF' },
             info: { title: 'visit grandMa',
                     txt: 'buy flowers'  }        
         },
@@ -213,7 +214,7 @@ function _createKeeps() {
             createdAt: date,
             type: 'ListNote',
             isPinned: false,
-            style: { backgroundColor: utilService.getRandomColor() },
+            style: { backgroundColor: '#EA62F4' },
             info: { title: 'Go to the supermarket',
                     todos:[
                         {id:1, txt: 'buy milk'} ,  
@@ -224,7 +225,7 @@ function _createKeeps() {
             createdAt: date,
             type: 'ListNote',
             isPinned: false,
-            style: { backgroundColor: utilService.getRandomColor() },
+            style: { backgroundColor: '#DF4985' },
             info: { title: 'Clean the house',
                     todos:[
                         {id:1, txt: 'dishes'} ,
@@ -236,7 +237,7 @@ function _createKeeps() {
             createdAt: date,
             type: 'ImgNote',
             isPinned: false,
-            style: { backgroundColor: utilService.getRandomColor() },
+            style: { backgroundColor: '#9449DF'},
             info: { title: 'Buy an umbrella',
                     url:'https://media.istockphoto.com/id/1306473687/photo/anonymous-woman-dressed-in-a-raincoat-holding-an-open-black-umbrella.jpg?s=1024x1024&w=is&k=20&c=6BkubMImaUtzsUTmosGGwhgeydVbNOvYFGkD2ZBM8-g='
                     }
@@ -245,8 +246,8 @@ function _createKeeps() {
         {id: utilService.makeId(),
             createdAt: date,
             type: 'TextNote',
-            isPinned: true,
-            style: { backgroundColor: utilService.getRandomColor() },
+            isPinned: false,
+            style: { backgroundColor: '#DFAF49' },
             info: { title: 'study to the test',
                     txt: 'meet with Rotem'  }        
         },
@@ -257,7 +258,7 @@ function _createKeeps() {
             createdAt: date,
             type: 'ImgNote',
             isPinned: false,
-            style: { backgroundColor: utilService.getRandomColor() },
+            style: { backgroundColor: '#8CDF49' },
             info: { title: 'invite tickets',
                     url:'https://images.unsplash.com/photo-1501694159270-7b55f5eb85fc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80'}
         }
@@ -267,6 +268,6 @@ function _createKeeps() {
 
         utilService.saveToStorage(KEEP_KEY, keeps)
         }
-        console.log('keeps',keeps)
+        // console.log('keeps',keeps)
 }
 

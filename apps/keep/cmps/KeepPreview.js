@@ -14,9 +14,10 @@ export default {
                 @set-val="setAns($event, idx)" 
                 /> 
             <section class="actions">    
-                <span class="material-icons-outlined pin">push_pin</span>   
+                <span v-if="keep.isPinned" class="material-icons pin">push_pin</span> 
+                <span v-if="!keep.isPinned" class="material-icons-outlined pin">push_pin</span>  
+                <span class="material-icons-outlined" >delete</span>    
                 <span class="material-icons-outlined">palette</span> 
-                <span class="material-icons-outlined">delete</span>    
                 <span class="btn-close">Close</span>
                 
             </section>    
@@ -32,6 +33,11 @@ export default {
     setAns(ans, idx) {
       console.log('Setting the answer: ', ans, 'idx:', idx)
       this.answer = ans
+    },
+    onRemoveKeep(keepId) {
+
+      console.log('onRemoveKeep')
+      this.$emit('remove', keepId)
     },
     save() {
       console.log('Saving..')
