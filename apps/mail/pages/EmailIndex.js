@@ -16,7 +16,8 @@ export default {
           <!-- this is the compose box -->
              <div class="compose-container" v-if="isComposeOpen"> 
               <EmailCompose @closeForm="closeForm"
-                            @sendEmail="sendEmail($event)" />
+                            @sendEmail="sendEmail($event)"
+                            @saveDraft="saveDraft($event)" />
             </div>
 
            <!-- this is the compose button -->
@@ -81,6 +82,15 @@ export default {
         this.closeForm()
       })
       showSuccessMsg('Mail Sent Succefully!')
+    },
+    saveDraft(email) {
+      this.newEmail = email
+
+      emailService.save(this.newEmail).then((savedEmail) => {
+        this.emails.push(savedEmail)
+        this.closeForm()
+      })
+      showSuccessMsg('Mail Saved in Draft')
     },
     updateEmail(email) {
       emailService.save(email).then((updatedEmail) => {
