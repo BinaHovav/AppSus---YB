@@ -51,7 +51,7 @@ export default {
       folder: 'inbox',
       isComposeOpen: false,
       currentTime: null,
-      newEmail: emailService.getEmptyEmail(),
+      newEmail: null,
     }
   },
   created() {

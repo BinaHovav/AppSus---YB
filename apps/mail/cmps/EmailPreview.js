@@ -1,4 +1,5 @@
 import { emailService } from '../services/email.service.js'
+import { showSuccessMsg, showErrorMsg } from '../../../services/event-bus.service.js'
 
 export default {
   name: 'EmailPreview',
@@ -41,6 +42,7 @@ export default {
         const emailToRemove = JSON.parse(JSON.stringify(email))
         emailToRemove.removedAt = Date.now()
         this.$emit('updateEmail', emailToRemove)
+        showSuccessMsg('Mail moved to trash')
       } else {
         this.$emit('removeEmail', email.id)
       }

@@ -57,6 +57,8 @@ input[type="text"],
 
 
 textarea{
+  font-family:roboto, sans-serif;
+  line-height:1.5 ;
   border-bottom: none;
 
 }
