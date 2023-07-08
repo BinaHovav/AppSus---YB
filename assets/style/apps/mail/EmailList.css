@@ -6,7 +6,6 @@
 .email-list ul {
     display: flex;
     flex-direction: column;
-    background-color: var(--lightTurquise);
     padding:0
 }
 
@@ -15,30 +14,11 @@
     width: 87%;
 }
 
-.email-list input{
-    position: absolute;
-    height:20px;
-    left:-65px;
-    top:7px;
-    width:90px
-}
-
 .email-list ul li {
     display: flex;
     /* justify-content: space-around; */
     align-items: center;
     list-style: none;
-}
-
-/* .email-list ul li:hover {
-    box-shadow: inset 1px 0 0 #dadce0;
-} */
-
-.email-list button{
-    position: absolute;
-    top:5px;
-    right:2px;
-    color: black
 }
 
 .email-count{

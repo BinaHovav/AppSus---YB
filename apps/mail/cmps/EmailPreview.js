@@ -6,9 +6,16 @@ export default {
   props: ['email'],
   template: `
              <RouterLink :to="'/mail/' + email.id">
-                <article :class="{'email-preview': true,
-                                 'unread-email': !email.isRead,
-                                 'read-email': email.isRead}">
+                      <article :class="{'email-preview': true,
+                                      'unread-email': !email.isRead,
+                                       'read-email': email.isRead}">
+
+                          <i class="material-icons star" 
+                          :class="['star', colorStar(email)]"
+                          @click.stop.prevent="onStarEmail(email)">
+                          {{ email.isStar ? 'star' : 'star_outline' }}
+                          </i>
+
                     <h2 class="from-preview">{{ email.from }} </h2>
                     <div class="content-preview"> 
                        <span class="subject-preview">{{ email.subject }}</span>
@@ -26,7 +33,7 @@ export default {
 
   data() {
     return {
-      // emailToEdit: emailService.save(),
+      starredEmails: [],
     }
   },
 
@@ -59,6 +66,30 @@ export default {
         return sentDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
       }
     },
+    onStarEmail(email) {
+      const emailToStar = JSON.parse(JSON.stringify(email))
+      emailToStar.isStar = !emailToStar.isStar
+
+      if (emailToStar.isStar) {
+        this.starredEmails.push(emailToStar.id)
+      } else {
+        const idx = this.starredEmails.indexOf(emailToStar.id)
+        if (idx !== -1) {
+          this.starredEmails.splice(idx, 1)
+        }
+      }
+      this.$emit('updateEmail', emailToStar)
+      showSuccessMsg('Mail Starred')
+    },
   },
-  computed() {},
+  computed: {
+    colorStar() {
+      return (email) => {
+        if (email.isStar) {
+          return 'gold'
+        }
+        return ''
+      }
+    },
+  },
 }

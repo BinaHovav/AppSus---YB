@@ -1,5 +1,6 @@
 .app-footer {
-    position: fixed;
+    position:relative;
+    color: var(--clr4);
     bottom: 0;
     left: 0;
     right: 0;
