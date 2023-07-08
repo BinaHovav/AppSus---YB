@@ -63,7 +63,7 @@ export default {
         }
       }
       this.$emit('updateEmail', emailToStar)
-      showSuccessMsg('Mail Starred Succefully!')
+      showSuccessMsg('Mail Starred')
     },
   },
 

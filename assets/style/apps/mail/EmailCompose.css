@@ -57,6 +57,8 @@ label {
 
 
 textarea{
+  font-family:roboto, sans-serif;
+  line-height:1.5 ;
   border-bottom: none;
 
 }

@@ -1,10 +1,7 @@
 export default {
   template: `
         <header class="app-header">
-            <a>
-                <img src="./assets/img/logo.jpg" />
-            </a>
-            <h1></h1>
+            <a> <routerLink to="/"> <img src="./assets/img/logo.png" /></routerLink></a>
 
             <nav>
                 <RouterLink to="/"><span class="material-icons">home</span></RouterLink> 

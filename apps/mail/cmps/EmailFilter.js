@@ -5,6 +5,8 @@ export default {
                   v-model="filterBy.txt" 
                   @input="onSetFilterBy"
                   type="text" 
+
+
                   placeholder="Search in Mail">
           </section>
       `,
