@@ -11,11 +11,11 @@ export default {
                   <form class="email-compose">
                      <div class="form-group">
                         <label for="to"  >{{formHeaderText}}</label>
-                        <input @click="clearHeaderLabel" type="text" id="to" v-model="email.to">
+                        <input class="email-input" @click="clearHeaderLabel" type="text" id="to" v-model="email.to">
                       </div>
                      <div class="form-group">
                         <label for="subject" >{{formSubjectText}}</label>
-                       <input @click="clearSubjectLabel" type="text" id="subject" v-model="email.subject">
+                       <input class="email-input" @click="clearSubjectLabel" type="text" id="subject" v-model="email.subject">
                      </div>
                      <div class="form-group">
                        <label for="body"></label>
