@@ -40,16 +40,11 @@
 
   .note-add-txt input{
     /* margin: auto; */
-   
+    /* max-width: ; */
     padding: 10px;
     gap:10px
 
   }
 
 
-  .note-img{
-    margin: auto;
-    max-height: 150px;
-
-  }
   
