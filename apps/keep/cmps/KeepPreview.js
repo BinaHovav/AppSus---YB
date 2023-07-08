@@ -13,7 +13,7 @@ export default {
                 :info="keep.info" 
                 @set-val="setAns($event, idx)" /> 
             <section class="actions">    
-                <span class="material-icons-outlined" class="pin">push_pin</span>   
+                <span class="material-icons-outlined pin">push_pin</span>   
                 <span class="material-icons-outlined">palette</span> 
                 <span class="material-icons-outlined">delete</span>    
                 <span class="btn-close">Close</span>
