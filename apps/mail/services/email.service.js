@@ -357,7 +357,7 @@ function _createEmails() {
         id: utilService.makeId(),
         folder: 'inbox',
 
-        subject: 'Your Account Update',
+        subject: 'Yaron Biton sent you a friend request',
         body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quam viverra orci sagittis eu volutpat. Pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus. Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim. Neque sodales ut etiam sit amet nisl purus. Pretium lectus quam id leo in vitae turpis massa sed. Amet nisl purus in mollis nunc sed id semper risus. Quis commodo odio aenean sed adipiscing diam. Faucibus interdum posuere lorem ipsum dolor sit. Mauris nunc congue nisi vitae. Mauris in aliquam sem fringilla ut morbi tincidunt augue interdum. Massa sed elementum tempus egestas.',
         isRead: true,
         isStar: false,
@@ -372,43 +372,28 @@ function _createEmails() {
         id: utilService.makeId(),
         folder: 'inbox',
 
-        subject: 'You have a new Facebook request',
+        subject: 'Adam Bercovich sent you a friend request',
         body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quam viverra orci sagittis eu volutpat. Pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus. Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim. Neque sodales ut etiam sit amet nisl purus. Pretium lectus quam id leo in vitae turpis massa sed. Amet nisl purus in mollis nunc sed id semper risus. Quis commodo odio aenean sed adipiscing diam. Faucibus interdum posuere lorem ipsum dolor sit. Mauris nunc congue nisi vitae. Mauris in aliquam sem fringilla ut morbi tincidunt augue interdum. Massa sed elementum tempus egestas.',
         isRead: true,
         isStar: false,
 
         sentAt: '',
         removedAt: null,
-        to: 'momo@momo.com',
         from: 'Facebook',
+        to: 'user@appsus.com',
         isSelected: false,
       },
       {
         id: utilService.makeId(),
         folder: 'inbox',
 
-        subject: 'You have a new Facebook request',
+        subject: 'Your account update',
         body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quam viverra orci sagittis eu volutpat. Pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus. Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim. Neque sodales ut etiam sit amet nisl purus. Pretium lectus quam id leo in vitae turpis massa sed. Amet nisl purus in mollis nunc sed id semper risus. Quis commodo odio aenean sed adipiscing diam. Faucibus interdum posuere lorem ipsum dolor sit. Mauris nunc congue nisi vitae. Mauris in aliquam sem fringilla ut morbi tincidunt augue interdum. Massa sed elementum tempus egestas.',
         isRead: true,
         sentAt: '',
         isStar: false,
         removedAt: null,
-        from: 'FACEBOOK',
-        to: 'momo@momo.com',
-        isSelected: false,
-      },
-      {
-        id: utilService.makeId(),
-        folder: 'inbox',
-
-        subject: 'You have a new Facebook request',
-        body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quam viverra orci sagittis eu volutpat. Pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus. Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim. Neque sodales ut etiam sit amet nisl purus. Pretium lectus quam id leo in vitae turpis massa sed. Amet nisl purus in mollis nunc sed id semper risus. Quis commodo odio aenean sed adipiscing diam. Faucibus interdum posuere lorem ipsum dolor sit. Mauris nunc congue nisi vitae. Mauris in aliquam sem fringilla ut morbi tincidunt augue interdum. Massa sed elementum tempus egestas.',
-        isRead: true,
-        sentAt: '',
-        removedAt: null,
-        isStar: false,
-
-        from: 'FACEBOOK',
+        from: 'Facebook',
         to: 'user@appsus.com',
         isSelected: false,
       },
@@ -456,6 +441,36 @@ function _createEmails() {
         removedAt: null,
         from: 'lo@relevanti.com',
         to: 'user@appsus.com',
+        isSelected: false,
+      },
+      {
+        id: utilService.makeId(),
+        folder: 'inbox',
+
+        subject: 'Important announcement',
+        body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quam viverra orci sagittis eu volutpat. Pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus. Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim. Neque sodales ut etiam sit amet nisl purus. Pretium lectus quam id leo in vitae turpis massa sed. Amet nisl purus in mollis nunc sed id semper risus. Quis commodo odio aenean sed adipiscing diam. Faucibus interdum posuere lorem ipsum dolor sit. Mauris nunc congue nisi vitae. Mauris in aliquam sem fringilla ut morbi tincidunt augue interdum. Massa sed elementum tempus egestas.',
+        isRead: true,
+        isStar: false,
+
+        sentAt: '',
+        removedAt: null,
+        from: 'user@appsus.com',
+        to: 'ploni@almoni.com',
+        isSelected: false,
+      },
+      {
+        id: utilService.makeId(),
+        folder: 'inbox',
+
+        subject: 'Important announcement',
+        body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quam viverra orci sagittis eu volutpat. Pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus. Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim. Neque sodales ut etiam sit amet nisl purus. Pretium lectus quam id leo in vitae turpis massa sed. Amet nisl purus in mollis nunc sed id semper risus. Quis commodo odio aenean sed adipiscing diam. Faucibus interdum posuere lorem ipsum dolor sit. Mauris nunc congue nisi vitae. Mauris in aliquam sem fringilla ut morbi tincidunt augue interdum. Massa sed elementum tempus egestas.',
+        isRead: true,
+        isStar: false,
+
+        sentAt: '',
+        removedAt: null,
+        from: 'user@appsus.com',
+        to: 'ploni@almoni.com',
         isSelected: false,
       },
     ]
